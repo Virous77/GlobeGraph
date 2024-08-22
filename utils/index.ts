@@ -6,3 +6,15 @@ export const currencyFormatter = (value: number) => {
   }
   return value;
 };
+
+type TColor = {
+  [key: number]: string;
+};
+
+export const color: TColor = {
+  1: "bg-[hsl(var(--chart-1))]",
+  2: "bg-[hsl(var(--chart-2))]",
+  3: "bg-[hsl(var(--chart-3))]",
+  4: "bg-[hsl(var(--chart-4))]",
+  5: "bg-[hsl(var(--chart-5))]",
+};
