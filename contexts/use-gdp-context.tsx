@@ -1,6 +1,6 @@
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { getGDPData } from "@/data-layer";
 import { TGDPData } from "@/data-layer/types";
-import React, { useEffect } from "react";
 
 export type Countries = Record<"value" | "label", string>;
 
@@ -13,7 +13,6 @@ export const COUNTRIES = [
     value: "CHN",
     label: "China",
   },
-
   {
     value: "USA",
     label: "United States",
@@ -45,10 +44,23 @@ type TAllGDPData = {
   data: TGDPData[];
 };
 
-const useGDP = () => {
-  const [countries, setCountries] = React.useState<Countries[]>([COUNTRIES[0]]);
-  const [gdpData, setGDPData] = React.useState<TAllGDPData[]>([]);
-  const [isLoading, setIsLoading] = React.useState(false);
+interface GDPContextProps {
+  countries: Countries[];
+  setCountries: React.Dispatch<React.SetStateAction<Countries[]>>;
+  fetchSingleCountryGDPData: (name: string) => Promise<void>;
+  removeCountry: (name: string) => void;
+  chartData: any[];
+  isLoading: boolean;
+}
+
+const GDPContext = createContext<GDPContextProps | undefined>(undefined);
+
+export const GDPContextProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [countries, setCountries] = useState<Countries[]>([COUNTRIES[0]]);
+  const [gdpData, setGDPData] = useState<TAllGDPData[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchGDPData = async () => {
@@ -71,7 +83,7 @@ const useGDP = () => {
       ]);
     };
     fetchGDPData();
-  }, []);
+  }, [countries]);
 
   const fetchSingleCountryGDPData = async (name: string) => {
     if (gdpData.find((d) => d.country === name)) return;
@@ -110,14 +122,26 @@ const useGDP = () => {
     });
   });
 
-  return {
-    countries,
-    setCountries,
-    fetchSingleCountryGDPData,
-    removeCountry,
-    chartData,
-    isLoading,
-  };
+  return (
+    <GDPContext.Provider
+      value={{
+        countries,
+        setCountries,
+        fetchSingleCountryGDPData,
+        removeCountry,
+        chartData,
+        isLoading,
+      }}
+    >
+      {children}
+    </GDPContext.Provider>
+  );
 };
 
-export default useGDP;
+export const useGDP = (): GDPContextProps => {
+  const context = useContext(GDPContext);
+  if (!context) {
+    throw new Error("useGDP must be used within a GDPProvider");
+  }
+  return context;
+};

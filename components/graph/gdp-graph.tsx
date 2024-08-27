@@ -12,18 +12,13 @@ import {
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 import { createChartConfig } from "./config";
 import MultiSelect from "../ui/multi-select";
-import useGDP from "@/hooks/use-gdp";
 import { cn } from "@/lib/utils";
 import { color } from "@/utils";
+import { Loader } from "../ui/loader";
+import { useGDP } from "@/contexts/use-gdp-context";
 
 const GDPGraph = () => {
-  const {
-    countries,
-    setCountries,
-    fetchSingleCountryGDPData,
-    removeCountry,
-    chartData,
-  } = useGDP();
+  const { isLoading, countries, chartData } = useGDP();
 
   const modifyConfig = countries.map((country, idx) => {
     return {
@@ -61,12 +56,7 @@ const GDPGraph = () => {
           )}
         </CardHeader>
         <div className="w-[300px] mt-4 mr-4">
-          <MultiSelect
-            countries={countries}
-            setCountries={setCountries}
-            fetchSingleCountryGDPData={fetchSingleCountryGDPData}
-            removeCountry={removeCountry}
-          />
+          <MultiSelect countries={countries} />
         </div>
       </div>
       <CardContent className="w-[95vw] h-[500px] p-4">
@@ -100,6 +90,7 @@ const GDPGraph = () => {
           </BarChart>
         </ChartContainer>
       </CardContent>
+      {isLoading && <Loader type="full" />}
     </Card>
   );
 };

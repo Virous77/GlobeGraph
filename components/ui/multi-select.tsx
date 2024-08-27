@@ -11,18 +11,10 @@ import {
 } from "@/components/ui/command";
 import { Command as CommandPrimitive } from "cmdk";
 import { COUNTRIES, Countries } from "@/hooks/use-gdp";
+import { useGDP } from "@/contexts/use-gdp-context";
 
-const MultiSelect = ({
-  countries,
-  setCountries,
-  fetchSingleCountryGDPData,
-  removeCountry,
-}: {
-  countries: Countries[];
-  setCountries: React.Dispatch<React.SetStateAction<Countries[]>>;
-  fetchSingleCountryGDPData: (name: string) => void;
-  removeCountry: (name: string) => void;
-}) => {
+const MultiSelect = ({ countries }: { countries: Countries[] }) => {
+  const { setCountries, removeCountry, fetchSingleCountryGDPData } = useGDP();
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [open, setOpen] = React.useState(false);
 
