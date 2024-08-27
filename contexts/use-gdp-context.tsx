@@ -51,6 +51,10 @@ interface GDPContextProps {
   removeCountry: (name: string) => void;
   chartData: any[];
   isLoading: boolean;
+  timeRange: { from: number; to: number };
+  setTimeRange: React.Dispatch<
+    React.SetStateAction<{ from: number; to: number }>
+  >;
 }
 
 const GDPContext = createContext<GDPContextProps | undefined>(undefined);
@@ -61,6 +65,7 @@ export const GDPContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const [countries, setCountries] = useState<Countries[]>([COUNTRIES[0]]);
   const [gdpData, setGDPData] = useState<TAllGDPData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [timeRange, setTimeRange] = useState({ from: 2010, to: 2024 });
 
   useEffect(() => {
     const fetchGDPData = async () => {
@@ -70,8 +75,8 @@ export const GDPContextProvider: React.FC<{ children: React.ReactNode }> = ({
         countries.map(async (country) => {
           return await getGDPData({
             countryCode: country.value,
-            from: 1950,
-            to: 2024,
+            from: timeRange.from,
+            to: timeRange.to,
           });
         })
       );
@@ -83,15 +88,15 @@ export const GDPContextProvider: React.FC<{ children: React.ReactNode }> = ({
       ]);
     };
     fetchGDPData();
-  }, [countries]);
+  }, [countries, timeRange]);
 
   const fetchSingleCountryGDPData = async (name: string) => {
     if (gdpData.find((d) => d.country === name)) return;
     setIsLoading(true);
     const data = await getGDPData({
       countryCode: name,
-      from: 1950,
-      to: 2024,
+      from: timeRange.from,
+      to: timeRange.to,
     });
 
     setIsLoading(false);
@@ -131,6 +136,8 @@ export const GDPContextProvider: React.FC<{ children: React.ReactNode }> = ({
         removeCountry,
         chartData,
         isLoading,
+        timeRange,
+        setTimeRange,
       }}
     >
       {children}

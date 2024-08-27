@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 import { color } from "@/utils";
 import { Loader } from "../ui/loader";
 import { useGDP } from "@/contexts/use-gdp-context";
+import TimeRange from "./time-range";
 
 const GDPGraph = () => {
   const { isLoading, countries, chartData } = useGDP();
@@ -55,8 +56,9 @@ const GDPGraph = () => {
             </div>
           )}
         </CardHeader>
-        <div className="w-[300px] mt-4 mr-4">
+        <div className="w-[300px] mt-4 mr-4 flex  flex-col">
           <MultiSelect countries={countries} />
+          <TimeRange />
         </div>
       </div>
       <CardContent className="w-[95vw] h-[500px] p-4">
