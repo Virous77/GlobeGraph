@@ -19,7 +19,7 @@ import { useGDP } from "@/contexts/use-gdp-context";
 import TimeRange from "./time-range";
 
 const GDPGraph = () => {
-  const { isLoading, countries, chartData } = useGDP();
+  const { isLoading, countries, chartData, timeRange } = useGDP();
 
   const modifyConfig = countries.map((country, idx) => {
     return {
@@ -48,7 +48,7 @@ const GDPGraph = () => {
                   <span
                     className={cn(
                       "w-3 h-3 inline-block  rounded ml-2",
-                      color[idx + 1]
+                      color[idx]
                     )}
                   />
                 </span>
@@ -62,7 +62,11 @@ const GDPGraph = () => {
         </div>
       </div>
       <CardContent className="w-[95vw] h-[500px] p-4">
-        <ChartContainer config={chartConfig} className="w-full h-full">
+        <ChartContainer
+          config={chartConfig}
+          className="w-full h-full"
+          id={`${timeRange.from}-${timeRange.to}`}
+        >
           <BarChart
             accessibilityLayer
             data={chartData}

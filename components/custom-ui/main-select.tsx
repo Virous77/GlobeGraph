@@ -59,6 +59,7 @@ type TGroupedData = {
 type TMainSelect = {
   onOpenChange?: (e: boolean) => void;
   open?: boolean;
+  id?: string;
   value?: string;
   onChange?: (e: string) => void;
   data: TSelectData[] | TGroupedData[];
@@ -155,6 +156,7 @@ const MainSelect: React.FC<TMainSelect> = (props) => {
       }}
     >
       <SelectTrigger
+        id={props.id}
         className={cn(
           "w-[180px] rounded-[20px] bg-accent text-title",
           props.classNames?.trigger
@@ -168,6 +170,7 @@ const MainSelect: React.FC<TMainSelect> = (props) => {
         />
       </SelectTrigger>
       <SelectContent
+        id={props.id}
         {...props.selectContentProps}
         className={cn("rounded-[20px]", props.classNames?.content)}
       >

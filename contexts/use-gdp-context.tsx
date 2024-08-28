@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useMemo,
+} from "react";
 import { getGDPData } from "@/data-layer";
 import { TGDPData } from "@/data-layer/types";
 
@@ -55,6 +61,7 @@ interface GDPContextProps {
   setTimeRange: React.Dispatch<
     React.SetStateAction<{ from: number; to: number }>
   >;
+  fetchGDPData: ({ from, to }: { from: number; to: number }) => Promise<void>;
 }
 
 const GDPContext = createContext<GDPContextProps | undefined>(undefined);
@@ -67,28 +74,30 @@ export const GDPContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [timeRange, setTimeRange] = useState({ from: 2010, to: 2024 });
 
-  useEffect(() => {
-    const fetchGDPData = async () => {
-      if (!countries.length) return;
-      setIsLoading(true);
-      const data = await Promise.all(
-        countries.map(async (country) => {
-          return await getGDPData({
-            countryCode: country.value,
-            from: timeRange.from,
-            to: timeRange.to,
-          });
-        })
-      );
+  const fetchGDPData = async ({ from, to }: { from: number; to: number }) => {
+    if (!countries.length) return;
+    setIsLoading(true);
+    const data = await Promise.all(
+      countries.map(async (country) => {
+        return await getGDPData({
+          countryCode: country.value,
+          from: from,
+          to: to,
+        });
+      })
+    );
 
-      setIsLoading(false);
-      setGDPData((prev) => [
-        ...prev,
-        ...data.map((d, idx) => ({ country: countries[idx].label, data: d })),
-      ]);
-    };
-    fetchGDPData();
-  }, [countries, timeRange]);
+    setIsLoading(false);
+    setGDPData([]);
+    setGDPData((prev) => [
+      ...prev,
+      ...data.map((d, idx) => ({ country: countries[idx].label, data: d })),
+    ]);
+  };
+
+  useEffect(() => {
+    fetchGDPData(timeRange);
+  }, [countries]);
 
   const fetchSingleCountryGDPData = async (name: string) => {
     if (gdpData.find((d) => d.country === name)) return;
@@ -116,16 +125,18 @@ export const GDPContextProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const chartData = [] as any[];
 
-  modifyData.forEach((group) => {
-    group.forEach((item) => {
-      const existingItem = chartData.find((res) => res.year === item.year);
-      if (existingItem) {
-        Object.assign(existingItem, item);
-      } else {
-        chartData.push({ ...item });
-      }
+  useMemo(() => {
+    modifyData.forEach((group) => {
+      group.forEach((item) => {
+        const existingItem = chartData.find((res) => res.year === item.year);
+        if (existingItem) {
+          Object.assign(existingItem, item);
+        } else {
+          chartData.push({ ...item });
+        }
+      });
     });
-  });
+  }, [modifyData]);
 
   return (
     <GDPContext.Provider
@@ -138,6 +149,7 @@ export const GDPContextProvider: React.FC<{ children: React.ReactNode }> = ({
         isLoading,
         timeRange,
         setTimeRange,
+        fetchGDPData,
       }}
     >
       {children}

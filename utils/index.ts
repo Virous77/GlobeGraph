@@ -5,11 +5,11 @@ type TColor = {
 };
 
 export const color: TColor = {
-  1: "bg-[hsl(var(--chart-1))]",
-  2: "bg-[hsl(var(--chart-2))]",
-  3: "bg-[hsl(var(--chart-3))]",
-  4: "bg-[hsl(var(--chart-4))]",
-  5: "bg-[hsl(var(--chart-5))]",
+  0: "bg-[hsl(var(--chart-1))]",
+  1: "bg-[hsl(var(--chart-2))]",
+  2: "bg-[hsl(var(--chart-3))]",
+  3: "bg-[hsl(var(--chart-4))]",
+  4: "bg-[hsl(var(--chart-5))]",
 };
 
 export const getLocalStorage = <T>(key: string) => {

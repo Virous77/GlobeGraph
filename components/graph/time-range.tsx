@@ -8,7 +8,7 @@ type TTimeRange = {
 };
 
 const TimeRange = () => {
-  const { timeRange, setTimeRange } = useGDP();
+  const { timeRange, setTimeRange, fetchGDPData } = useGDP();
   const [range, setRange] = useState<TTimeRange[]>([]);
 
   useEffect(() => {
@@ -31,6 +31,7 @@ const TimeRange = () => {
   return (
     <div className="flex items-center  gap-1 px-2 py-1  border rounded-lg">
       <MainSelect
+        id="from"
         data={range}
         placeholder="From"
         classNames={{
@@ -42,10 +43,12 @@ const TimeRange = () => {
             ...prev,
             from: parseInt(value),
           }));
+          fetchGDPData({ from: parseInt(value), to: timeRange.to });
         }}
       />
       -
       <MainSelect
+        id="to"
         data={range}
         placeholder="To"
         classNames={{
@@ -57,6 +60,7 @@ const TimeRange = () => {
             ...prev,
             to: parseInt(value),
           }));
+          fetchGDPData({ from: timeRange.from, to: parseInt(value) });
         }}
       />
     </div>
