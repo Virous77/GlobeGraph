@@ -26,6 +26,7 @@ const schema = z.array(
 );
 
 export const getLocalCountries = () => {
+  if (typeof window === "undefined") return [COUNTRIES[0]];
   const countries = getLocalStorage("countries") as any;
   if (!countries || countries.length === 0) return [COUNTRIES[0]];
   try {
@@ -48,14 +49,16 @@ const schemaTimeRange = z.object({
 export type TTimeRange = z.infer<typeof schemaTimeRange>;
 
 export const getLocalTimeRange = () => {
+  if (typeof window === "undefined") return { from: 2010, to: 2024 };
+
   const timeRange = getLocalStorage("timeRange");
-  if (!timeRange) return null;
+  if (!timeRange) return { from: 2010, to: 2024 };
 
   try {
     const parsed = schemaTimeRange.parse(timeRange);
     return parsed;
   } catch (error) {
-    return null;
+    return { from: 2010, to: 2024 };
   }
 };
 

@@ -42,7 +42,7 @@ const TimeRange = ({
 
   return (
     <div
-      className="flex items-center  gap-1   border"
+      className="flex items-center  gap-1  border"
       style={{
         borderRadius: "1rem",
       }}
@@ -52,7 +52,8 @@ const TimeRange = ({
         data={fromRange}
         placeholder="From"
         classNames={{
-          trigger: " bg-transparent border-none rounded-[1rem]",
+          trigger:
+            " bg-transparent border-none rounded-[1rem] w-[100px] md:w-full",
         }}
         value={timeRange.from.toString()}
         onChange={(value) => {
@@ -67,7 +68,8 @@ const TimeRange = ({
         data={toRange}
         placeholder="To"
         classNames={{
-          trigger: " bg-transparent border-none rounded-[1rem]",
+          trigger:
+            " bg-transparent border-none rounded-[1rem] w-[100px] md:w-full",
         }}
         value={timeRange.to.toString()}
         onChange={(value) => {

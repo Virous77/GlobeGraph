@@ -99,7 +99,7 @@ const MultiSelect = ({
         <CommandList className="border-none">
           {open && selectTables.length > 0 && countries.length <= 4 ? (
             <div
-              className="absolute top-0 z-10 w-full rounded-md border  bg-popover text-popover-foreground shadow-md outline-none animate-in"
+              className="h-[400px] overflow-scroll absolute top-0 z-10 w-full rounded-md border  bg-popover text-popover-foreground shadow-md outline-none animate-in"
               style={{
                 borderRadius: "1rem",
               }}

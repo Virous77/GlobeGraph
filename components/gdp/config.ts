@@ -1,5 +1,5 @@
-import { TCountries } from "@/store/use-gdp";
 import { ChartConfig } from "../ui/chart";
+import alpha3 from "iso-3166-1";
 
 type TChartConfig = {
   data: {
@@ -18,38 +18,7 @@ export const createChartConfig = (data: TChartConfig["data"]): ChartConfig => {
   }, {} as ChartConfig);
 };
 
-export const COUNTRIES = [
-  {
-    value: "IND",
-    label: "India",
-  },
-  {
-    value: "CHN",
-    label: "China",
-  },
-
-  {
-    value: "USA",
-    label: "United States",
-  },
-  {
-    value: "GBR",
-    label: "United Kingdom",
-  },
-  {
-    value: "CAN",
-    label: "Canada",
-  },
-  {
-    value: "AUS",
-    label: "Australia",
-  },
-  {
-    value: "JPN",
-    label: "Japan",
-  },
-  {
-    value: "DEU",
-    label: "Germany",
-  },
-] satisfies TCountries[];
+export const COUNTRIES = alpha3.all().map((country) => ({
+  label: country.country,
+  value: country.alpha3,
+}));

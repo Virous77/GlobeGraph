@@ -33,7 +33,8 @@ const ChartType = ({
       ]}
       placeholder="Select Chart Type"
       classNames={{
-        trigger: " bg-transparent  rounded-[1rem]",
+        trigger: " bg-transparent  rounded-[1rem] w-full md:w-[150px]",
+        content: "hidden md:block",
       }}
       onChange={(value) => setChartType(value as TChart)}
     />

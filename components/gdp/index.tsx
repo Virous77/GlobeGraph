@@ -21,6 +21,8 @@ import GDPAreaChart from "./area-chart";
 import GDPLineChart from "./line-chart";
 import ChartType from "./chart-type";
 import GDPRadarChart from "./radar-chart";
+import { ToolTipComp } from "../ui/tooltip";
+import { BadgeInfo } from "lucide-react";
 
 export type TChart = "area" | "bar" | "line" | "radar";
 
@@ -58,16 +60,28 @@ const GDPGraph = () => {
 
   return (
     <Card
-      className=" p-0 m-0"
+      className=" p-0 m-0 mt-5"
       style={{
         borderRadius: "1rem",
       }}
     >
       <div className=" flex items-start justify-between w-full">
         <CardHeader className="p-5">
-          <div className="flex items-center gap-4">
-            <CardTitle>Country GDP Growth</CardTitle>
-            <ChartType chartType={chartType} setChartType={setChartType} />
+          <div className="flex items-center gap-4 -mb-1">
+            <ToolTipComp name="GDP stands for Gross Domestic Product. It is the total value of all goods and services produced in a country in a year.">
+              <CardTitle className="flex items-end gap-1 whitespace-nowrap">
+                Country GDP Graph
+                <BadgeInfo
+                  size={15}
+                  color="hsl(var(--muted-foreground))"
+                  cursor="pointer"
+                />
+              </CardTitle>
+            </ToolTipComp>
+
+            <div className=" md:block hidden">
+              <ChartType chartType={chartType} setChartType={setChartType} />
+            </div>
           </div>
 
           <CardDescription>
@@ -80,7 +94,7 @@ const GDPGraph = () => {
                   className="mr-2 flex items-center text-sm"
                   key={country.value}
                 >
-                  {country.label} GDP
+                  {country.label}
                   <span
                     style={{
                       backgroundColor: color[idx],
@@ -92,7 +106,7 @@ const GDPGraph = () => {
             </div>
           )}
         </CardHeader>
-        <div className="w-[300px] mt-4 mr-4 flex  flex-col">
+        <div className="w-[300px] mt-4 mr-4 md:flex  flex-col hidden">
           <MultiSelect
             countries={countries}
             fetchNewCountryData={fetchSingleCountryGDPData}
@@ -100,7 +114,17 @@ const GDPGraph = () => {
           <TimeRange fetchGDPData={fetchGDPData} />
         </div>
       </div>
-      <CardContent className="w-[95vw] h-[500px] p-4  rounded-xl">
+      <div className=" md:hidden flex items-center gap-1 px-4 -mt-4">
+        <ChartType chartType={chartType} setChartType={setChartType} />
+        <TimeRange fetchGDPData={fetchGDPData} />
+      </div>
+      <div className="w-full md:px-0 px-3  md:w-[300px] mt-4 mr-4 block md:hidden">
+        <MultiSelect
+          countries={countries}
+          fetchNewCountryData={fetchSingleCountryGDPData}
+        />
+      </div>
+      <CardContent className="w-[97vw] h-[500px] px-0 py-4 md:p-4 rounded-xl">
         {renderChart(chartType)}
       </CardContent>
       {isLoading && <Loader type="full" />}

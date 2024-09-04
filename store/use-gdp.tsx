@@ -1,5 +1,7 @@
+"use client";
+
 import { create } from "zustand";
-import { getLocalCountries, setLocalStorage } from "@/utils";
+import { getLocalCountries, getLocalTimeRange, setLocalStorage } from "@/utils";
 import { TGDPData } from "@/data-layer/types";
 
 export type TCountries = Record<"value" | "label", string>;
@@ -45,8 +47,12 @@ export const useGDPStore = create<TState>((set) => ({
       setLocalStorage("countries", newCountries);
       return { countries: newCountries };
     }),
-  timeRange: { from: 2010, to: 2024 },
-  setTimeRange: (timeRange) => set({ timeRange }),
+  timeRange: getLocalTimeRange(),
+  setTimeRange: (timeRange) =>
+    set(() => {
+      setLocalStorage("timeRange", timeRange);
+      return { timeRange };
+    }),
   gdpData: [],
   setGDPData: (data) => set({ gdpData: data }),
 }));
