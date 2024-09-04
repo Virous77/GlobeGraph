@@ -47,6 +47,7 @@ const GDPAreaChart = ({
           cursor={false}
           content={<ChartTooltipContent indicator="line" />}
         />
+
         {sortedCountry.map((country) => (
           <Area
             dataKey={country.country}

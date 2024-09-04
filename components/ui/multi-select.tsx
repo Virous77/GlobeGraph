@@ -54,7 +54,12 @@ const MultiSelect = ({
       onKeyDown={handleKeyDown}
       className="overflow-visible bg-transparent"
     >
-      <div className="group rounded-md border border-input px-3 py-2 text-sm ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2">
+      <div
+        className="group border border-input px-3 py-2 text-sm ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
+        style={{
+          borderRadius: "1rem",
+        }}
+      >
         <div className="flex flex-wrap gap-1">
           {countries.map((framework) => {
             return (
@@ -91,9 +96,14 @@ const MultiSelect = ({
         </div>
       </div>
       <div className="relative mt-2">
-        <CommandList>
+        <CommandList className="border-none">
           {open && selectTables.length > 0 && countries.length <= 4 ? (
-            <div className="absolute top-0 z-10 w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in">
+            <div
+              className="absolute top-0 z-10 w-full rounded-md border  bg-popover text-popover-foreground shadow-md outline-none animate-in"
+              style={{
+                borderRadius: "1rem",
+              }}
+            >
               <CommandGroup className="h-full overflow-auto">
                 {selectTables.map((framework) => {
                   return (
@@ -107,7 +117,7 @@ const MultiSelect = ({
                         setCountries(framework);
                         fetchNewCountryData(framework.value);
                       }}
-                      className={"cursor-pointer"}
+                      className={"cursor-pointer rounded-[1rem]"}
                     >
                       {framework.label}
                     </CommandItem>

@@ -19,10 +19,6 @@ const GDPLineChart = ({
 }) => {
   const { countries, timeRange } = useGDPStore();
 
-  const YAxisData = chartData[0];
-
-  console.log(extractValueFromObject(YAxisData));
-
   return (
     <ChartContainer
       style={{ width: "100%", height: "100%" }}
@@ -48,7 +44,10 @@ const GDPLineChart = ({
           domain={["dataMin", "dataMax"]}
         />
 
-        <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+        <ChartTooltip
+          cursor={false}
+          content={<ChartTooltipContent indicator="dashed" />}
+        />
         {countries.map((country, idx) => (
           <Line
             dataKey={country.value}

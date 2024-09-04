@@ -1,12 +1,13 @@
 import React from "react";
 import MainSelect from "../custom-ui/main-select";
+import { TChart } from ".";
 
 const ChartType = ({
   chartType,
   setChartType,
 }: {
-  chartType: "area" | "bar" | "line";
-  setChartType: (value: "area" | "bar" | "line") => void;
+  chartType: TChart;
+  setChartType: (value: TChart) => void;
 }) => {
   return (
     <MainSelect
@@ -25,12 +26,16 @@ const ChartType = ({
           name: "Line Chart",
           value: "line",
         },
+        {
+          name: "Radar Chart",
+          value: "radar",
+        },
       ]}
       placeholder="Select Chart Type"
       classNames={{
-        trigger: " bg-transparent",
+        trigger: " bg-transparent  rounded-[1rem]",
       }}
-      onChange={(value) => setChartType(value as "area" | "bar" | "line")}
+      onChange={(value) => setChartType(value as TChart)}
     />
   );
 };

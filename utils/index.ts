@@ -89,3 +89,10 @@ export const extractValueFromObject = (data: any) => {
     .map(([_, value]) => value)
     .sort((a: any, b: any) => b - a);
 };
+
+const convertInrLakhToUsdBillion = (inrLakh: number, exchangeRate: number) => {
+  const inr = inrLakh * 100000;
+  const usd = inr / exchangeRate;
+  const usdBillion = usd / 1000000000;
+  return Math.round(usdBillion * 100) / 100;
+};

@@ -20,11 +20,12 @@ import GDPBarChart from "./bar-chart";
 import GDPAreaChart from "./area-chart";
 import GDPLineChart from "./line-chart";
 import ChartType from "./chart-type";
+import GDPRadarChart from "./radar-chart";
+
+export type TChart = "area" | "bar" | "line" | "radar";
 
 const GDPGraph = () => {
-  const [chartType, setChartType] = React.useState<"area" | "bar" | "line">(
-    "bar"
-  );
+  const [chartType, setChartType] = React.useState<TChart>("bar");
   const { countries } = useGDPStore();
   const { isLoading, chartData, fetchSingleCountryGDPData, fetchGDPData } =
     useGDP();
@@ -46,13 +47,22 @@ const GDPGraph = () => {
         return <GDPAreaChart chartData={chartData} chartConfig={chartConfig} />;
       case "line":
         return <GDPLineChart chartData={chartData} chartConfig={chartConfig} />;
+      case "radar":
+        return (
+          <GDPRadarChart chartData={chartData} chartConfig={chartConfig} />
+        );
       default:
         return <GDPBarChart chartData={chartData} chartConfig={chartConfig} />;
     }
   };
 
   return (
-    <Card className=" p-0 m-0">
+    <Card
+      className=" p-0 m-0"
+      style={{
+        borderRadius: "1rem",
+      }}
+    >
       <div className=" flex items-start justify-between w-full">
         <CardHeader className="p-5">
           <div className="flex items-center gap-4">
@@ -90,7 +100,7 @@ const GDPGraph = () => {
           <TimeRange fetchGDPData={fetchGDPData} />
         </div>
       </div>
-      <CardContent className="w-[95vw] h-[500px] p-4">
+      <CardContent className="w-[95vw] h-[500px] p-4  rounded-xl">
         {renderChart(chartType)}
       </CardContent>
       {isLoading && <Loader type="full" />}
