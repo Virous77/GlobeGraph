@@ -1,4 +1,5 @@
-import { COUNTRIES } from "@/components/graph/config";
+import { COUNTRIES } from "@/components/gdp/config";
+import currency from "currency.js";
 import { z } from "zod";
 
 type TColor = string[];
@@ -56,4 +57,35 @@ export const getLocalTimeRange = () => {
   } catch (error) {
     return null;
   }
+};
+
+export const formatCurrency = (value: number) => {
+  const absValue = Math.abs(value);
+
+  if (absValue >= 1e12) {
+    return currency(value).divide(1e12).format({ precision: 2 }) + "T";
+  } else if (absValue >= 1e9) {
+    return currency(value).divide(1e9).format({ precision: 2 }) + "B";
+  } else if (absValue >= 1e6) {
+    return currency(value).divide(1e6).format({ precision: 2 }) + "M";
+  } else {
+    return currency(value).format();
+  }
+};
+
+export const transformOBJtoARR = (data: any) => {
+  if (!data) return [];
+  return Object?.entries(data)
+    .filter(([key]) => key !== "year")
+    .map(([country, value]) => ({ country, value }))
+    .sort((a: any, b: any) => b.value - a.value)
+    .reverse();
+};
+
+export const extractValueFromObject = (data: any) => {
+  if (!data) return [];
+  return Object?.entries(data)
+    .filter(([key]) => key !== "year")
+    .map(([_, value]) => value)
+    .sort((a: any, b: any) => b - a);
 };

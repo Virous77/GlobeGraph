@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart";
 import {
   Card,
   CardContent,
@@ -9,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 import { createChartConfig } from "./config";
 import MultiSelect from "../ui/multi-select";
 import { cn } from "@/lib/utils";
@@ -18,9 +16,16 @@ import { Loader } from "../ui/loader";
 import TimeRange from "./time-range";
 import { useGDPStore } from "@/store/use-gdp";
 import { useGDP } from "@/hooks/use-gdp";
+import GDPBarChart from "./bar-chart";
+import GDPAreaChart from "./area-chart";
+import GDPLineChart from "./line-chart";
+import ChartType from "./chart-type";
 
 const GDPGraph = () => {
-  const { countries, timeRange } = useGDPStore();
+  const [chartType, setChartType] = React.useState<"area" | "bar" | "line">(
+    "bar"
+  );
+  const { countries } = useGDPStore();
   const { isLoading, chartData, fetchSingleCountryGDPData, fetchGDPData } =
     useGDP();
 
@@ -33,11 +38,28 @@ const GDPGraph = () => {
 
   const chartConfig = createChartConfig(modifyConfig);
 
+  const renderChart = (chart: string) => {
+    switch (chart) {
+      case "bar":
+        return <GDPBarChart chartData={chartData} chartConfig={chartConfig} />;
+      case "area":
+        return <GDPAreaChart chartData={chartData} chartConfig={chartConfig} />;
+      case "line":
+        return <GDPLineChart chartData={chartData} chartConfig={chartConfig} />;
+      default:
+        return <GDPBarChart chartData={chartData} chartConfig={chartConfig} />;
+    }
+  };
+
   return (
     <Card className=" p-0 m-0">
       <div className=" flex items-start justify-between w-full">
         <CardHeader className="p-5">
-          <CardTitle>Country GDP Growth</CardTitle>
+          <div className="flex items-center gap-4">
+            <CardTitle>Country GDP Growth</CardTitle>
+            <ChartType chartType={chartType} setChartType={setChartType} />
+          </div>
+
           <CardDescription>
             {chartData[0]?.year} - {chartData[chartData.length - 1]?.year}
           </CardDescription>
@@ -69,39 +91,7 @@ const GDPGraph = () => {
         </div>
       </div>
       <CardContent className="w-[95vw] h-[500px] p-4">
-        <ChartContainer
-          config={chartConfig}
-          className="w-full h-full"
-          id={`${timeRange.from}-${timeRange.to}`}
-        >
-          <BarChart
-            accessibilityLayer
-            data={chartData}
-            margin={{
-              top: 20,
-            }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="year"
-              tickLine={false}
-              tickMargin={10}
-              axisLine={false}
-            />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            {countries.map((country, idx) => (
-              <Bar
-                dataKey={country.value}
-                fill={`var(--color-${country.value})`}
-                radius={5}
-                key={idx}
-              />
-            ))}
-          </BarChart>
-        </ChartContainer>
+        {renderChart(chartType)}
       </CardContent>
       {isLoading && <Loader type="full" />}
     </Card>

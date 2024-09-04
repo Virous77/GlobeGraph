@@ -1,4 +1,4 @@
-import { Countries } from "@/store/use-gdp";
+import { TCountries } from "@/store/use-gdp";
 import { ChartConfig } from "../ui/chart";
 
 type TChartConfig = {
@@ -52,4 +52,4 @@ export const COUNTRIES = [
     value: "DEU",
     label: "Germany",
   },
-] satisfies Countries[];
+] satisfies TCountries[];

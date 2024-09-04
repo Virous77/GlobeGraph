@@ -1,4 +1,4 @@
-import GDPGraph from "@/components/graph/gdp-graph";
+import GDPGraph from "@/components/gdp";
 
 const HomePage = async () => {
   return (

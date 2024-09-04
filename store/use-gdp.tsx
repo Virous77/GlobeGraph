@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { getLocalCountries, setLocalStorage } from "@/utils";
 import { TGDPData } from "@/data-layer/types";
 
-export type Countries = Record<"value" | "label", string>;
+export type TCountries = Record<"value" | "label", string>;
 
 export type TTimeRange = {
   from: number;
@@ -15,8 +15,8 @@ type TAllGDPData = {
 };
 
 type TState = {
-  countries: Countries[];
-  setCountries: (countries: Countries) => void;
+  countries: TCountries[];
+  setCountries: (countries: TCountries) => void;
   removeCountry: (name: string) => void;
   removeLastCountry: () => void;
   timeRange: TTimeRange;

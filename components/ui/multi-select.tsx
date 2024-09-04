@@ -10,21 +10,21 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { Command as CommandPrimitive } from "cmdk";
-import { Countries, useGDPStore } from "@/store/use-gdp";
-import { COUNTRIES } from "../graph/config";
+import { TCountries, useGDPStore } from "@/store/use-gdp";
+import { COUNTRIES } from "../gdp/config";
 
 const MultiSelect = ({
   countries,
   fetchNewCountryData,
 }: {
-  countries: Countries[];
+  countries: TCountries[];
   fetchNewCountryData: (name: string) => void;
 }) => {
   const { setCountries, removeCountry, removeLastCountry } = useGDPStore();
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [open, setOpen] = React.useState(false);
 
-  const handleUnselect = React.useCallback((framework: Countries) => {
+  const handleUnselect = React.useCallback((framework: TCountries) => {
     removeCountry(framework.value);
   }, []);
 
