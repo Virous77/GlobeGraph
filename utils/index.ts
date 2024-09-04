@@ -1,16 +1,15 @@
+import { COUNTRIES } from "@/components/graph/config";
 import { z } from "zod";
 
-type TColor = {
-  [key: number]: string;
-};
+type TColor = string[];
 
-export const color: TColor = {
-  0: "bg-[hsl(var(--chart-1))]",
-  1: "bg-[hsl(var(--chart-2))]",
-  2: "bg-[hsl(var(--chart-3))]",
-  3: "bg-[hsl(var(--chart-4))]",
-  4: "bg-[hsl(var(--chart-5))]",
-};
+export const color: TColor = [
+  "hsl(var(--chart-1))",
+  "hsl(var(--chart-2))",
+  "hsl(var(--chart-3))",
+  "hsl(var(--chart-4))",
+  "hsl(var(--chart-5))",
+];
 
 export const getLocalStorage = <T>(key: string) => {
   const data = localStorage.getItem(key);
@@ -18,20 +17,21 @@ export const getLocalStorage = <T>(key: string) => {
   return JSON.parse(data) as T;
 };
 
-const schema = z.object({
-  value: z.string(),
-  label: z.string(),
-});
+const schema = z.array(
+  z.object({
+    value: z.string(),
+    label: z.string(),
+  })
+);
 
-export type Countries = z.infer<typeof schema>;
 export const getLocalCountries = () => {
-  const countries = getLocalStorage("countries");
-  if (!countries) return null;
+  const countries = getLocalStorage("countries") as any;
+  if (!countries || countries.length === 0) return [COUNTRIES[0]];
   try {
     const parsed = schema.parse(countries);
     return parsed;
   } catch (error) {
-    return null;
+    return [COUNTRIES[0]];
   }
 };
 

@@ -15,18 +15,22 @@ import MultiSelect from "../ui/multi-select";
 import { cn } from "@/lib/utils";
 import { color } from "@/utils";
 import { Loader } from "../ui/loader";
-import { useGDP } from "@/contexts/use-gdp-context";
 import TimeRange from "./time-range";
+import { useGDPStore } from "@/store/use-gdp";
+import { useGDP } from "@/hooks/use-gdp";
 
 const GDPGraph = () => {
-  const { isLoading, countries, chartData, timeRange } = useGDP();
+  const { countries, timeRange } = useGDPStore();
+  const { isLoading, chartData, fetchSingleCountryGDPData, fetchGDPData } =
+    useGDP();
 
-  const modifyConfig = countries.map((country, idx) => {
+  const modifyConfig = countries.map((country) => {
     return {
       name: country.value,
       label: `${country.label} GDP`,
     };
   });
+
   const chartConfig = createChartConfig(modifyConfig);
 
   return (
@@ -46,10 +50,10 @@ const GDPGraph = () => {
                 >
                   {country.label} GDP
                   <span
-                    className={cn(
-                      "w-3 h-3 inline-block  rounded ml-2",
-                      color[idx]
-                    )}
+                    style={{
+                      backgroundColor: color[idx],
+                    }}
+                    className={cn("w-3 h-3 inline-block  rounded ml-2")}
                   />
                 </span>
               ))}
@@ -57,8 +61,11 @@ const GDPGraph = () => {
           )}
         </CardHeader>
         <div className="w-[300px] mt-4 mr-4 flex  flex-col">
-          <MultiSelect countries={countries} />
-          <TimeRange />
+          <MultiSelect
+            countries={countries}
+            fetchNewCountryData={fetchSingleCountryGDPData}
+          />
+          <TimeRange fetchGDPData={fetchGDPData} />
         </div>
       </div>
       <CardContent className="w-[95vw] h-[500px] p-4">

@@ -1,123 +1,77 @@
+import { useState, useEffect, useMemo } from "react";
 import { getGDPData } from "@/data-layer";
-import { TGDPData } from "@/data-layer/types";
-import React, { useEffect } from "react";
+import { useGDPStore } from "@/store/use-gdp";
 
-export type Countries = Record<"value" | "label", string>;
+export const useGDP = () => {
+  const { countries, timeRange, gdpData, setGDPData } = useGDPStore();
+  const [isLoading, setIsLoading] = useState(false);
 
-export const COUNTRIES = [
-  {
-    value: "IND",
-    label: "India",
-  },
-  {
-    value: "CHN",
-    label: "China",
-  },
+  const fetchGDPData = async ({ from, to }: { from: number; to: number }) => {
+    if (!countries.length) return;
+    setIsLoading(true);
+    const data = await Promise.all(
+      countries.map(async (country) => {
+        return await getGDPData({
+          countryCode: country.value,
+          from: from,
+          to: to,
+        });
+      })
+    );
 
-  {
-    value: "USA",
-    label: "United States",
-  },
-  {
-    value: "GBR",
-    label: "United Kingdom",
-  },
-  {
-    value: "CAN",
-    label: "Canada",
-  },
-  {
-    value: "AUS",
-    label: "Australia",
-  },
-  {
-    value: "JPN",
-    label: "Japan",
-  },
-  {
-    value: "DEU",
-    label: "Germany",
-  },
-] satisfies Countries[];
-
-type TAllGDPData = {
-  country: string;
-  data: TGDPData[];
-};
-
-const useGDP = () => {
-  const [countries, setCountries] = React.useState<Countries[]>([COUNTRIES[0]]);
-  const [gdpData, setGDPData] = React.useState<TAllGDPData[]>([]);
-  const [isLoading, setIsLoading] = React.useState(false);
+    setIsLoading(false);
+    setGDPData(
+      data.map((d, idx) => {
+        return { country: countries[idx].value, data: d };
+      })
+    );
+  };
 
   useEffect(() => {
-    const fetchGDPData = async () => {
-      if (!countries.length) return;
-      setIsLoading(true);
-      const data = await Promise.all(
-        countries.map(async (country) => {
-          return await getGDPData({
-            countryCode: country.value,
-            from: 1950,
-            to: 2024,
-          });
-        })
-      );
-
-      setIsLoading(false);
-      setGDPData((prev) => [
-        ...prev,
-        ...data.map((d, idx) => ({ country: countries[idx].label, data: d })),
-      ]);
-    };
-    fetchGDPData();
-  }, []);
+    fetchGDPData(timeRange);
+  }, [countries]);
 
   const fetchSingleCountryGDPData = async (name: string) => {
     if (gdpData.find((d) => d.country === name)) return;
     setIsLoading(true);
     const data = await getGDPData({
       countryCode: name,
-      from: 1950,
-      to: 2024,
+      from: timeRange.from,
+      to: timeRange.to,
     });
 
     setIsLoading(false);
-    setGDPData((prev) => [...prev, { country: name, data }]);
+    setGDPData([{ country: name, data }]);
   };
 
-  const removeCountry = (name: string) => {
-    setGDPData((prev) => prev.filter((d) => d.country !== name));
-  };
-
-  const modifyData = gdpData.map((d) => {
-    return d.data.map((dd) => ({
-      year: dd.date,
-      [dd.countryiso3code]: Number(dd.value),
-    }));
-  });
-
-  const chartData = [] as any[];
-
-  modifyData.forEach((group) => {
-    group.forEach((item) => {
-      const existingItem = chartData.find((res) => res.year === item.year);
-      if (existingItem) {
-        Object.assign(existingItem, item);
-      } else {
-        chartData.push({ ...item });
-      }
+  const modifyData = useMemo(() => {
+    return gdpData.map((d) => {
+      return d.data.map((dd) => ({
+        year: dd.date,
+        [dd.countryiso3code]: Number(dd.value),
+      }));
     });
-  });
+  }, [gdpData]);
+
+  const chartData = useMemo(() => {
+    const data = [] as any[];
+    modifyData.forEach((group) => {
+      group.forEach((item) => {
+        const existingItem = data.find((res) => res.year === item.year);
+        if (existingItem) {
+          Object.assign(existingItem, item);
+        } else {
+          data.push({ ...item });
+        }
+      });
+    });
+    return data;
+  }, [modifyData]);
 
   return {
-    countries,
-    setCountries,
     fetchSingleCountryGDPData,
-    removeCountry,
     chartData,
     isLoading,
+    fetchGDPData,
   };
 };
-
-export default useGDP;

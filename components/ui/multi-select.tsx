@@ -10,16 +10,21 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { Command as CommandPrimitive } from "cmdk";
-import { COUNTRIES, Countries } from "@/hooks/use-gdp";
-import { useGDP } from "@/contexts/use-gdp-context";
+import { Countries, useGDPStore } from "@/store/use-gdp";
+import { COUNTRIES } from "../graph/config";
 
-const MultiSelect = ({ countries }: { countries: Countries[] }) => {
-  const { setCountries, removeCountry, fetchSingleCountryGDPData } = useGDP();
+const MultiSelect = ({
+  countries,
+  fetchNewCountryData,
+}: {
+  countries: Countries[];
+  fetchNewCountryData: (name: string) => void;
+}) => {
+  const { setCountries, removeCountry, removeLastCountry } = useGDPStore();
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [open, setOpen] = React.useState(false);
 
   const handleUnselect = React.useCallback((framework: Countries) => {
-    setCountries((prev) => prev.filter((s) => s.value !== framework.value));
     removeCountry(framework.value);
   }, []);
 
@@ -29,12 +34,7 @@ const MultiSelect = ({ countries }: { countries: Countries[] }) => {
       if (input) {
         if (e.key === "Delete" || e.key === "Backspace") {
           if (input.value === "") {
-            setCountries((prev) => {
-              const newSelected = [...prev];
-              removeCountry(newSelected[newSelected.length - 1].value);
-              newSelected.pop();
-              return newSelected;
-            });
+            removeLastCountry();
           }
         }
         if (e.key === "Escape") {
@@ -46,7 +46,7 @@ const MultiSelect = ({ countries }: { countries: Countries[] }) => {
   );
 
   const selectTables = COUNTRIES.filter(
-    (framework) => !countries.includes(framework)
+    (framework) => !countries.find((c) => c.value === framework.value)
   );
 
   return (
@@ -78,6 +78,7 @@ const MultiSelect = ({ countries }: { countries: Countries[] }) => {
               </Badge>
             );
           })}
+
           {countries.length <= 4 && (
             <CommandPrimitive.Input
               ref={inputRef}
@@ -102,9 +103,9 @@ const MultiSelect = ({ countries }: { countries: Countries[] }) => {
                         e.preventDefault();
                         e.stopPropagation();
                       }}
-                      onSelect={(value) => {
-                        setCountries((prev) => [...prev, framework]);
-                        fetchSingleCountryGDPData(framework.value);
+                      onSelect={() => {
+                        setCountries(framework);
+                        fetchNewCountryData(framework.value);
                       }}
                       className={"cursor-pointer"}
                     >

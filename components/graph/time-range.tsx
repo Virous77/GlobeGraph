@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import MainSelect from "../custom-ui/main-select";
-import { useGDP } from "@/contexts/use-gdp-context";
+import { useGDPStore } from "@/store/use-gdp";
 
 type TTimeRange = {
   value: string;
   name: string;
 };
 
-const TimeRange = () => {
-  const { timeRange, setTimeRange, fetchGDPData } = useGDP();
+const TimeRange = ({
+  fetchGDPData,
+}: {
+  fetchGDPData: (timeRange: { from: number; to: number }) => void;
+}) => {
+  const { timeRange, setTimeRange } = useGDPStore();
   const [range, setRange] = useState<TTimeRange[]>([]);
 
   useEffect(() => {
@@ -28,39 +32,43 @@ const TimeRange = () => {
     addTimeRange();
   }, []);
 
+  const fromRange = useMemo(() => {
+    return range.filter((r) => parseInt(r.value) < timeRange.to);
+  }, [range, timeRange.to]);
+
+  const toRange = useMemo(() => {
+    return range.filter((r) => parseInt(r.value) > timeRange.from);
+  }, [range, timeRange.from]);
+
   return (
     <div className="flex items-center  gap-1 px-2 py-1  border rounded-lg">
       <MainSelect
         id="from"
-        data={range}
+        data={fromRange}
         placeholder="From"
         classNames={{
           trigger: " bg-transparent border-none",
         }}
         value={timeRange.from.toString()}
         onChange={(value) => {
-          setTimeRange((prev) => ({
-            ...prev,
-            from: parseInt(value),
-          }));
-          fetchGDPData({ from: parseInt(value), to: timeRange.to });
+          const newTimeRange = { from: parseInt(value), to: timeRange.to };
+          setTimeRange(newTimeRange);
+          fetchGDPData(newTimeRange);
         }}
       />
       -
       <MainSelect
         id="to"
-        data={range}
+        data={toRange}
         placeholder="To"
         classNames={{
           trigger: " bg-transparent border-none",
         }}
         value={timeRange.to.toString()}
         onChange={(value) => {
-          setTimeRange((prev) => ({
-            ...prev,
-            to: parseInt(value),
-          }));
-          fetchGDPData({ from: timeRange.from, to: parseInt(value) });
+          const newTimeRange = { from: timeRange.from, to: parseInt(value) };
+          setTimeRange(newTimeRange);
+          fetchGDPData(newTimeRange);
         }}
       />
     </div>
