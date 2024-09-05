@@ -8,6 +8,18 @@ const sitemap = async () => {
       priority: 1.0,
       changeFrequency: "weekly",
     },
+    {
+      url: `${URL}/country-gdp`,
+      lastModified: new Date(),
+      priority: 0.9,
+      changeFrequency: "weekly",
+    },
+    {
+      url: `${URL}/country-per-capita-income`,
+      lastModified: new Date(),
+      priority: 0.9,
+      changeFrequency: "weekly",
+    },
   ];
 
   return [...restUrls];

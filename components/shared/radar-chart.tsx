@@ -11,7 +11,7 @@ import { transformOBJtoARR } from "@/utils";
 
 const opacity = [0.5, 0.65, 0.75, 0.85, 1];
 
-const GDPRadarChart = ({
+const RadarChartComp = ({
   chartData,
   chartConfig,
 }: {
@@ -84,4 +84,4 @@ const GDPRadarChart = ({
   );
 };
 
-export default GDPRadarChart;
+export default RadarChartComp;

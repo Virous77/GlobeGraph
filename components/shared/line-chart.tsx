@@ -7,23 +7,22 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { useGDPStore } from "@/store/use-gdp";
-import { extractValueFromObject, formatCurrency } from "@/utils";
+import { TCountries } from "@/store/use-gdp";
+import { formatCurrency } from "@/utils";
 
-const GDPLineChart = ({
+const LineChartComp = ({
   chartData,
   chartConfig,
+  countries,
 }: {
   chartData: any[];
   chartConfig: ChartConfig;
+  countries: TCountries[];
 }) => {
-  const { countries, timeRange } = useGDPStore();
-
   return (
     <ChartContainer
       style={{ width: "100%", height: "100%" }}
       config={chartConfig}
-      id={`${timeRange.from}-${timeRange.to}`}
     >
       <LineChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
@@ -63,4 +62,4 @@ const GDPLineChart = ({
   );
 };
 
-export default GDPLineChart;
+export default LineChartComp;

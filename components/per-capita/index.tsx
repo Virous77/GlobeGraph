@@ -1,8 +1,8 @@
 "use client";
 
+import { useCapitaIncome } from "@/hooks/use-capita";
 import MainChartComp from "../shared";
-import { useGDP } from "@/hooks/use-gdp";
-import { useGDPStore } from "@/store/use-gdp";
+import { useCapitaIncomeStore } from "@/store/use-capita";
 
 const PerCapita = () => {
   const {
@@ -12,9 +12,9 @@ const PerCapita = () => {
     setCountries,
     removeCountry,
     removeLastCountry,
-  } = useGDPStore();
+  } = useCapitaIncomeStore();
   const { isLoading, chartData, fetchSingleCountryGDPData, fetchGDPData } =
-    useGDP();
+    useCapitaIncome();
 
   return (
     <MainChartComp

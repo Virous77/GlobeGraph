@@ -14,3 +14,8 @@ export type TGDPData = {
   obs_status: string;
   decimal: number;
 };
+
+export type TPerCapitaIncome = {
+  country: string;
+  data: TGDPData[];
+};

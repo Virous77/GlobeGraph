@@ -7,25 +7,19 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { useGDPStore } from "@/store/use-gdp";
 import { formatCurrency, transformOBJtoARR } from "@/utils";
 
-const GDPAreaChart = ({
+const AreaChartComp = ({
   chartData,
   chartConfig,
 }: {
   chartData: any[];
   chartConfig: ChartConfig;
 }) => {
-  const { timeRange } = useGDPStore();
   const sortedCountry = transformOBJtoARR(chartData[0]);
 
   return (
-    <ChartContainer
-      config={chartConfig}
-      className="w-full h-full"
-      id={`${timeRange.from}-${timeRange.to}`}
-    >
+    <ChartContainer config={chartConfig} className="w-full h-full">
       <AreaChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
         <XAxis
@@ -63,4 +57,4 @@ const GDPAreaChart = ({
   );
 };
 
-export default GDPAreaChart;
+export default AreaChartComp;

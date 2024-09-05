@@ -1,4 +1,4 @@
-import { COUNTRIES } from "@/components/gdp/config";
+import { COUNTRIES } from "@/components/shared/config";
 import currency from "currency.js";
 import { z } from "zod";
 
@@ -25,9 +25,9 @@ const schema = z.array(
   })
 );
 
-export const getLocalCountries = () => {
+export const getLocalCountries = (key: string) => {
   if (typeof window === "undefined") return [COUNTRIES[0]];
-  const countries = getLocalStorage("countries") as any;
+  const countries = getLocalStorage(key) as any;
   if (!countries || countries.length === 0) return [COUNTRIES[0]];
   try {
     const parsed = schema.parse(countries);
@@ -48,10 +48,10 @@ const schemaTimeRange = z.object({
 
 export type TTimeRange = z.infer<typeof schemaTimeRange>;
 
-export const getLocalTimeRange = () => {
+export const getLocalTimeRange = (key: string) => {
   if (typeof window === "undefined") return { from: 2010, to: 2024 };
 
-  const timeRange = getLocalStorage("timeRange");
+  const timeRange = getLocalStorage(key);
   if (!timeRange) return { from: 2010, to: 2024 };
 
   try {

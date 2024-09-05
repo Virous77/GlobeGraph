@@ -6,23 +6,20 @@ import {
   ChartTooltipContent,
 } from "../ui/chart";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
-import { useGDPStore } from "@/store/use-gdp";
-import { formatCurrency } from "@/utils";
+import { TCountries } from "@/store/use-gdp";
+import { formatCurrency, TTimeRange } from "@/utils";
 
-const GDPBarChart = ({
+const BarChartComp = ({
   chartData,
   chartConfig,
+  countries,
 }: {
   chartData: any[];
   chartConfig: ChartConfig;
+  countries: TCountries[];
 }) => {
-  const { timeRange, countries } = useGDPStore();
   return (
-    <ChartContainer
-      config={chartConfig}
-      className="w-full h-full"
-      id={`${timeRange.from}-${timeRange.to}`}
-    >
+    <ChartContainer config={chartConfig} className="w-full h-full">
       <BarChart
         accessibilityLayer
         data={chartData}
@@ -60,4 +57,4 @@ const GDPBarChart = ({
   );
 };
 
-export default GDPBarChart;
+export default BarChartComp;

@@ -1,26 +1,29 @@
 import React, { useEffect, useMemo, useState } from "react";
 import MainSelect from "../custom-ui/main-select";
-import { useGDPStore } from "@/store/use-gdp";
+import { TTimeRange } from "@/store/use-gdp";
 
-type TTimeRange = {
+type TTimeRangeL = {
   value: string;
   name: string;
 };
 
 const TimeRange = ({
   fetchGDPData,
+  timeRange,
+  setTimeRange,
 }: {
   fetchGDPData: (timeRange: { from: number; to: number }) => void;
+  timeRange: TTimeRange;
+  setTimeRange: (timeRange: TTimeRange) => void;
 }) => {
-  const { timeRange, setTimeRange } = useGDPStore();
-  const [range, setRange] = useState<TTimeRange[]>([]);
+  const [range, setRange] = useState<TTimeRangeL[]>([]);
 
   useEffect(() => {
     const from = 1974;
     const to = 2024;
 
     const addTimeRange = () => {
-      const range = [] as TTimeRange[];
+      const range = [] as TTimeRangeL[];
       for (let i = from; i <= to; i++) {
         range.push({
           value: i.toString(),
