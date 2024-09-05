@@ -1,15 +1,15 @@
-import * as React from "react";
-import { X } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import * as React from 'react';
+import { X } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import {
   Command,
   CommandGroup,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
-import { Command as CommandPrimitive } from "cmdk";
-import { TCountries } from "@/store/use-gdp";
-import { COUNTRIES } from "./config";
+} from '@/components/ui/command';
+import { Command as CommandPrimitive } from 'cmdk';
+import { TCountries } from '@/store/use-gdp';
+import { COUNTRIES } from './config';
 
 type TMultiSelect = {
   countries: TCountries[];
@@ -37,12 +37,12 @@ const MultiSelect: React.FC<TMultiSelect> = ({
     (e: React.KeyboardEvent<HTMLDivElement>) => {
       const input = inputRef.current;
       if (input) {
-        if (e.key === "Delete" || e.key === "Backspace") {
-          if (input.value === "") {
+        if (e.key === 'Delete' || e.key === 'Backspace') {
+          if (input.value === '') {
             removeLastCountry();
           }
         }
-        if (e.key === "Escape") {
+        if (e.key === 'Escape') {
           input.blur();
         }
       }
@@ -62,7 +62,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
       <div
         className="group border border-input px-3 py-2 text-sm ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
         style={{
-          borderRadius: "1rem",
+          borderRadius: '1rem',
         }}
       >
         <div className="flex flex-wrap gap-1">
@@ -73,7 +73,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
                 <button
                   className="ml-1 rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
                   onKeyDown={(e) => {
-                    if (e.key === "Enter") {
+                    if (e.key === 'Enter') {
                       handleUnselect(framework);
                     }
                   }}
@@ -95,7 +95,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
               onBlur={() => setOpen(false)}
               onFocus={() => setOpen(true)}
               placeholder="Select frameworks..."
-              className="ml-2 flex-1 bg-transparent outline-none placeholder:text-muted-foreground text-sm"
+              className="ml-2 flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground"
             />
           )}
         </div>
@@ -104,9 +104,9 @@ const MultiSelect: React.FC<TMultiSelect> = ({
         <CommandList className="border-none">
           {open && selectTables.length > 0 && countries.length <= 4 ? (
             <div
-              className="max-h-[400px] min-h-fit overflow-scroll absolute top-0 z-10 w-full rounded-md border  bg-popover text-popover-foreground shadow-md outline-none animate-in"
+              className="absolute top-0 z-10 max-h-[400px] min-h-fit w-full overflow-scroll rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in"
               style={{
-                borderRadius: "1rem",
+                borderRadius: '1rem',
               }}
             >
               <CommandGroup className="h-full overflow-auto">
@@ -122,7 +122,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
                         setCountries(framework);
                         fetchNewCountryData(framework.value);
                       }}
-                      className={"cursor-pointer rounded-[1rem]"}
+                      className={'cursor-pointer rounded-[1rem]'}
                     >
                       {framework.label}
                     </CommandItem>

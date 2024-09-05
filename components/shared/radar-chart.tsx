@@ -1,22 +1,24 @@
-"use client";
+'use client';
 
-import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts';
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
-import { transformOBJtoARR } from "@/utils";
+} from '@/components/ui/chart';
+import { transformOBJtoARR } from '@/utils';
 
 const opacity = [0.5, 0.65, 0.75, 0.85, 1];
 
 const RadarChartComp = ({
   chartData,
   chartConfig,
+  isCurrencySymbol = true,
 }: {
   chartData: any[];
   chartConfig: ChartConfig;
+  isCurrencySymbol?: boolean;
 }) => {
   const sortedCountry = transformOBJtoARR(chartData[0]).reverse();
 
@@ -36,7 +38,12 @@ const RadarChartComp = ({
       >
         <ChartTooltip
           cursor={false}
-          content={<ChartTooltipContent indicator="line" />}
+          content={
+            <ChartTooltipContent
+              indicator="line"
+              isCurrencySymbol={isCurrencySymbol}
+            />
+          }
         />
         <PolarAngleAxis
           dataKey="year"
@@ -49,8 +56,8 @@ const RadarChartComp = ({
                   chartData.length > 5
                     ? y - 12
                     : chartData.length - 5
-                    ? y - 6
-                    : y
+                      ? y - 6
+                      : y
                 }
                 textAnchor={textAnchor}
                 fontSize={13}
@@ -59,7 +66,7 @@ const RadarChartComp = ({
               >
                 <tspan
                   x={x}
-                  dy={"1rem"}
+                  dy={'1rem'}
                   fontSize={12}
                   className="fill-muted-foreground"
                 >

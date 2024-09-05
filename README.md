@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Globe Graph
 
-## Getting Started
+This app let you explore different type of countries data like `GDP`, `Population`, `Income` and `Life Expectancy` in a multiple charts.
 
-First, run the development server:
+## Clone the repository
 
 ```bash
-npm run dev
+git clone https://github.com/Virous77/GlobeGraph.git
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+gh repo clone Virous77/GlobeGraph
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Install the dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+It's recommended to use give node version in `.nvmrc` file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+nvm use
+```
 
-## Learn More
+Install the dependencies using `pnpm` or `yarn`.
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm install
+# or
+yarn install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Start the development server
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+pnpm dev
+```
 
-## Deploy on Vercel
+## Build the app
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm build
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+I have added `Dockerfile` for both development and production environment.
+
+## Start the app in development environment
+
+```bash
+docker build -t globe-graph-dev -f Dockerfile.dev .
+```
+
+## Start the app in production environment
+
+```bash
+docker build -t globe-graph -f Dockerfile.prod .
+```

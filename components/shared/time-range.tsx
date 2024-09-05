@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
-import MainSelect from "../custom-ui/main-select";
-import { TTimeRange } from "@/store/use-gdp";
+import React, { useEffect, useMemo, useState } from 'react';
+import MainSelect from '../custom-ui/main-select';
+import { TTimeRange } from '@/store/use-gdp';
 
 type TTimeRangeL = {
   value: string;
@@ -45,9 +45,9 @@ const TimeRange = ({
 
   return (
     <div
-      className="flex items-center  gap-1  border"
+      className="flex items-center gap-1 border"
       style={{
-        borderRadius: "1rem",
+        borderRadius: '1rem',
       }}
     >
       <MainSelect
@@ -56,7 +56,7 @@ const TimeRange = ({
         placeholder="From"
         classNames={{
           trigger:
-            " bg-transparent border-none rounded-[1rem] w-[100px] md:w-full",
+            ' bg-transparent border-none rounded-[1rem] w-[100px] md:w-full',
         }}
         value={timeRange.from.toString()}
         onChange={(value) => {
@@ -72,7 +72,7 @@ const TimeRange = ({
         placeholder="To"
         classNames={{
           trigger:
-            " bg-transparent border-none rounded-[1rem] w-[100px] md:w-full",
+            ' bg-transparent border-none rounded-[1rem] w-[100px] md:w-full',
         }}
         value={timeRange.to.toString()}
         onChange={(value) => {

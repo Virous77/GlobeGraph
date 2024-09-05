@@ -1,12 +1,12 @@
-import { MainLogo } from "@/assets/logo";
-import Link from "next/link";
-import React from "react";
-import { Button } from "../ui/button";
-import { Github } from "lucide-react";
+import { MainLogo } from '@/assets/logo';
+import Link from 'next/link';
+import React from 'react';
+import { Button } from '../ui/button';
+import { Github } from 'lucide-react';
 
 const Header = () => {
   return (
-    <header className=" left-3 w-[95%] md:w-[500px] shadow-2xl  border rounded-[2rem] mb-6  backdrop-blur dark:bg-[#111111]/60 sticky top-4  z-[999999999] px-4 md:px-6 py-2">
+    <header className="sticky left-3 top-4 z-[999999999] mb-6 w-[95%] rounded-[2rem] border px-4 py-2 shadow-2xl backdrop-blur dark:bg-[#111111]/60 md:w-[500px] md:px-6">
       <nav className="flex items-center justify-between">
         <Link href="/" aria-label="Home">
           <MainLogo />
@@ -20,7 +20,7 @@ const Header = () => {
         >
           <Button
             size="icon"
-            className="bg-transparent hover:opacity-80 text-foreground hover:bg-transparent w-full"
+            className="w-full bg-transparent text-foreground hover:bg-transparent hover:opacity-80"
           >
             <Github />
           </Button>

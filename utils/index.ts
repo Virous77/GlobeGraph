@@ -1,15 +1,15 @@
-import { COUNTRIES } from "@/components/shared/config";
-import currency from "currency.js";
-import { z } from "zod";
+import { COUNTRIES } from '@/components/shared/config';
+import currency from 'currency.js';
+import { z } from 'zod';
 
 type TColor = string[];
 
 export const color: TColor = [
-  "hsl(var(--chart-1))",
-  "hsl(var(--chart-2))",
-  "hsl(var(--chart-3))",
-  "hsl(var(--chart-4))",
-  "hsl(var(--chart-5))",
+  'hsl(var(--chart-1))',
+  'hsl(var(--chart-2))',
+  'hsl(var(--chart-3))',
+  'hsl(var(--chart-4))',
+  'hsl(var(--chart-5))',
 ];
 
 export const getLocalStorage = <T>(key: string) => {
@@ -26,7 +26,7 @@ const schema = z.array(
 );
 
 export const getLocalCountries = (key: string) => {
-  if (typeof window === "undefined") return [COUNTRIES[0]];
+  if (typeof window === 'undefined') return [COUNTRIES[0]];
   const countries = getLocalStorage(key) as any;
   if (!countries || countries.length === 0) return [COUNTRIES[0]];
   try {
@@ -49,7 +49,7 @@ const schemaTimeRange = z.object({
 export type TTimeRange = z.infer<typeof schemaTimeRange>;
 
 export const getLocalTimeRange = (key: string) => {
-  if (typeof window === "undefined") return { from: 2010, to: 2024 };
+  if (typeof window === 'undefined') return { from: 2010, to: 2024 };
 
   const timeRange = getLocalStorage(key);
   if (!timeRange) return { from: 2010, to: 2024 };
@@ -62,24 +62,26 @@ export const getLocalTimeRange = (key: string) => {
   }
 };
 
-export const formatCurrency = (value: number) => {
+export const formatCurrency = (value: number, isSymbol: boolean) => {
   const absValue = Math.abs(value);
 
+  const formatOptions = { precision: 2, symbol: isSymbol ? '$' : '' };
+
   if (absValue >= 1e12) {
-    return currency(value).divide(1e12).format({ precision: 2 }) + "T";
+    return currency(value).divide(1e12).format(formatOptions) + 'T';
   } else if (absValue >= 1e9) {
-    return currency(value).divide(1e9).format({ precision: 2 }) + "B";
+    return currency(value).divide(1e9).format(formatOptions) + 'B';
   } else if (absValue >= 1e6) {
-    return currency(value).divide(1e6).format({ precision: 2 }) + "M";
+    return currency(value).divide(1e6).format(formatOptions) + 'M';
   } else {
-    return currency(value).format();
+    return currency(value).format(formatOptions);
   }
 };
 
 export const transformOBJtoARR = (data: any) => {
   if (!data) return [];
   return Object?.entries(data)
-    .filter(([key]) => key !== "year")
+    .filter(([key]) => key !== 'year')
     .map(([country, value]) => ({ country, value }))
     .sort((a: any, b: any) => b.value - a.value)
     .reverse();
@@ -88,7 +90,7 @@ export const transformOBJtoARR = (data: any) => {
 export const extractValueFromObject = (data: any) => {
   if (!data) return [];
   return Object?.entries(data)
-    .filter(([key]) => key !== "year")
+    .filter(([key]) => key !== 'year')
     .map(([_, value]) => value)
     .sort((a: any, b: any) => b - a);
 };
@@ -114,35 +116,35 @@ export const commonMetaData = ({
   keywords: string[];
 }) => {
   return {
-    metadataBase: new URL("https://globe-graph.vercel.app"),
-    title: name ? `${name} | Globe Graph` : "Globe Graph",
+    metadataBase: new URL('https://globe-graph.vercel.app'),
+    title: name ? `${name} | Globe Graph` : 'Globe Graph',
     description: desc,
     authors: [
       {
-        name: "Reetesh Kumar",
-        url: "https://reetesh.in/",
+        name: 'Reetesh Kumar',
+        url: 'https://reetesh.in/',
       },
     ],
     twitter: {
-      card: "summary_large_image",
-      creator: "@imbitcoinb",
+      card: 'summary_large_image',
+      creator: '@imbitcoinb',
       images: image,
       title: name,
       description: desc,
     },
-    robots: "index, follow",
+    robots: 'index, follow',
     alternates: {
       canonical: `https://reetesh.inhttps://globe-graph.vercel.app${url}`,
       languages: {
-        "en-US": "/",
+        'en-US': '/',
       },
     },
     openGraph: {
-      type: "website",
+      type: 'website',
       url: `https://globe-graph.vercel.app${url}`,
       title: name,
       description: desc,
-      siteName: "Globe Graph",
+      siteName: 'Globe Graph',
       images: [
         {
           url: image,
@@ -151,14 +153,14 @@ export const commonMetaData = ({
     },
     assets: image,
     keywords: [
-      "reetesh kumar",
-      "country graph",
-      "gdp graph",
-      "usa gdp",
-      "india gdp",
-      "china gdp",
-      "country gdp",
-      "globe graph",
+      'reetesh kumar',
+      'country graph',
+      'gdp graph',
+      'usa gdp',
+      'india gdp',
+      'china gdp',
+      'country gdp',
+      'globe graph',
       ...keywords,
     ],
   };

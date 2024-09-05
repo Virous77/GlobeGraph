@@ -1,25 +1,27 @@
-"use client";
+'use client';
 
-import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
-import { formatCurrency, transformOBJtoARR } from "@/utils";
+} from '@/components/ui/chart';
+import { formatCurrency, transformOBJtoARR } from '@/utils';
 
 const AreaChartComp = ({
   chartData,
   chartConfig,
+  isCurrencySymbol = true,
 }: {
   chartData: any[];
   chartConfig: ChartConfig;
+  isCurrencySymbol?: boolean;
 }) => {
   const sortedCountry = transformOBJtoARR(chartData[0]);
 
   return (
-    <ChartContainer config={chartConfig} className="w-full h-full">
+    <ChartContainer config={chartConfig} className="h-full w-full">
       <AreaChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
         <XAxis
@@ -33,13 +35,21 @@ const AreaChartComp = ({
           axisLine={false}
           tickMargin={8}
           tickFormatter={(value) => {
-            const formattedValue = formatCurrency(value).split(".");
+            const formattedValue = formatCurrency(
+              value,
+              isCurrencySymbol
+            ).split('.');
             return formattedValue[0] + formattedValue[1].slice(2);
           }}
         />
         <ChartTooltip
           cursor={false}
-          content={<ChartTooltipContent indicator="line" />}
+          content={
+            <ChartTooltipContent
+              indicator="line"
+              isCurrencySymbol={isCurrencySymbol}
+            />
+          }
         />
 
         {sortedCountry.map((country) => (

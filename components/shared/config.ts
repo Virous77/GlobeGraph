@@ -1,5 +1,5 @@
-import { ChartConfig } from "../ui/chart";
-import alpha3 from "iso-3166-1";
+import { ChartConfig } from '../ui/chart';
+import alpha3 from 'iso-3166-1';
 
 type TChartConfig = {
   data: {
@@ -8,7 +8,7 @@ type TChartConfig = {
   }[];
 };
 
-export const createChartConfig = (data: TChartConfig["data"]): ChartConfig => {
+export const createChartConfig = (data: TChartConfig['data']): ChartConfig => {
   return data.reduce((acc, curr, idx) => {
     acc[curr.name] = {
       label: curr.label,

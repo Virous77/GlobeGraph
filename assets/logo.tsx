@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 const defaultOpacity = {
   first: 1,
@@ -16,7 +16,7 @@ export const MainLogo = () => {
       viewBox="0 0 107.48502733074858 107.48502733074858"
       height="35.48502733074858"
       width="30.48502733074858"
-      className=" transition-all duration-300 ease-in-out"
+      className="transition-all duration-300 ease-in-out"
       onMouseEnter={() =>
         setFillOpacity({ first: 0.5, second: 0.75, third: 1 })
       }

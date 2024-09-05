@@ -19,3 +19,8 @@ export type TPerCapitaIncome = {
   country: string;
   data: TGDPData[];
 };
+
+export type TLifeExpectancy = {
+  country: string;
+  data: TGDPData[];
+};

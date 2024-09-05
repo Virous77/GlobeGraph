@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import MainChartComp from "../shared";
-import { useGDP } from "@/hooks/use-gdp";
-import { useGDPStore } from "@/store/use-gdp";
+import { useCountryData } from '@/hooks';
+import MainChartComp from '../shared';
+import { useGDPStore } from '@/store/use-gdp';
 
-const PerCapita = () => {
+const GDPChart = () => {
   const {
     timeRange,
     setTimeRange,
@@ -12,9 +12,17 @@ const PerCapita = () => {
     setCountries,
     removeCountry,
     removeLastCountry,
+    gdpData,
+    setGDPData,
   } = useGDPStore();
   const { isLoading, chartData, fetchSingleCountryGDPData, fetchGDPData } =
-    useGDP();
+    useCountryData({
+      countries,
+      countryData: gdpData,
+      setCountryData: setGDPData,
+      timeRange,
+      indicator: 'NY.GDP.MKTP.CD',
+    });
 
   return (
     <MainChartComp
@@ -25,13 +33,14 @@ const PerCapita = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title="Country Per Capita Income"
-      toolTipMessage="We move"
+      title="GDP of Countries"
+      toolTipMessage="GDP stands for Gross Domestic Product. It is the total value of all goods and services produced in a country in a year."
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
+      isCurrencySymbol={true}
     />
   );
 };
 
-export default PerCapita;
+export default GDPChart;

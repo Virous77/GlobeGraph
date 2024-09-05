@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { FullLogo } from "@/assets/full-logo";
-import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { FullLogo } from '@/assets/full-logo';
+import { cn } from '@/lib/utils';
+import { useEffect, useState } from 'react';
 
 const AppStart = ({ children }: { children: React.ReactNode }) => {
   const [mount, setMount] = useState(false);
@@ -15,7 +15,7 @@ const AppStart = ({ children }: { children: React.ReactNode }) => {
     <section
       className={cn(
         !mount &&
-          "fixed top-0 left-0 w-full h-[100dvh] flex items-center justify-center bg-white"
+          'fixed left-0 top-0 flex h-[100dvh] w-full items-center justify-center bg-white'
       )}
     >
       {mount ? children : <FullLogo />}

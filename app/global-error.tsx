@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import errorImg from "@/public/error.svg";
+import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import errorImg from '@/public/error.svg';
 
 const GlobalError = ({
   reset,

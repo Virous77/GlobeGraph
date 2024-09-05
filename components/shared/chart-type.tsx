@@ -1,6 +1,6 @@
-import React from "react";
-import MainSelect from "../custom-ui/main-select";
-import { TChart } from ".";
+import React from 'react';
+import MainSelect from '../custom-ui/main-select';
+import { TChart } from '.';
 
 const ChartType = ({
   chartType,
@@ -15,26 +15,26 @@ const ChartType = ({
       value={chartType}
       data={[
         {
-          name: "Bar Chart",
-          value: "bar",
+          name: 'Bar Chart',
+          value: 'bar',
         },
         {
-          name: "Area Chart",
-          value: "area",
+          name: 'Area Chart',
+          value: 'area',
         },
         {
-          name: "Line Chart",
-          value: "line",
+          name: 'Line Chart',
+          value: 'line',
         },
         {
-          name: "Radar Chart",
-          value: "radar",
+          name: 'Radar Chart',
+          value: 'radar',
         },
       ]}
       placeholder="Select Chart Type"
       classNames={{
-        trigger: " bg-transparent  rounded-[1rem] w-full md:w-[150px]",
-        content: "hidden md:block",
+        trigger: ' bg-transparent  rounded-[1rem] w-full md:w-[150px]',
+        content: 'hidden md:block',
       }}
       onChange={(value) => setChartType(value as TChart)}
     />

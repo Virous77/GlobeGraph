@@ -1,37 +1,42 @@
-import React from "react";
-import { Card, CardContent } from "../ui/card";
-import Link from "next/link";
-import { SquareArrowOutUpRight } from "lucide-react";
-import BackgroundDots from "../custom-ui/background";
+import React from 'react';
+import { Card, CardContent } from '../ui/card';
+import Link from 'next/link';
+import { SquareArrowOutUpRight } from 'lucide-react';
+import BackgroundDots from '../custom-ui/background';
 
 const URLS = [
   {
-    href: "/country-gdp",
-    name: "Country GDP",
-    color: "red",
+    href: '/country-gdp',
+    name: 'Country GDP',
+    color: 'red',
   },
   {
-    href: "/country-per-capita-income",
-    name: "Country Per Capita Income",
-    color: "blue",
+    href: '/country-per-capita-income',
+    name: 'Country Per Capita Income',
+    color: 'blue',
+  },
+  {
+    href: '/life-expectancy',
+    name: 'Life Expectancy',
+    color: 'green',
   },
 ];
 
 const Home = () => {
   return (
-    <section className="border rounded-[1rem] p-5 md:w-fit w-full">
-      <h1 className=" mb-3 text-2xl font-bold">Explore the data</h1>
-      <div className=" flex items-center flex-wrap  gap-3 md:flex-row flex-col w-full">
+    <section className="w-full rounded-[1rem] border p-5 md:w-fit">
+      <h1 className="mb-3 text-2xl font-bold">Explore the data</h1>
+      <div className="flex w-full flex-col flex-wrap items-center gap-3 md:flex-row">
         {URLS.map(({ href, name, color }) => (
           <Card
             key={href}
-            className="p-0 m-0 rounded-[1rem] md:w-[300px] w-full relative"
+            className="relative m-0 w-full rounded-[1rem] p-0 md:w-[300px]"
           >
-            <CardContent className=" p-3 border h-[100px] flex items-center justify-center rounded-[1rem] md:w-[300px] w-full flex-col gap-1">
-              <h2 className=" text-lg relative z-10 font-semibold">{name}</h2>
+            <CardContent className="flex h-[100px] w-full flex-col items-center justify-center gap-1 rounded-[1rem] border p-3 md:w-[300px]">
+              <h2 className="relative z-10 text-lg font-semibold">{name}</h2>
               <Link
                 href={href}
-                className=" text-sm flex items-center gap-1 hover:underline hover:underline-offset-4 relative z-10 font-semibold"
+                className="relative z-10 flex items-center gap-1 text-sm font-semibold hover:underline hover:underline-offset-4"
               >
                 Visit
                 <SquareArrowOutUpRight size={16} />

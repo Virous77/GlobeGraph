@@ -1,13 +1,13 @@
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next';
 
 const robots = (): MetadataRoute.Robots => {
   return {
     rules: {
-      userAgent: "*",
-      allow: "/",
+      userAgent: '*',
+      allow: '/',
     },
-    host: "https://globe-graph.vercel.app",
-    sitemap: "https://globe-graph.vercel.app/sitemap.xml",
+    host: 'https://globe-graph.vercel.app',
+    sitemap: 'https://globe-graph.vercel.app/sitemap.xml',
   };
 };
 

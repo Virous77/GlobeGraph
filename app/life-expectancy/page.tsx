@@ -1,14 +1,14 @@
-import PerCapita from '@/components/per-capita';
+import LifeExpectancy from '@/components/life-expectancy';
 import { commonMetaData } from '@/utils';
 import React from 'react';
 
 export const generateMetadata = async () => {
   const metaData = commonMetaData({
-    name: 'Country Per Capita Income',
-    desc: 'Explore the per capita income of different countries using Globe Graph.',
+    name: 'Life Expectancy',
+    desc: 'Explore the life expectancy of different countries using Globe Graph.',
     image:
       'https://res.cloudinary.com/dw6wav4jg/image/upload/v1725522213/Image_05-09-24_at_1.12_PM_hnwwl7.jpg',
-    url: '/country-per-capita-income',
+    url: '/life-expectancy',
     keywords: ['geo chart'],
   });
   return {
@@ -16,14 +16,14 @@ export const generateMetadata = async () => {
   };
 };
 
-const CountryPerCapitaIncomePage = () => {
+const LifeExpectancyPage = () => {
   return (
     <main>
       <section className="p-1">
-        <PerCapita />
+        <LifeExpectancy />
       </section>
     </main>
   );
 };
 
-export default CountryPerCapitaIncomePage;
+export default LifeExpectancyPage;

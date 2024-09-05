@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-"use client";
+'use client';
 
-import React, { ComponentPropsWithRef } from "react";
+import React, { ComponentPropsWithRef } from 'react';
 import {
   Select,
   SelectContent,
@@ -11,39 +11,39 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
-import { cn } from "@/lib/utils";
+} from '../ui/select';
+import { cn } from '@/lib/utils';
 
 type TSelect = Omit<
   ComponentPropsWithRef<typeof Select>,
-  "onOpenChange" | "open" | "value" | "onValueChange" | "className"
+  'onOpenChange' | 'open' | 'value' | 'onValueChange' | 'className'
 >;
 type TSelectTrigger = Omit<
   ComponentPropsWithRef<typeof SelectTrigger>,
-  "className"
+  'className'
 >;
 type TSelectValue = Omit<
   ComponentPropsWithRef<typeof SelectValue> & {
     placeholder: string | React.ReactNode;
   },
-  "className"
+  'className'
 >;
 type TSelectContent = Omit<
   ComponentPropsWithRef<typeof SelectContent> & { className: string },
-  "className"
+  'className'
 >;
 type TSelectGroup = Omit<
   ComponentPropsWithRef<typeof SelectGroup>,
-  "className"
+  'className'
 >;
-type TSelectItem = Omit<ComponentPropsWithRef<typeof SelectItem>, "className">;
+type TSelectItem = Omit<ComponentPropsWithRef<typeof SelectItem>, 'className'>;
 type TSelectLabel = Omit<
   ComponentPropsWithRef<typeof SelectLabel> & { className: string },
-  "className"
+  'className'
 >;
 type TSelectSeparator = Omit<
   ComponentPropsWithRef<typeof SelectSeparator> & { className: string },
-  "className"
+  'className'
 >;
 
 type TSelectData = {
@@ -106,7 +106,7 @@ const MainSelect: React.FC<TMainSelect> = (props) => {
                 {...props.selectItemProps}
                 key={item.value}
                 value={item.value}
-                className={cn("rounded-[20px]", props.classNames?.item)}
+                className={cn('rounded-[20px]', props.classNames?.item)}
               >
                 {item.name}
               </SelectItem>
@@ -131,7 +131,7 @@ const MainSelect: React.FC<TMainSelect> = (props) => {
           {...props.selectItemProps}
           key={item.value}
           value={item.value}
-          className={cn("rounded-[20px]", props?.classNames?.item)}
+          className={cn('rounded-[20px]', props?.classNames?.item)}
         >
           {item.name}
         </SelectItem>
@@ -158,7 +158,7 @@ const MainSelect: React.FC<TMainSelect> = (props) => {
       <SelectTrigger
         id={props.id}
         className={cn(
-          "w-[180px] rounded-[20px] bg-accent text-title",
+          'text-title w-[180px] rounded-[20px] bg-accent',
           props.classNames?.trigger
         )}
         {...props.selectTriggerProps}
@@ -166,13 +166,13 @@ const MainSelect: React.FC<TMainSelect> = (props) => {
         <SelectValue
           {...props.selectValueProps}
           className={cn(props.classNames?.placeholder)}
-          placeholder={props.placeholder || "Select"}
+          placeholder={props.placeholder || 'Select'}
         />
       </SelectTrigger>
       <SelectContent
         id={props.id}
         {...props.selectContentProps}
-        className={cn("rounded-[20px]", props.classNames?.content)}
+        className={cn('rounded-[20px]', props.classNames?.content)}
       >
         {props.isGrouped
           ? (props.data as TGroupedData[])?.map((group, idx) =>

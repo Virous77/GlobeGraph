@@ -1,27 +1,27 @@
-import React from "react";
+import React from 'react';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../ui/card";
-import { createChartConfig } from "./config";
-import { cn } from "@/lib/utils";
-import { color } from "@/utils";
-import { Loader } from "../ui/loader";
-import TimeRange from "./time-range";
-import { TCountries, TTimeRange } from "@/store/use-gdp";
-import ChartType from "./chart-type";
-import { ToolTipComp } from "../ui/tooltip";
-import { BadgeInfo } from "lucide-react";
-import BarChartComp from "./bar-chart";
-import MultiSelect from "./multi-select";
-import RadarChartComp from "./radar-chart";
-import AreaChartComp from "./area-chart";
-import LineChartComp from "./line-chart";
+} from '../ui/card';
+import { createChartConfig } from './config';
+import { cn } from '@/lib/utils';
+import { color } from '@/utils';
+import { Loader } from '../ui/loader';
+import TimeRange from './time-range';
+import { TCountries, TTimeRange } from '@/store/use-gdp';
+import ChartType from './chart-type';
+import { ToolTipComp } from '../ui/tooltip';
+import { BadgeInfo } from 'lucide-react';
+import BarChartComp from './bar-chart';
+import MultiSelect from './multi-select';
+import RadarChartComp from './radar-chart';
+import AreaChartComp from './area-chart';
+import LineChartComp from './line-chart';
 
-export type TChart = "area" | "bar" | "line" | "radar";
+export type TChart = 'area' | 'bar' | 'line' | 'radar';
 
 type TMainChart = {
   countries: TCountries[];
@@ -36,6 +36,7 @@ type TMainChart = {
   setCountries: (countries: TCountries) => void;
   removeCountry: (name: string) => void;
   removeLastCountry: () => void;
+  isCurrencySymbol: boolean;
 };
 
 const MainChartComp: React.FC<TMainChart> = ({
@@ -51,8 +52,9 @@ const MainChartComp: React.FC<TMainChart> = ({
   setCountries,
   removeCountry,
   removeLastCountry,
+  isCurrencySymbol,
 }) => {
-  const [chartType, setChartType] = React.useState<TChart>("bar");
+  const [chartType, setChartType] = React.useState<TChart>('bar');
 
   const modifyConfig = countries.map((country) => {
     return {
@@ -65,28 +67,38 @@ const MainChartComp: React.FC<TMainChart> = ({
 
   const renderChart = (chart: string) => {
     switch (chart) {
-      case "bar":
+      case 'bar':
         return (
           <BarChartComp
             chartData={chartData}
             chartConfig={chartConfig}
             countries={countries}
+            isCurrencySymbol={isCurrencySymbol}
           />
         );
-      case "radar":
+      case 'radar':
         return (
-          <RadarChartComp chartConfig={chartConfig} chartData={chartData} />
+          <RadarChartComp
+            chartConfig={chartConfig}
+            chartData={chartData}
+            isCurrencySymbol={isCurrencySymbol}
+          />
         );
-      case "area":
+      case 'area':
         return (
-          <AreaChartComp chartConfig={chartConfig} chartData={chartData} />
+          <AreaChartComp
+            chartConfig={chartConfig}
+            chartData={chartData}
+            isCurrencySymbol={isCurrencySymbol}
+          />
         );
-      case "line":
+      case 'line':
         return (
           <LineChartComp
             chartData={chartData}
             chartConfig={chartConfig}
             countries={countries}
+            isCurrencySymbol={isCurrencySymbol}
           />
         );
       default:
@@ -95,6 +107,7 @@ const MainChartComp: React.FC<TMainChart> = ({
             chartData={chartData}
             chartConfig={chartConfig}
             countries={countries}
+            isCurrencySymbol={isCurrencySymbol}
           />
         );
     }
@@ -102,19 +115,19 @@ const MainChartComp: React.FC<TMainChart> = ({
 
   return (
     <Card
-      className=" p-0 m-0 mt-5"
+      className="m-0 mt-5 p-0"
       style={{
-        borderRadius: "1rem",
+        borderRadius: '1rem',
       }}
     >
-      <div className=" flex items-start justify-between w-full">
+      <div className="flex w-full items-start justify-between">
         <CardHeader className="p-5">
-          <div className="flex items-center gap-4 -mb-1">
+          <div className="-mb-1 flex items-center gap-4">
             <ToolTipComp name={toolTipMessage}>
               <CardTitle className="flex items-end gap-1 whitespace-nowrap">
                 {title}
                 <BadgeInfo
-                  className=" lg:block hidden"
+                  className="hidden lg:block"
                   size={15}
                   color="hsl(var(--muted-foreground))"
                   cursor="pointer"
@@ -122,7 +135,7 @@ const MainChartComp: React.FC<TMainChart> = ({
               </CardTitle>
             </ToolTipComp>
 
-            <div className=" md:block hidden">
+            <div className="hidden md:block">
               <ChartType chartType={chartType} setChartType={setChartType} />
             </div>
           </div>
@@ -142,14 +155,14 @@ const MainChartComp: React.FC<TMainChart> = ({
                     style={{
                       backgroundColor: color[idx],
                     }}
-                    className={cn("w-3 h-3 inline-block  rounded ml-2")}
+                    className={cn('ml-2 inline-block h-3 w-3 rounded')}
                   />
                 </span>
               ))}
             </div>
           )}
         </CardHeader>
-        <div className="w-[300px] mt-4 mr-4 md:flex  flex-col hidden">
+        <div className="mr-4 mt-4 hidden w-[300px] flex-col md:flex">
           <MultiSelect
             countries={countries}
             fetchNewCountryData={fetchSingleCountryGDPData}
@@ -164,7 +177,7 @@ const MainChartComp: React.FC<TMainChart> = ({
           />
         </div>
       </div>
-      <div className=" md:hidden flex items-center gap-1 px-4 -mt-4">
+      <div className="-mt-4 flex items-center gap-1 px-4 md:hidden">
         <ChartType chartType={chartType} setChartType={setChartType} />
         <TimeRange
           fetchGDPData={fetchGDPData}
@@ -172,7 +185,7 @@ const MainChartComp: React.FC<TMainChart> = ({
           setTimeRange={setTimeRange}
         />
       </div>
-      <div className="w-full md:px-0 px-3  md:w-[300px] mt-4 mr-4 block md:hidden">
+      <div className="mr-4 mt-4 block w-full px-3 md:hidden md:w-[300px] md:px-0">
         <MultiSelect
           countries={countries}
           fetchNewCountryData={fetchSingleCountryGDPData}
@@ -181,7 +194,7 @@ const MainChartComp: React.FC<TMainChart> = ({
           removeLastCountry={removeLastCountry}
         />
       </div>
-      <CardContent className="w-[97vw] h-[500px] px-0 py-4 md:p-4 rounded-xl">
+      <CardContent className="h-[500px] w-[97vw] rounded-xl px-0 py-4 md:p-4">
         {renderChart(chartType)}
       </CardContent>
       {isLoading && <Loader type="full" />}

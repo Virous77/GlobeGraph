@@ -12,8 +12,8 @@ interface DotPatternBackgroundProps {
 
 export const BackgroundDots: React.FC<DotPatternBackgroundProps> = ({
   dotSize = 1.2,
-  dotColor = "#fb3a5d",
-  backgroundColor = "transparent",
+  dotColor = '#fb3a5d',
+  backgroundColor = 'transparent',
   gap = 15,
   className,
   fade = true,
@@ -24,8 +24,8 @@ export const BackgroundDots: React.FC<DotPatternBackgroundProps> = ({
 
   const maskStyle: React.CSSProperties = fade
     ? {
-        maskImage: "radial-gradient(circle, white 10%, transparent 90%)",
-        WebkitMaskImage: "radial-gradient(circle, white 10%, transparent 90%)",
+        maskImage: 'radial-gradient(circle, white 10%, transparent 90%)',
+        WebkitMaskImage: 'radial-gradient(circle, white 10%, transparent 90%)',
       }
     : {};
 

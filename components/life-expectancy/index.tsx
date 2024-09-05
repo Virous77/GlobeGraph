@@ -1,10 +1,10 @@
 'use client';
 
-import MainChartComp from '../shared';
-import { useCapitaIncomeStore } from '@/store/use-capita';
 import { useCountryData } from '@/hooks';
+import MainChartComp from '../shared';
+import { useCountryLifeStore } from '@/store/use-life';
 
-const PerCapita = () => {
+const LifeExpectancy = () => {
   const {
     timeRange,
     setTimeRange,
@@ -12,16 +12,16 @@ const PerCapita = () => {
     setCountries,
     removeCountry,
     removeLastCountry,
-    capitaIncome,
-    setCapitaIncome,
-  } = useCapitaIncomeStore();
+    lifeExpectancy,
+    setLifeExpectancy,
+  } = useCountryLifeStore();
   const { isLoading, chartData, fetchSingleCountryGDPData, fetchGDPData } =
     useCountryData({
       countries,
-      countryData: capitaIncome,
-      setCountryData: setCapitaIncome,
+      countryData: lifeExpectancy,
+      setCountryData: setLifeExpectancy,
       timeRange,
-      indicator: 'NY.GDP.PCAP.CD',
+      indicator: 'SP.DYN.LE00.IN',
     });
 
   return (
@@ -33,14 +33,14 @@ const PerCapita = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title="Per Capita Income of Countries"
-      toolTipMessage="Per Capita Income is the average income of a country's citizens. It is calculated by dividing the country's total income by its population."
+      title="Life Expectancy of Countries"
+      toolTipMessage="Life expectancy is the average number of years a person is expected to live based on the year of their birth."
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
-      isCurrencySymbol={true}
+      isCurrencySymbol={false}
     />
   );
 };
 
-export default PerCapita;
+export default LifeExpectancy;
