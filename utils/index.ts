@@ -99,3 +99,67 @@ const convertInrLakhToUsdBillion = (inrLakh: number, exchangeRate: number) => {
   const usdBillion = usd / 1000000000;
   return Math.round(usdBillion * 100) / 100;
 };
+
+export const commonMetaData = ({
+  name,
+  desc,
+  image,
+  url,
+  keywords,
+}: {
+  name: string;
+  desc: string;
+  image: string;
+  url: string;
+  keywords: string[];
+}) => {
+  return {
+    metadataBase: new URL("https://globe-graph.vercel.app"),
+    title: name ? `${name} | Globe Graph` : "Globe Graph",
+    description: desc,
+    authors: [
+      {
+        name: "Reetesh Kumar",
+        url: "https://reetesh.in/",
+      },
+    ],
+    twitter: {
+      card: "summary_large_image",
+      creator: "@imbitcoinb",
+      images: image,
+      title: name,
+      description: desc,
+    },
+    robots: "index, follow",
+    alternates: {
+      canonical: `https://reetesh.inhttps://globe-graph.vercel.app${url}`,
+      languages: {
+        "en-US": "/",
+      },
+    },
+    openGraph: {
+      type: "website",
+      url: `https://globe-graph.vercel.app${url}`,
+      title: name,
+      description: desc,
+      siteName: "Globe Graph",
+      images: [
+        {
+          url: image,
+        },
+      ],
+    },
+    assets: image,
+    keywords: [
+      "reetesh kumar",
+      "country graph",
+      "gdp graph",
+      "usa gdp",
+      "india gdp",
+      "china gdp",
+      "country gdp",
+      "globe graph",
+      ...keywords,
+    ],
+  };
+};
