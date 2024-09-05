@@ -114,6 +114,7 @@ const MainChartComp: React.FC<TMainChart> = ({
               <CardTitle className="flex items-end gap-1 whitespace-nowrap">
                 {title}
                 <BadgeInfo
+                  className=" lg:block hidden"
                   size={15}
                   color="hsl(var(--muted-foreground))"
                   cursor="pointer"

@@ -19,7 +19,7 @@ export const generateMetadata = async () => {
 const CountryPerCapitaIncomePage = () => {
   return (
     <main>
-      <section className="p-3">
+      <section className="p-1">
         <PerCapita />
       </section>
     </main>

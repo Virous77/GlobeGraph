@@ -95,7 +95,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
               onBlur={() => setOpen(false)}
               onFocus={() => setOpen(true)}
               placeholder="Select frameworks..."
-              className="ml-2 flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
+              className="ml-2 flex-1 bg-transparent outline-none placeholder:text-muted-foreground text-sm"
             />
           )}
         </div>
@@ -104,7 +104,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
         <CommandList className="border-none">
           {open && selectTables.length > 0 && countries.length <= 4 ? (
             <div
-              className="h-[400px] overflow-scroll absolute top-0 z-10 w-full rounded-md border  bg-popover text-popover-foreground shadow-md outline-none animate-in"
+              className="max-h-[400px] min-h-fit overflow-scroll absolute top-0 z-10 w-full rounded-md border  bg-popover text-popover-foreground shadow-md outline-none animate-in"
               style={{
                 borderRadius: "1rem",
               }}
