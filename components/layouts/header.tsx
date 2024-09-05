@@ -1,6 +1,8 @@
 import { MainLogo } from "@/assets/logo";
 import Link from "next/link";
 import React from "react";
+import { Button } from "../ui/button";
+import { Github } from "lucide-react";
 
 const Header = () => {
   return (
@@ -9,26 +11,20 @@ const Header = () => {
         <Link href="/" aria-label="Home">
           <MainLogo />
         </Link>
-        <ul>
-          <li>
-            <Link
-              href="/country-gdp"
-              aria-label="Country GDP"
-              className=" text-sm hover:underline hover:underline-offset-4"
-            >
-              Country GDP
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/country-per-capita-income"
-              aria-label="Country Per Capita Income"
-              className="text-sm hover:underline hover:underline-offset-4"
-            >
-              Country Per Capita Income
-            </Link>
-          </li>
-        </ul>
+
+        <Link
+          href="https://github.com/Virous77/GlobeGraph"
+          aria-label="Github"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button
+            size="icon"
+            className="bg-transparent hover:opacity-80 text-foreground hover:bg-transparent w-full"
+          >
+            <Github />
+          </Button>
+        </Link>
       </nav>
     </header>
   );

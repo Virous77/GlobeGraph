@@ -37,9 +37,11 @@ const RootLayout = ({
           disableTransitionOnChange
         >
           <AppStart>
-            <Header />
-            {children}
-            <Footer />
+            <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto]">
+              <Header />
+              {children}
+              <Footer />
+            </div>
           </AppStart>
         </ThemeProvider>
       </body>
