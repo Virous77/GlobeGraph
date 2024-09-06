@@ -24,3 +24,8 @@ export type TLifeExpectancy = {
   country: string;
   data: TGDPData[];
 };
+
+export type TPopulation = {
+  country: string;
+  data: TGDPData[];
+};

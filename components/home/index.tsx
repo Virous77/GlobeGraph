@@ -16,9 +16,14 @@ const URLS = [
     color: 'blue',
   },
   {
-    href: '/life-expectancy',
-    name: 'Life Expectancy',
+    href: '/country-life-expectancy',
+    name: 'Country Life Expectancy',
     color: 'green',
+  },
+  {
+    href: '/country-population',
+    name: 'Country Population',
+    color: 'brown',
   },
 ];
 
@@ -30,9 +35,9 @@ const Home = () => {
         {URLS.map(({ href, name, color }) => (
           <Card
             key={href}
-            className="relative m-0 w-full rounded-[1rem] p-0 md:w-[300px]"
+            className="relative m-0 w-full flex-1 rounded-[1rem] p-0 md:min-w-[300px]"
           >
-            <CardContent className="flex h-[100px] w-full flex-col items-center justify-center gap-1 rounded-[1rem] border p-3 md:w-[300px]">
+            <CardContent className="flex h-[100px] w-full flex-col items-center justify-center gap-1 rounded-[1rem] border p-3 md:min-w-[300px]">
               <h2 className="relative z-10 text-lg font-semibold">{name}</h2>
               <Link
                 href={href}

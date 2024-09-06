@@ -20,6 +20,18 @@ const sitemap = async () => {
       priority: 0.9,
       changeFrequency: 'weekly',
     },
+    {
+      url: `${URL}/country-life-expectancy`,
+      lastModified: new Date(),
+      priority: 0.9,
+      changeFrequency: 'weekly',
+    },
+    {
+      url: `${URL}/country-population`,
+      lastModified: new Date(),
+      priority: 0.9,
+      changeFrequency: 'weekly',
+    },
   ];
 
   return [...restUrls];
