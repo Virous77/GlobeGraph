@@ -1,6 +1,7 @@
 import { COUNTRIES } from '@/components/shared/config';
 import currency from 'currency.js';
 import { z } from 'zod';
+import html2canvas from 'html2canvas';
 
 type TColor = string[];
 
@@ -164,4 +165,63 @@ export const commonMetaData = ({
       ...keywords,
     ],
   };
+};
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+type TTheme = {
+  [key: string]: string;
+};
+
+export const captureScreenshot = async ({
+  elementId,
+  theme,
+}: {
+  elementId: string;
+  theme: string;
+}) => {
+  const elements = document.getElementById(elementId);
+  elements?.querySelectorAll('.custom-hide').forEach((el) => {
+    el.classList.add('custom-hides');
+  });
+
+  await sleep(500);
+  const element = document.getElementById(elementId);
+  element?.querySelectorAll('span').forEach((el) => {
+    el.style.marginBottom = '-15px';
+  });
+
+  if (!element) {
+    alert('Sorry, Unable to take screenshot. Please try again.');
+    return;
+  }
+
+  const themes: TTheme = {
+    dark: '#000',
+    light: '#fff',
+    system: window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? '#000'
+      : '#fff',
+  };
+
+  const canvas = await html2canvas(element, {
+    scale: window.devicePixelRatio || 2,
+    useCORS: true,
+    backgroundColor: themes[theme],
+  });
+
+  const name = new Date().toISOString();
+
+  const imageUrl = canvas.toDataURL('image/png');
+  element?.querySelectorAll('span').forEach((el) => {
+    el.style.marginBottom = '0px';
+  });
+  elements?.querySelectorAll('.custom-hide').forEach((el) => {
+    el.classList.remove('custom-hides');
+  });
+
+  const link = document.createElement('a');
+  link.href = imageUrl;
+  link.download = `${name}-Globe-Graph.png`;
+  link.click();
 };

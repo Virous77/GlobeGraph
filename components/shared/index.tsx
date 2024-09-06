@@ -8,18 +8,19 @@ import {
 } from '../ui/card';
 import { createChartConfig } from './config';
 import { cn } from '@/lib/utils';
-import { color } from '@/utils';
+import { captureScreenshot, color } from '@/utils';
 import { Loader } from '../ui/loader';
 import TimeRange from './time-range';
 import { TCountries, TTimeRange } from '@/store/use-gdp';
 import ChartType from './chart-type';
 import { ToolTipComp } from '../ui/tooltip';
-import { BadgeInfo } from 'lucide-react';
+import { BadgeInfo, CameraIcon } from 'lucide-react';
 import BarChartComp from './bar-chart';
 import MultiSelect from './multi-select';
 import RadarChartComp from './radar-chart';
 import AreaChartComp from './area-chart';
 import LineChartComp from './line-chart';
+import { useTheme } from 'next-themes';
 
 export type TChart = 'area' | 'bar' | 'line' | 'radar';
 
@@ -54,6 +55,7 @@ const MainChartComp: React.FC<TMainChart> = ({
   removeLastCountry,
   isCurrencySymbol,
 }) => {
+  const { theme } = useTheme();
   const [chartType, setChartType] = React.useState<TChart>('bar');
 
   const modifyConfig = countries.map((country) => {
@@ -119,15 +121,16 @@ const MainChartComp: React.FC<TMainChart> = ({
       style={{
         borderRadius: '1rem',
       }}
+      id="capture-chart"
     >
       <div className="flex w-full items-start justify-between">
         <CardHeader className="p-5">
-          <div className="-mb-1 flex items-center gap-4">
+          <div className="-mb-1 flex items-start gap-4">
             <ToolTipComp name={toolTipMessage}>
-              <CardTitle className="flex items-end gap-1 whitespace-nowrap">
+              <CardTitle className="flex items-center gap-1 whitespace-nowrap text-xl md:text-2xl">
                 {title}
                 <BadgeInfo
-                  className="hidden lg:block"
+                  className="custom-hide mt-[3px] hidden lg:block"
                   size={15}
                   color="hsl(var(--muted-foreground))"
                   cursor="pointer"
@@ -135,19 +138,30 @@ const MainChartComp: React.FC<TMainChart> = ({
               </CardTitle>
             </ToolTipComp>
 
-            <div className="hidden md:block">
-              <ChartType chartType={chartType} setChartType={setChartType} />
-            </div>
+            <CameraIcon
+              onClick={() =>
+                captureScreenshot({
+                  elementId: 'capture-chart',
+                  theme: theme || 'light',
+                })
+              }
+              className="custom-hide mt-[2px] md:mt-1"
+              cursor="pointer"
+            />
           </div>
 
-          <CardDescription>
+          <CardDescription
+            style={{
+              marginTop: '10px',
+            }}
+          >
             {chartData[0]?.year} - {chartData[chartData.length - 1]?.year}
           </CardDescription>
           {countries.length > 0 && (
-            <div className="flex items-center gap-2 p-5 pl-0 pt-2">
+            <div className="flex flex-wrap items-center gap-2 p-5 pl-0 pt-2">
               {countries.map((country, idx) => (
                 <span
-                  className="mr-2 flex items-center text-sm"
+                  className="mr-2 flex items-center whitespace-nowrap text-sm"
                   key={country.value}
                 >
                   {country.label}
@@ -162,7 +176,8 @@ const MainChartComp: React.FC<TMainChart> = ({
             </div>
           )}
         </CardHeader>
-        <div className="mr-4 mt-4 hidden w-[300px] flex-col md:flex">
+
+        <div className="custom-hide mobile992:flex mr-4 mt-4 hidden w-[300px] flex-col">
           <MultiSelect
             countries={countries}
             fetchNewCountryData={fetchSingleCountryGDPData}
@@ -175,25 +190,33 @@ const MainChartComp: React.FC<TMainChart> = ({
             timeRange={timeRange}
             setTimeRange={setTimeRange}
           />
+
+          <div className="mt-2 w-full">
+            <ChartType chartType={chartType} setChartType={setChartType} />
+          </div>
         </div>
       </div>
-      <div className="-mt-4 flex items-center gap-1 px-4 md:hidden">
-        <ChartType chartType={chartType} setChartType={setChartType} />
-        <TimeRange
-          fetchGDPData={fetchGDPData}
-          timeRange={timeRange}
-          setTimeRange={setTimeRange}
-        />
+
+      <div className="custom-hide mobile992:hidden block w-full">
+        <div className="-mt-4 flex items-center gap-1 px-4">
+          <ChartType chartType={chartType} setChartType={setChartType} />
+          <TimeRange
+            fetchGDPData={fetchGDPData}
+            timeRange={timeRange}
+            setTimeRange={setTimeRange}
+          />
+        </div>
+        <div className="mr-4 mt-4 w-full px-3">
+          <MultiSelect
+            countries={countries}
+            fetchNewCountryData={fetchSingleCountryGDPData}
+            setCountries={setCountries}
+            removeCountry={removeCountry}
+            removeLastCountry={removeLastCountry}
+          />
+        </div>
       </div>
-      <div className="mr-4 mt-4 block w-full px-3 md:hidden md:w-[300px] md:px-0">
-        <MultiSelect
-          countries={countries}
-          fetchNewCountryData={fetchSingleCountryGDPData}
-          setCountries={setCountries}
-          removeCountry={removeCountry}
-          removeLastCountry={removeLastCountry}
-        />
-      </div>
+
       <CardContent className="h-[500px] w-[97vw] rounded-xl px-0 py-4 md:p-4">
         {renderChart(chartType)}
       </CardContent>
