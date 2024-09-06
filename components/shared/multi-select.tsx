@@ -94,7 +94,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
               ref={inputRef}
               onBlur={() => setOpen(false)}
               onFocus={() => setOpen(true)}
-              placeholder="Select frameworks..."
+              placeholder="Select Countries..."
               className="ml-2 flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground"
             />
           )}

@@ -21,6 +21,7 @@ import RadarChartComp from './radar-chart';
 import AreaChartComp from './area-chart';
 import LineChartComp from './line-chart';
 import { useTheme } from 'next-themes';
+import PreviewScreenshot from './preview-screenshot';
 
 export type TChart = 'area' | 'bar' | 'line' | 'radar';
 
@@ -57,6 +58,7 @@ const MainChartComp: React.FC<TMainChart> = ({
 }) => {
   const { theme } = useTheme();
   const [chartType, setChartType] = React.useState<TChart>('bar');
+  const [open, setOpen] = React.useState<string>('');
 
   const modifyConfig = countries.map((country) => {
     return {
@@ -143,6 +145,7 @@ const MainChartComp: React.FC<TMainChart> = ({
                 captureScreenshot({
                   elementId: 'capture-chart',
                   theme: theme || 'light',
+                  callback: setOpen,
                 })
               }
               className="custom-hide mt-[2px] md:mt-1"
@@ -169,7 +172,7 @@ const MainChartComp: React.FC<TMainChart> = ({
                     style={{
                       backgroundColor: color[idx],
                     }}
-                    className={cn('ml-2 inline-block h-3 w-3 rounded')}
+                    className={cn('spp ml-2 inline-block h-3 w-3 rounded')}
                   />
                 </span>
               ))}
@@ -177,7 +180,7 @@ const MainChartComp: React.FC<TMainChart> = ({
           )}
         </CardHeader>
 
-        <div className="custom-hide mobile992:flex mr-4 mt-4 hidden w-[300px] flex-col">
+        <div className="custom-hide mr-4 mt-4 hidden w-[300px] flex-col mobile992:flex">
           <MultiSelect
             countries={countries}
             fetchNewCountryData={fetchSingleCountryGDPData}
@@ -197,7 +200,7 @@ const MainChartComp: React.FC<TMainChart> = ({
         </div>
       </div>
 
-      <div className="custom-hide mobile992:hidden block w-full">
+      <div className="custom-hide block w-full mobile992:hidden">
         <div className="-mt-4 flex items-center gap-1 px-4">
           <ChartType chartType={chartType} setChartType={setChartType} />
           <TimeRange
@@ -221,6 +224,7 @@ const MainChartComp: React.FC<TMainChart> = ({
         {renderChart(chartType)}
       </CardContent>
       {isLoading && <Loader type="full" />}
+      <PreviewScreenshot open={open} setOpen={setOpen} />
     </Card>
   );
 };

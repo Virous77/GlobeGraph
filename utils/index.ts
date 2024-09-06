@@ -176,20 +176,16 @@ type TTheme = {
 export const captureScreenshot = async ({
   elementId,
   theme,
+  callback,
+  isDownLoad = false,
 }: {
   elementId: string;
   theme: string;
+  callback: (link: string) => void;
+  isDownLoad?: boolean;
 }) => {
-  const elements = document.getElementById(elementId);
-  elements?.querySelectorAll('.custom-hide').forEach((el) => {
-    el.classList.add('custom-hides');
-  });
-
   await sleep(500);
   const element = document.getElementById(elementId);
-  element?.querySelectorAll('span').forEach((el) => {
-    el.style.marginBottom = '-15px';
-  });
 
   if (!element) {
     alert('Sorry, Unable to take screenshot. Please try again.');
@@ -204,24 +200,35 @@ export const captureScreenshot = async ({
       : '#fff',
   };
 
+  const ignoreElement = isDownLoad ? 'ignore-capture' : 'custom-hide';
+
   const canvas = await html2canvas(element, {
     scale: window.devicePixelRatio || 2,
     useCORS: true,
     backgroundColor: themes[theme],
+    ignoreElements: (el) => {
+      if (el.classList.contains(ignoreElement)) {
+        return true;
+      }
+      return false;
+    },
+    onclone: (doc) => {
+      if (isDownLoad) return;
+      const el = doc.querySelectorAll('.spp');
+      el.forEach((el) => {
+        el.classList.add('spp-clone');
+      });
+    },
   });
 
   const name = new Date().toISOString();
-
   const imageUrl = canvas.toDataURL('image/png');
-  element?.querySelectorAll('span').forEach((el) => {
-    el.style.marginBottom = '0px';
-  });
-  elements?.querySelectorAll('.custom-hide').forEach((el) => {
-    el.classList.remove('custom-hides');
-  });
+  callback(imageUrl);
 
-  const link = document.createElement('a');
-  link.href = imageUrl;
-  link.download = `${name}-Globe-Graph.png`;
-  link.click();
+  if (isDownLoad) {
+    const link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = `${name}-Globe-Graph.png`;
+    link.click();
+  }
 };
