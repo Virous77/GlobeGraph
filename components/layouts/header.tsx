@@ -6,7 +6,7 @@ import { Github } from 'lucide-react';
 
 const Header = () => {
   return (
-    <header className="sticky left-3 top-4 z-[999999999] mb-6 w-[95%] rounded-[2rem] border px-4 py-2 shadow-2xl backdrop-blur dark:bg-[#111111]/60 md:w-[500px] md:px-6">
+    <header className="sticky left-3 top-4 z-[99] mb-6 w-[95%] rounded-[2rem] border px-4 py-2 shadow-2xl backdrop-blur dark:bg-[#111111]/60 md:w-[500px] md:px-6">
       <nav className="flex items-center justify-between">
         <Link href="/" aria-label="Home">
           <MainLogo />

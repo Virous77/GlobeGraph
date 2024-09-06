@@ -39,7 +39,7 @@ const PreviewScreenshot = ({
             className="h-full w-full rounded-[1rem]"
           />
 
-          <div className="absolute right-5 top-[140px] flex flex-col items-end md:top-7">
+          <div className="absolute right-5 top-[130px] flex flex-col items-end md:top-7">
             <h1 className="text-base font-bold md:text-lg">Globe Graph</h1>
             <p className="text-xs text-muted-foreground md:text-sm">
               {new Date().toLocaleDateString()}{' '}
