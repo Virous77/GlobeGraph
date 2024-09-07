@@ -25,6 +25,11 @@ const URLS = [
     name: 'Country Population',
     color: 'brown',
   },
+  {
+    href: '/country-unemployment-labor-force',
+    name: 'Country Unemployment Labour Force',
+    color: 'purple',
+  },
 ];
 
 const Home = () => {

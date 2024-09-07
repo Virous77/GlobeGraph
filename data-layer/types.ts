@@ -29,3 +29,8 @@ export type TPopulation = {
   country: string;
   data: TGDPData[];
 };
+
+export type TUnemployment = {
+  country: string;
+  data: TGDPData[];
+};
