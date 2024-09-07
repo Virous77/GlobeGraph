@@ -64,20 +64,27 @@ export const getLocalTimeRange = (key: string) => {
   }
 };
 
-export const formatCurrency = (value: number, isSymbol: boolean) => {
+export const formatCurrency = (
+  value: number,
+  isSymbol: boolean,
+  icon: string | undefined
+) => {
   const absValue = Math.abs(value);
 
   const formatOptions = { precision: 2, symbol: isSymbol ? '$' : '' };
 
-  if (absValue >= 1e12) {
-    return currency(value).divide(1e12).format(formatOptions) + 'T';
-  } else if (absValue >= 1e9) {
-    return currency(value).divide(1e9).format(formatOptions) + 'B';
-  } else if (absValue >= 1e6) {
-    return currency(value).divide(1e6).format(formatOptions) + 'M';
-  } else {
-    return currency(value).format(formatOptions);
-  }
+  const formattedValue = (() => {
+    if (absValue >= 1e12) {
+      return currency(value).divide(1e12).format(formatOptions) + 'T';
+    } else if (absValue >= 1e9) {
+      return currency(value).divide(1e9).format(formatOptions) + 'B';
+    } else if (absValue >= 1e6) {
+      return currency(value).divide(1e6).format(formatOptions) + 'M';
+    } else {
+      return currency(value).format(formatOptions);
+    }
+  })();
+  return icon ? formattedValue + icon : formattedValue;
 };
 
 export const transformOBJtoARR = (data: any) => {

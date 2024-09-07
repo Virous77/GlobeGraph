@@ -6,6 +6,7 @@
     "life": "Esperanza de vida del país",
     "population": "Población del país",
     "unemployment": "Fuerza laboral desempleada del país",
+    "fdi": "Inversión extranjera directa del país",
     "visit": "Visitar"
   },
   "Chart": {
@@ -19,7 +20,9 @@
     "population": "Población del país",
     "populationDesc": "La población representa el número total de personas que viven en un país.",
     "unemployment": "Fuerza laboral desempleada del país",
-    "unemploymentDesc": "La tasa de desempleo es el porcentaje de la fuerza laboral total que está desempleada pero que busca activamente empleo y está dispuesta a trabajar."
+    "unemploymentDesc": "La tasa de desempleo es el porcentaje de la fuerza laboral total que está desempleada pero que busca activamente empleo y está dispuesta a trabajar.",
+    "fdi": "Inversión extranjera directa de los países",
+    "fdiDesc": "La Inversión Extranjera Directa es una inversión realizada por una empresa o individuo en un país en intereses comerciales en otro país, en forma de establecer operaciones comerciales o adquirir activos comerciales en el otro país, como propiedad o interés de control en una empresa extranjera."
   },
   "Language": {
     "en": "Inglés",

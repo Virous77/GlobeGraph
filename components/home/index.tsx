@@ -34,6 +34,11 @@ const Home = () => {
       name: t('unemployment'),
       color: 'purple',
     },
+    {
+      href: '/country-fdi',
+      name: t('fdi'),
+      color: 'pink',
+    },
   ];
 
   return (

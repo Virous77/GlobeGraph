@@ -13,10 +13,12 @@ const AreaChartComp = ({
   chartData,
   chartConfig,
   isCurrencySymbol = true,
+  icon,
 }: {
   chartData: any[];
   chartConfig: ChartConfig;
   isCurrencySymbol?: boolean;
+  icon?: string;
 }) => {
   const sortedCountry = transformOBJtoARR(chartData[0]);
 
@@ -37,7 +39,8 @@ const AreaChartComp = ({
           tickFormatter={(value) => {
             const formattedValue = formatCurrency(
               value,
-              isCurrencySymbol
+              isCurrencySymbol,
+              icon
             ).split('.');
             return formattedValue[0] + formattedValue[1].slice(2);
           }}
@@ -48,6 +51,7 @@ const AreaChartComp = ({
             <ChartTooltipContent
               indicator="line"
               isCurrencySymbol={isCurrencySymbol}
+              icon={icon}
             />
           }
         />

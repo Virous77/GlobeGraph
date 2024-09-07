@@ -15,11 +15,13 @@ const LineChartComp = ({
   chartConfig,
   countries,
   isCurrencySymbol = true,
+  icon,
 }: {
   chartData: any[];
   chartConfig: ChartConfig;
   countries: TCountries[];
   isCurrencySymbol?: boolean;
+  icon?: string;
 }) => {
   return (
     <ChartContainer
@@ -40,7 +42,7 @@ const LineChartComp = ({
           axisLine={false}
           tickMargin={8}
           tickFormatter={(value) => {
-            return formatCurrency(value, isCurrencySymbol);
+            return formatCurrency(value, isCurrencySymbol, icon);
           }}
           domain={['dataMin', 'dataMax']}
         />
@@ -51,6 +53,7 @@ const LineChartComp = ({
             <ChartTooltipContent
               indicator="dashed"
               isCurrencySymbol={isCurrencySymbol}
+              icon={icon}
             />
           }
         />

@@ -6,6 +6,7 @@
     "life": "Country Life Expectancy",
     "population": "Country Population",
     "unemployment": "Country Unemployment Labour Force",
+    "fdi": "Country Foreign Direct Investment",
     "visit": "Visit"
   },
   "Chart": {
@@ -19,7 +20,9 @@
     "population": "Country Population",
     "populationDesc": "Population stands for the total number of people living in a country.",
     "unemployment": "Country Unemployment Labour Force",
-    "unemploymentDesc": "Unemployment rate is the percentage of the total labor force that is unemployed but actively seeking employment and willing to work."
+    "unemploymentDesc": "Unemployment rate is the percentage of the total labor force that is unemployed but actively seeking employment and willing to work.",
+    "fdi": "Foreign Direct Investment of Countries",
+    "fdiDesc": "Foreign Direct Investment is an investment made by a company or individual in one country in business interests in another country, in the form of either establishing business operations or acquiring business assets in the other country, such as ownership or controlling interest in a foreign company."
   },
   "Language": {
     "en": "English",

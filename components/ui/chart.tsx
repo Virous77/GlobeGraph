@@ -112,6 +112,7 @@ const ChartTooltipContent = React.forwardRef<
       nameKey?: string;
       labelKey?: string;
       isCurrencySymbol?: boolean;
+      icon?: string;
     }
 >(
   (
@@ -130,6 +131,7 @@ const ChartTooltipContent = React.forwardRef<
       isCurrencySymbol = true,
       nameKey,
       labelKey,
+      icon,
     },
     ref
   ) => {
@@ -244,7 +246,8 @@ const ChartTooltipContent = React.forwardRef<
                         <span className="font-mono font-medium tabular-nums text-foreground">
                           {formatCurrency(
                             item.value as number,
-                            isCurrencySymbol
+                            isCurrencySymbol,
+                            icon
                           )}
                         </span>
                       )}

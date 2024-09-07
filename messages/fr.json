@@ -6,6 +6,7 @@
     "life": "Espérance de vie du pays",
     "population": "Population du pays",
     "unemployment": "Force de travail au chômage du pays",
+    "fdi": "Investissement direct étranger du pays",
     "visit": "Visiter"
   },
   "Chart": {
@@ -19,7 +20,9 @@
     "population": "Population du pays",
     "populationDesc": "La population représente le nombre total de personnes vivant dans un pays.",
     "unemployment": "Force de travail au chômage du pays",
-    "unemploymentDesc": "Le taux de chômage est le pourcentage de la population active totale qui est au chômage mais qui recherche activement un emploi et qui est prête à travailler."
+    "unemploymentDesc": "Le taux de chômage est le pourcentage de la population active totale qui est au chômage mais qui recherche activement un emploi et qui est prête à travailler.",
+    "fdi": "Investissement direct étranger des pays",
+    "fdiDesc": "L'investissement direct étranger est un investissement réalisé par une entreprise ou un individu dans un pays dans des intérêts commerciaux dans un autre pays, sous forme d'établissement d'opérations commerciales ou d'acquisition d'actifs commerciaux dans l'autre pays, tels que la propriété ou l'intérêt de contrôle dans une entreprise étrangère."
   },
   "Language": {
     "en": "Anglais",
@@ -32,8 +35,8 @@
     "line": "Graphique linéaire",
     "area": "Graphique à aires",
     "radar": "Graphique radar"
-  }, 
-  "NotFound":{
+  },
+  "NotFound": {
     "message": "Oups! Cette page n'est pas trouvée"
   }
 }

@@ -40,6 +40,7 @@ type TMainChart = {
   removeCountry: (name: string) => void;
   removeLastCountry: () => void;
   isCurrencySymbol: boolean;
+  icon?: string;
 };
 
 const MainChartComp: React.FC<TMainChart> = ({
@@ -56,6 +57,7 @@ const MainChartComp: React.FC<TMainChart> = ({
   removeCountry,
   removeLastCountry,
   isCurrencySymbol,
+  icon,
 }) => {
   const { theme } = useTheme();
   const [chartType, setChartType] = React.useState<TChart>('bar');
@@ -80,6 +82,7 @@ const MainChartComp: React.FC<TMainChart> = ({
             chartConfig={chartConfig}
             countries={countries}
             isCurrencySymbol={isCurrencySymbol}
+            icon={icon}
           />
         );
       case 'radar':
@@ -96,6 +99,7 @@ const MainChartComp: React.FC<TMainChart> = ({
             chartConfig={chartConfig}
             chartData={chartData}
             isCurrencySymbol={isCurrencySymbol}
+            icon={icon}
           />
         );
       case 'line':
@@ -105,6 +109,7 @@ const MainChartComp: React.FC<TMainChart> = ({
             chartConfig={chartConfig}
             countries={countries}
             isCurrencySymbol={isCurrencySymbol}
+            icon={icon}
           />
         );
       default:
@@ -114,6 +119,7 @@ const MainChartComp: React.FC<TMainChart> = ({
             chartConfig={chartConfig}
             countries={countries}
             isCurrencySymbol={isCurrencySymbol}
+            icon={icon}
           />
         );
     }

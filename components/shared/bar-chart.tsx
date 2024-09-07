@@ -14,11 +14,13 @@ const BarChartComp = ({
   chartConfig,
   countries,
   isCurrencySymbol,
+  icon,
 }: {
   chartData: any[];
   chartConfig: ChartConfig;
   countries: TCountries[];
   isCurrencySymbol: boolean;
+  icon?: string;
 }) => {
   return (
     <ChartContainer config={chartConfig} className="h-full w-full">
@@ -43,14 +45,20 @@ const BarChartComp = ({
           tickFormatter={(value) => {
             const formattedValue = formatCurrency(
               value,
-              isCurrencySymbol
+              isCurrencySymbol,
+              icon
             ).split('.');
             return formattedValue[0] + formattedValue[1].slice(2);
           }}
         />
         <ChartTooltip
           cursor={false}
-          content={<ChartTooltipContent isCurrencySymbol={isCurrencySymbol} />}
+          content={
+            <ChartTooltipContent
+              isCurrencySymbol={isCurrencySymbol}
+              icon={icon}
+            />
+          }
         />
         {countries.map((country, idx) => (
           <Bar
