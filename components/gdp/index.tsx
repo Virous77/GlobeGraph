@@ -3,7 +3,8 @@
 import { useCountryData } from '@/hooks';
 import MainChartComp from '../shared';
 import { useGDPStore } from '@/store/use-gdp';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import useCountryLanguage from '@/hooks/use-country-language';
 
 const GDPChart = () => {
   const {
@@ -15,6 +16,7 @@ const GDPChart = () => {
     removeLastCountry,
     gdpData,
     setGDPData,
+    setMultipleCountries,
   } = useGDPStore();
   const { isLoading, chartData, fetchSingleCountryGDPData, fetchGDPData } =
     useCountryData({
@@ -24,8 +26,9 @@ const GDPChart = () => {
       timeRange,
       indicator: 'NY.GDP.MKTP.CD',
     });
-
   const t = useTranslations('Chart');
+  const lang = useLocale();
+  useCountryLanguage({ countries, setMultipleCountries, lang });
 
   return (
     <MainChartComp

@@ -13,6 +13,7 @@ import { TCountries } from './use-gdp';
 type TState = {
   countries: TCountries[];
   setCountries: (countries: TCountries) => void;
+  setMultipleCountries: (countries: TCountries[]) => void;
   population: TPopulation[] | [];
   setPopulations: (population: TPopulation[]) => void;
   removeCountry: (name: string) => void;
@@ -30,6 +31,10 @@ export const usePopulationStore = create<TState>((set) => ({
       const newCountries = [...state.countries, countries];
       setLocalStorage('populationCountries', newCountries);
       return { countries: newCountries };
+    }),
+  setMultipleCountries: (countries) =>
+    set(() => {
+      return { countries };
     }),
   removeCountry: (value) =>
     set((state) => {

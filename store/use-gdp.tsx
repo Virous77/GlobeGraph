@@ -19,6 +19,7 @@ type TAllGDPData = {
 type TState = {
   countries: TCountries[];
   setCountries: (countries: TCountries) => void;
+  setMultipleCountries: (countries: TCountries[]) => void;
   removeCountry: (name: string) => void;
   removeLastCountry: () => void;
   timeRange: TTimeRange;
@@ -34,6 +35,10 @@ export const useGDPStore = create<TState>((set) => ({
       const newCountries = [...state.countries, countries];
       setLocalStorage('countries', newCountries);
       return { countries: newCountries };
+    }),
+  setMultipleCountries: (countries) =>
+    set(() => {
+      return { countries };
     }),
   removeCountry: (value) =>
     set((state) => {

@@ -2,8 +2,9 @@
 
 import MainChartComp from '../shared';
 import { useCountryData } from '@/hooks';
-import { useUnemploymentStore } from '@/store/use-happiness';
-import { useTranslations } from 'next-intl';
+import useCountryLanguage from '@/hooks/use-country-language';
+import { useUnemploymentStore } from '@/store/use-unemployment';
+import { useLocale, useTranslations } from 'next-intl';
 
 const Unemployment = () => {
   const {
@@ -15,6 +16,7 @@ const Unemployment = () => {
     removeLastCountry,
     unemployment,
     setUnemployment,
+    setMultipleCountries,
   } = useUnemploymentStore();
   const { isLoading, chartData, fetchSingleCountryGDPData, fetchGDPData } =
     useCountryData({
@@ -26,6 +28,8 @@ const Unemployment = () => {
     });
 
   const t = useTranslations('Chart');
+  const lang = useLocale();
+  useCountryLanguage({ countries, setMultipleCountries, lang });
 
   return (
     <MainChartComp

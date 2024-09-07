@@ -15,6 +15,7 @@ type TState = {
   setLifeExpectancy: (data: TLifeExpectancy[]) => void;
   countries: TCountries[];
   setCountries: (countries: TCountries) => void;
+  setMultipleCountries: (countries: TCountries[]) => void;
   removeCountry: (name: string) => void;
   removeLastCountry: () => void;
   timeRange: TTimeRange;
@@ -30,6 +31,10 @@ export const useCountryLifeStore = create<TState>((set) => ({
       const newCountries = [...state.countries, countries];
       setLocalStorage('lifeExpectancyCountries', newCountries);
       return { countries: newCountries };
+    }),
+  setMultipleCountries: (countries) =>
+    set(() => {
+      return { countries };
     }),
   removeCountry: (value) =>
     set((state) => {

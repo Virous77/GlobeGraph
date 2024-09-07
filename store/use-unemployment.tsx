@@ -13,6 +13,7 @@ import { TCountries } from './use-gdp';
 type TState = {
   countries: TCountries[];
   setCountries: (countries: TCountries) => void;
+  setMultipleCountries: (countries: TCountries[]) => void;
   removeCountry: (name: string) => void;
   removeLastCountry: () => void;
   timeRange: TTimeRange;
@@ -28,6 +29,10 @@ export const useUnemploymentStore = create<TState>((set) => ({
       const newCountries = [...state.countries, countries];
       setLocalStorage('uCountries', newCountries);
       return { countries: newCountries };
+    }),
+  setMultipleCountries: (countries) =>
+    set(() => {
+      return { countries };
     }),
   removeCountry: (value) =>
     set((state) => {

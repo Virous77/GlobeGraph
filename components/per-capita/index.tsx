@@ -3,7 +3,8 @@
 import MainChartComp from '../shared';
 import { useCapitaIncomeStore } from '@/store/use-capita';
 import { useCountryData } from '@/hooks';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import useCountryLanguage from '@/hooks/use-country-language';
 
 const PerCapita = () => {
   const {
@@ -15,6 +16,7 @@ const PerCapita = () => {
     removeLastCountry,
     capitaIncome,
     setCapitaIncome,
+    setMultipleCountries,
   } = useCapitaIncomeStore();
   const { isLoading, chartData, fetchSingleCountryGDPData, fetchGDPData } =
     useCountryData({
@@ -25,6 +27,8 @@ const PerCapita = () => {
       indicator: 'NY.GDP.PCAP.CD',
     });
   const t = useTranslations('Chart');
+  const lang = useLocale();
+  useCountryLanguage({ countries, setMultipleCountries, lang });
 
   return (
     <MainChartComp

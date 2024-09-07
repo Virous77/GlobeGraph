@@ -3,7 +3,8 @@
 import { useCountryData } from '@/hooks';
 import MainChartComp from '../shared';
 import { useCountryLifeStore } from '@/store/use-life';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import useCountryLanguage from '@/hooks/use-country-language';
 
 const LifeExpectancy = () => {
   const {
@@ -15,6 +16,7 @@ const LifeExpectancy = () => {
     removeLastCountry,
     lifeExpectancy,
     setLifeExpectancy,
+    setMultipleCountries,
   } = useCountryLifeStore();
   const { isLoading, chartData, fetchSingleCountryGDPData, fetchGDPData } =
     useCountryData({
@@ -26,6 +28,8 @@ const LifeExpectancy = () => {
     });
 
   const t = useTranslations('Chart');
+  const lang = useLocale();
+  useCountryLanguage({ countries, setMultipleCountries, lang });
 
   return (
     <MainChartComp

@@ -2,8 +2,9 @@
 
 import MainChartComp from '../shared';
 import { useCountryData } from '@/hooks';
+import useCountryLanguage from '@/hooks/use-country-language';
 import { usePopulationStore } from '@/store/use-population';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 const Population = () => {
   const {
@@ -15,6 +16,7 @@ const Population = () => {
     removeLastCountry,
     population,
     setPopulations,
+    setMultipleCountries,
   } = usePopulationStore();
   const { isLoading, chartData, fetchSingleCountryGDPData, fetchGDPData } =
     useCountryData({
@@ -26,6 +28,8 @@ const Population = () => {
     });
 
   const t = useTranslations('Chart');
+  const lang = useLocale();
+  useCountryLanguage({ countries, setMultipleCountries, lang });
 
   return (
     <MainChartComp
