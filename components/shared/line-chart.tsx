@@ -7,8 +7,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
-import { TCountries } from '@/store/use-gdp';
 import { formatCurrency } from '@/utils';
+import { TCountries } from '@/hooks/use-data';
 
 const LineChartComp = ({
   chartData,

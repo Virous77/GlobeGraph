@@ -3,29 +3,26 @@
 import MainChartComp from '../shared';
 import { useCountryData } from '@/hooks';
 import useCountryLanguage from '@/hooks/use-country-language';
-import { usePopulationStore } from '@/store/use-population';
 import { useLocale, useTranslations } from 'next-intl';
 
 const Population = () => {
   const {
+    isLoading,
+    chartData,
+    countries,
+    setMultipleCountries,
     timeRange,
     setTimeRange,
-    countries,
     setCountries,
     removeCountry,
     removeLastCountry,
-    population,
-    setPopulations,
-    setMultipleCountries,
-  } = usePopulationStore();
-  const { isLoading, chartData, fetchSingleCountryGDPData, fetchGDPData } =
-    useCountryData({
-      countries,
-      countryData: population,
-      setCountryData: setPopulations,
-      timeRange,
-      indicator: 'SP.POP.TOTL',
-    });
+    fetchSingleCountryGDPData,
+    fetchGDPData,
+  } = useCountryData({
+    indicator: 'SP.POP.TOTL',
+    countryKey: 'populationCountries',
+    timeRangeKey: 'populationTimeRange',
+  });
 
   const t = useTranslations('Chart');
   const lang = useLocale();

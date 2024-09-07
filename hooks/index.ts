@@ -1,24 +1,32 @@
 import { getData } from '@/data-layer';
-import { TPerCapitaIncome } from '@/data-layer/types';
-import { TCountries } from '@/store/use-gdp';
-import { TTimeRange } from '@/utils';
 import { useState, useEffect, useMemo } from 'react';
+import { useData } from './use-data';
 
 type TCountryData = {
-  countries: TCountries[];
-  timeRange: TTimeRange;
-  countryData: [] | TPerCapitaIncome[];
-  setCountryData: (data: TPerCapitaIncome[]) => void;
   indicator: string;
+  countryKey: string;
+  timeRangeKey: string;
 };
 
 export const useCountryData = ({
-  countries,
-  timeRange,
-  countryData,
-  setCountryData,
   indicator,
+  countryKey,
+  timeRangeKey,
 }: TCountryData) => {
+  const {
+    data: countryData,
+    countries,
+    timeRange,
+    setData,
+    setCountries,
+    setMultipleCountries,
+    removeCountry,
+    removeLastCountry,
+    setTimeRange,
+  } = useData({
+    countryKey,
+    timeRangeKey,
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchGDPData = async ({ from, to }: { from: number; to: number }) => {
@@ -36,7 +44,7 @@ export const useCountryData = ({
     );
 
     setIsLoading(false);
-    setCountryData(
+    setData(
       data.map((d, idx) => {
         return { country: countries[idx].value, data: d };
       })
@@ -45,7 +53,7 @@ export const useCountryData = ({
 
   useEffect(() => {
     fetchGDPData(timeRange);
-  }, [countries]);
+  }, []);
 
   const fetchSingleCountryGDPData = async (name: string) => {
     if (countryData.find((d) => d.country === name)) return;
@@ -58,7 +66,7 @@ export const useCountryData = ({
     });
 
     setIsLoading(false);
-    setCountryData([{ country: name, data }]);
+    setData((prev) => [...prev, { country: name, data }]);
   };
 
   const modifyData = useMemo(() => {
@@ -90,5 +98,12 @@ export const useCountryData = ({
     chartData,
     isLoading,
     fetchGDPData,
+    setCountries,
+    setMultipleCountries,
+    removeCountry,
+    removeLastCountry,
+    setTimeRange,
+    countries,
+    timeRange,
   };
 };

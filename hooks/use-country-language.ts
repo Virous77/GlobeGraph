@@ -1,6 +1,6 @@
 import { getAllCountries } from '@/components/shared/config';
-import { TCountries } from '@/store/use-gdp';
 import { useEffect } from 'react';
+import { TCountries } from './use-data';
 
 type TCountry = {
   countries: TCountries[];

@@ -8,9 +8,9 @@ import {
   CommandList,
 } from '@/components/ui/command';
 import { Command as CommandPrimitive } from 'cmdk';
-import { TCountries } from '@/store/use-gdp';
 import { useTranslations } from 'next-intl';
 import { getAllCountries } from './config';
+import { TCountries } from '@/hooks/use-data';
 
 type TMultiSelect = {
   countries: TCountries[];

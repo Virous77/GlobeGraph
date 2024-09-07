@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import MainSelect from '../custom-ui/main-select';
-import { TTimeRange } from '@/store/use-gdp';
+import { TTimeRange } from '@/utils';
 
 type TTimeRangeL = {
   value: string;

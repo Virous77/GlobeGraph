@@ -15,6 +15,11 @@ export type TGDPData = {
   decimal: number;
 };
 
+export type TCountryData = {
+  country: string;
+  data: TGDPData[];
+};
+
 export type TPerCapitaIncome = {
   country: string;
   data: TGDPData[];

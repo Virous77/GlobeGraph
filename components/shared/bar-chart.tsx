@@ -6,8 +6,8 @@ import {
   ChartTooltipContent,
 } from '../ui/chart';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
-import { TCountries } from '@/store/use-gdp';
 import { formatCurrency } from '@/utils';
+import { TCountries } from '@/hooks/use-data';
 
 const BarChartComp = ({
   chartData,

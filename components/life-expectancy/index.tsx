@@ -2,30 +2,27 @@
 
 import { useCountryData } from '@/hooks';
 import MainChartComp from '../shared';
-import { useCountryLifeStore } from '@/store/use-life';
 import { useLocale, useTranslations } from 'next-intl';
 import useCountryLanguage from '@/hooks/use-country-language';
 
 const LifeExpectancy = () => {
   const {
+    isLoading,
+    chartData,
+    countries,
+    setMultipleCountries,
     timeRange,
     setTimeRange,
-    countries,
     setCountries,
     removeCountry,
     removeLastCountry,
-    lifeExpectancy,
-    setLifeExpectancy,
-    setMultipleCountries,
-  } = useCountryLifeStore();
-  const { isLoading, chartData, fetchSingleCountryGDPData, fetchGDPData } =
-    useCountryData({
-      countries,
-      countryData: lifeExpectancy,
-      setCountryData: setLifeExpectancy,
-      timeRange,
-      indicator: 'SP.DYN.LE00.IN',
-    });
+    fetchSingleCountryGDPData,
+    fetchGDPData,
+  } = useCountryData({
+    indicator: 'SP.DYN.LE00.IN',
+    countryKey: 'lifeExpectancyCountries',
+    timeRangeKey: 'lifeTimeRange',
+  });
 
   const t = useTranslations('Chart');
   const lang = useLocale();

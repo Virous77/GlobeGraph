@@ -1,31 +1,29 @@
 'use client';
 
 import MainChartComp from '../shared';
-import { useCapitaIncomeStore } from '@/store/use-capita';
 import { useCountryData } from '@/hooks';
 import { useLocale, useTranslations } from 'next-intl';
 import useCountryLanguage from '@/hooks/use-country-language';
 
 const PerCapita = () => {
   const {
+    isLoading,
+    chartData,
+    countries,
+    setMultipleCountries,
     timeRange,
     setTimeRange,
-    countries,
     setCountries,
     removeCountry,
     removeLastCountry,
-    capitaIncome,
-    setCapitaIncome,
-    setMultipleCountries,
-  } = useCapitaIncomeStore();
-  const { isLoading, chartData, fetchSingleCountryGDPData, fetchGDPData } =
-    useCountryData({
-      countries,
-      countryData: capitaIncome,
-      setCountryData: setCapitaIncome,
-      timeRange,
-      indicator: 'NY.GDP.PCAP.CD',
-    });
+    fetchSingleCountryGDPData,
+    fetchGDPData,
+  } = useCountryData({
+    indicator: 'NY.GDP.PCAP.CD',
+    countryKey: 'capitaCountries',
+    timeRangeKey: 'capitaTimeRange',
+  });
+
   const t = useTranslations('Chart');
   const lang = useLocale();
   useCountryLanguage({ countries, setMultipleCountries, lang });

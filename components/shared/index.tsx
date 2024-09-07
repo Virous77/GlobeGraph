@@ -8,10 +8,9 @@ import {
 } from '../ui/card';
 import { createChartConfig } from './config';
 import { cn } from '@/lib/utils';
-import { captureScreenshot, color } from '@/utils';
+import { captureScreenshot, color, TTimeRange } from '@/utils';
 import { Loader } from '../ui/loader';
 import TimeRange from './time-range';
-import { TCountries, TTimeRange } from '@/store/use-gdp';
 import ChartType from './chart-type';
 import { ToolTipComp } from '../ui/tooltip';
 import { BadgeInfo, CameraIcon } from 'lucide-react';
@@ -23,6 +22,7 @@ import LineChartComp from './line-chart';
 import { useTheme } from 'next-themes';
 import PreviewScreenshot from './preview-screenshot';
 import { useLocale } from 'next-intl';
+import { TCountries } from '@/hooks/use-data';
 
 export type TChart = 'area' | 'bar' | 'line' | 'radar';
 
