@@ -9,7 +9,8 @@ import {
 } from '@/components/ui/command';
 import { Command as CommandPrimitive } from 'cmdk';
 import { TCountries } from '@/store/use-gdp';
-import { COUNTRIES } from './config';
+import { useTranslations } from 'next-intl';
+import { getAllCountries } from './config';
 
 type TMultiSelect = {
   countries: TCountries[];
@@ -17,6 +18,7 @@ type TMultiSelect = {
   setCountries: (countries: TCountries) => void;
   removeCountry: (name: string) => void;
   removeLastCountry: () => void;
+  lang: string;
 };
 
 const MultiSelect: React.FC<TMultiSelect> = ({
@@ -25,6 +27,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
   setCountries,
   removeCountry,
   removeLastCountry,
+  lang = 'en',
 }) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [open, setOpen] = React.useState(false);
@@ -50,9 +53,11 @@ const MultiSelect: React.FC<TMultiSelect> = ({
     []
   );
 
-  const selectTables = COUNTRIES.filter(
+  const selectTables = getAllCountries(lang).filter(
     (framework) => !countries.find((c) => c.value === framework.value)
   );
+
+  const t = useTranslations('Chart');
 
   return (
     <Command
@@ -94,7 +99,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
               ref={inputRef}
               onBlur={() => setOpen(false)}
               onFocus={() => setOpen(true)}
-              placeholder="Select Countries..."
+              placeholder={`${t('search')}...`}
               className="ml-2 flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground"
             />
           )}

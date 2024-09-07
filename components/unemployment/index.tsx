@@ -3,6 +3,7 @@
 import MainChartComp from '../shared';
 import { useCountryData } from '@/hooks';
 import { useUnemploymentStore } from '@/store/use-happiness';
+import { useTranslations } from 'next-intl';
 
 const Unemployment = () => {
   const {
@@ -24,6 +25,8 @@ const Unemployment = () => {
       indicator: 'SL.UEM.TOTL.ZS',
     });
 
+  const t = useTranslations('Chart');
+
   return (
     <MainChartComp
       isLoading={isLoading}
@@ -33,8 +36,8 @@ const Unemployment = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title="Country Unemployment Labour Force"
-      toolTipMessage="Unemployment rate is the percentage of the total labor force that is unemployed but actively seeking employment and willing to work."
+      title={t('unemployment')}
+      toolTipMessage={t('unemploymentDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}

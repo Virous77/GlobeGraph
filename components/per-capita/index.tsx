@@ -3,6 +3,7 @@
 import MainChartComp from '../shared';
 import { useCapitaIncomeStore } from '@/store/use-capita';
 import { useCountryData } from '@/hooks';
+import { useTranslations } from 'next-intl';
 
 const PerCapita = () => {
   const {
@@ -23,6 +24,7 @@ const PerCapita = () => {
       timeRange,
       indicator: 'NY.GDP.PCAP.CD',
     });
+  const t = useTranslations('Chart');
 
   return (
     <MainChartComp
@@ -33,8 +35,8 @@ const PerCapita = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title="Per Capita Income of Countries"
-      toolTipMessage="Per Capita Income is the average income of a country's citizens. It is calculated by dividing the country's total income by its population."
+      title={t('capita')}
+      toolTipMessage={t('capitaDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}

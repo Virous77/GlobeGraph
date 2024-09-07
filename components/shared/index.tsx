@@ -22,6 +22,7 @@ import AreaChartComp from './area-chart';
 import LineChartComp from './line-chart';
 import { useTheme } from 'next-themes';
 import PreviewScreenshot from './preview-screenshot';
+import { useLocale } from 'next-intl';
 
 export type TChart = 'area' | 'bar' | 'line' | 'radar';
 
@@ -59,6 +60,7 @@ const MainChartComp: React.FC<TMainChart> = ({
   const { theme } = useTheme();
   const [chartType, setChartType] = React.useState<TChart>('bar');
   const [open, setOpen] = React.useState<string>('');
+  const locale = useLocale();
 
   const modifyConfig = countries.map((country) => {
     return {
@@ -187,6 +189,7 @@ const MainChartComp: React.FC<TMainChart> = ({
             setCountries={setCountries}
             removeCountry={removeCountry}
             removeLastCountry={removeLastCountry}
+            lang={locale}
           />
           <TimeRange
             fetchGDPData={fetchGDPData}
@@ -211,6 +214,7 @@ const MainChartComp: React.FC<TMainChart> = ({
         </div>
         <div className="mr-4 mt-4 w-full px-3">
           <MultiSelect
+            lang={locale}
             countries={countries}
             fetchNewCountryData={fetchSingleCountryGDPData}
             setCountries={setCountries}

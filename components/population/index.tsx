@@ -3,6 +3,7 @@
 import MainChartComp from '../shared';
 import { useCountryData } from '@/hooks';
 import { usePopulationStore } from '@/store/use-population';
+import { useTranslations } from 'next-intl';
 
 const Population = () => {
   const {
@@ -24,6 +25,8 @@ const Population = () => {
       indicator: 'SP.POP.TOTL',
     });
 
+  const t = useTranslations('Chart');
+
   return (
     <MainChartComp
       isLoading={isLoading}
@@ -33,8 +36,8 @@ const Population = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title="Country Population"
-      toolTipMessage="Population stands for the total number of people living in a country."
+      title={t('population')}
+      toolTipMessage={t('populationDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}

@@ -1,0 +1,39 @@
+{
+  "HomePage": {
+    "title": "Explorar los datos",
+    "gdp": "PIB del país",
+    "capita": "Ingreso per cápita del país",
+    "life": "Esperanza de vida del país",
+    "population": "Población del país",
+    "unemployment": "Fuerza laboral desempleada del país",
+    "visit": "Visitar"
+  },
+  "Chart": {
+    "search": "Seleccionar países",
+    "gdp": "PIB de los países",
+    "gdpDesc": "PIB significa Producto Interno Bruto. Es el valor total de todos los bienes y servicios producidos en un país en un año.",
+    "capita": "Ingreso per cápita de los países",
+    "capitaDesc": "El ingreso per cápita es el ingreso promedio de los ciudadanos de un país. Se calcula dividiendo el ingreso total del país por su población.",
+    "life": "Esperanza de vida de los países",
+    "lifeDesc": "La esperanza de vida es el número promedio de años que se espera que viva una persona según el año de su nacimiento.",
+    "population": "Población del país",
+    "populationDesc": "La población representa el número total de personas que viven en un país.",
+    "unemployment": "Fuerza laboral desempleada del país",
+    "unemploymentDesc": "La tasa de desempleo es el porcentaje de la fuerza laboral total que está desempleada pero que busca activamente empleo y está dispuesta a trabajar."
+  },
+  "Language": {
+    "en": "Inglés",
+    "es": "Español",
+    "fr": "Francés",
+    "hi": "Hindi"
+  },
+  "ChartName": {
+    "bar": "Gráfico de barras",
+    "line": "Gráfico de líneas",
+    "area": "Gráfico de área",
+    "radar": "Gráfico de radar"
+  },
+  "NotFound": {
+    "message": "¡Vaya! Esta página no se encuentra"
+  }
+}

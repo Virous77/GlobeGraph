@@ -172,7 +172,7 @@ const MainSelect: React.FC<TMainSelect> = (props) => {
       <SelectContent
         id={props.id}
         {...props.selectContentProps}
-        className={cn('rounded-[20px]', props.classNames?.content)}
+        className={cn('z-[100] rounded-[20px]', props.classNames?.content)}
       >
         {props.isGrouped
           ? (props.data as TGroupedData[])?.map((group, idx) =>

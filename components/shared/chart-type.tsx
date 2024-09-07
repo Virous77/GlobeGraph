@@ -1,6 +1,7 @@
 import React from 'react';
 import MainSelect from '../custom-ui/main-select';
 import { TChart } from '.';
+import { useTranslations } from 'next-intl';
 
 const ChartType = ({
   chartType,
@@ -9,28 +10,31 @@ const ChartType = ({
   chartType: TChart;
   setChartType: (value: TChart) => void;
 }) => {
+  const t = useTranslations('ChartName');
+  const CHART = [
+    {
+      name: t('bar'),
+      value: 'bar',
+    },
+    {
+      name: t('area'),
+      value: 'area',
+    },
+    {
+      name: t('line'),
+      value: 'line',
+    },
+    {
+      name: t('radar'),
+      value: 'radar',
+    },
+  ];
+
   return (
     <MainSelect
       id="from"
       value={chartType}
-      data={[
-        {
-          name: 'Bar Chart',
-          value: 'bar',
-        },
-        {
-          name: 'Area Chart',
-          value: 'area',
-        },
-        {
-          name: 'Line Chart',
-          value: 'line',
-        },
-        {
-          name: 'Radar Chart',
-          value: 'radar',
-        },
-      ]}
+      data={CHART}
       placeholder="Select Chart Type"
       classNames={{
         trigger: ' bg-transparent  rounded-[1rem] w-full md:w-full',

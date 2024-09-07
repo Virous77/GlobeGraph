@@ -1,7 +1,7 @@
-import { COUNTRIES } from '@/components/shared/config';
 import currency from 'currency.js';
 import { z } from 'zod';
 import html2canvas from 'html2canvas';
+import { getAllCountries } from '@/components/shared/config';
 
 type TColor = string[];
 
@@ -27,6 +27,7 @@ const schema = z.array(
 );
 
 export const getLocalCountries = (key: string) => {
+  const COUNTRIES = getAllCountries('en');
   if (typeof window === 'undefined') return [COUNTRIES[0]];
   const countries = getLocalStorage(key) as any;
   if (!countries || countries.length === 0) return [COUNTRIES[0]];

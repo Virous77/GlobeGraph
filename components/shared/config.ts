@@ -1,5 +1,11 @@
 import { ChartConfig } from '../ui/chart';
-import alpha3 from 'iso-3166-1';
+import countries from 'i18n-iso-countries';
+
+const locales = ['en', 'fr', 'es', 'hi'];
+
+locales.forEach((locale) => {
+  countries.registerLocale(require(`i18n-iso-countries/langs/${locale}.json`));
+});
 
 type TChartConfig = {
   data: {
@@ -18,7 +24,13 @@ export const createChartConfig = (data: TChartConfig['data']): ChartConfig => {
   }, {} as ChartConfig);
 };
 
-export const COUNTRIES = alpha3.all().map((country) => ({
-  label: country.country,
-  value: country.alpha3,
-}));
+const twoLetterToThreeLetter = (twoLetterCode: string) => {
+  return countries.alpha2ToAlpha3(twoLetterCode);
+};
+
+export const getAllCountries = (locale: string) => {
+  return Object.entries(countries.getNames(locale)).map(([alpha2, label]) => ({
+    label,
+    value: twoLetterToThreeLetter(alpha2)!,
+  }));
+};

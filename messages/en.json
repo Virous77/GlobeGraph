@@ -1,0 +1,39 @@
+{
+  "HomePage": {
+    "title": "Explore the Data",
+    "gdp": "Country GDP",
+    "capita": "Country per Capita Income",
+    "life": "Country Life Expectancy",
+    "population": "Country Population",
+    "unemployment": "Country Unemployment Labour Force",
+    "visit": "Visit"
+  },
+  "Chart": {
+    "search": "Select Countries",
+    "gdp": "GDP of Countries",
+    "gdpDesc": "GDP stands for Gross Domestic Product. It is the total value of all goods and services produced in a country in a year.",
+    "capita": "Per Capita Income of Countries",
+    "capitaDesc": "Per Capita Income is the average income of a country's citizens. It is calculated by dividing the country's total income by its population.",
+    "life": "Life Expectancy of Countries",
+    "lifeDesc": "Life expectancy is the average number of years a person is expected to live based on the year of their birth.",
+    "population": "Country Population",
+    "populationDesc": "Population stands for the total number of people living in a country.",
+    "unemployment": "Country Unemployment Labour Force",
+    "unemploymentDesc": "Unemployment rate is the percentage of the total labor force that is unemployed but actively seeking employment and willing to work."
+  },
+  "Language": {
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "hi": "Hindi"
+  },
+  "ChartName": {
+    "bar": "Bar Chart",
+    "line": "Line Chart",
+    "area": "Area Chart",
+    "radar": "Radar Chart"
+  },
+  "NotFound": {
+    "message": "Oops! This page is not found"
+  }
+}

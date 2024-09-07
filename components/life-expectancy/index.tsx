@@ -3,6 +3,7 @@
 import { useCountryData } from '@/hooks';
 import MainChartComp from '../shared';
 import { useCountryLifeStore } from '@/store/use-life';
+import { useTranslations } from 'next-intl';
 
 const LifeExpectancy = () => {
   const {
@@ -24,6 +25,8 @@ const LifeExpectancy = () => {
       indicator: 'SP.DYN.LE00.IN',
     });
 
+  const t = useTranslations('Chart');
+
   return (
     <MainChartComp
       isLoading={isLoading}
@@ -33,8 +36,8 @@ const LifeExpectancy = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title="Life Expectancy of Countries"
-      toolTipMessage="Life expectancy is the average number of years a person is expected to live based on the year of their birth."
+      title={t('life')}
+      toolTipMessage={t('lifeDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}

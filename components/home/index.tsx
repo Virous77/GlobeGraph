@@ -3,39 +3,42 @@ import { Card, CardContent } from '../ui/card';
 import Link from 'next/link';
 import { SquareArrowOutUpRight } from 'lucide-react';
 import BackgroundDots from '../custom-ui/background';
-
-const URLS = [
-  {
-    href: '/country-gdp',
-    name: 'Country GDP',
-    color: 'red',
-  },
-  {
-    href: '/country-per-capita-income',
-    name: 'Country Per Capita Income',
-    color: 'blue',
-  },
-  {
-    href: '/country-life-expectancy',
-    name: 'Country Life Expectancy',
-    color: 'green',
-  },
-  {
-    href: '/country-population',
-    name: 'Country Population',
-    color: 'brown',
-  },
-  {
-    href: '/country-unemployment-labor-force',
-    name: 'Country Unemployment Labour Force',
-    color: 'purple',
-  },
-];
+import { useTranslations } from 'next-intl';
 
 const Home = () => {
+  const t = useTranslations('HomePage');
+
+  const URLS = [
+    {
+      href: '/country-gdp',
+      name: t('gdp'),
+      color: 'red',
+    },
+    {
+      href: '/country-per-capita-income',
+      name: t('capita'),
+      color: 'blue',
+    },
+    {
+      href: '/country-life-expectancy',
+      name: t('life'),
+      color: 'green',
+    },
+    {
+      href: '/country-population',
+      name: t('population'),
+      color: 'brown',
+    },
+    {
+      href: '/country-unemployment-labor-force',
+      name: t('unemployment'),
+      color: 'purple',
+    },
+  ];
+
   return (
     <section className="w-full rounded-[1rem] border p-5 md:w-fit">
-      <h1 className="mb-3 text-2xl font-bold">Explore the data</h1>
+      <h1 className="mb-3 text-2xl font-bold">{t('title')}</h1>
       <div className="flex w-full flex-col flex-wrap items-center gap-3 md:flex-row">
         {URLS.map(({ href, name, color }) => (
           <Card
@@ -48,7 +51,7 @@ const Home = () => {
                 href={href}
                 className="relative z-10 flex items-center gap-1 text-sm font-semibold hover:underline hover:underline-offset-4"
               >
-                Visit
+                {t('visit')}
                 <SquareArrowOutUpRight size={16} />
               </Link>
               <BackgroundDots dotColor={color} />

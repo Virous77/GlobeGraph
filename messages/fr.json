@@ -1,0 +1,39 @@
+{
+  "HomePage": {
+    "title": "Explorer les données",
+    "gdp": "PIB du pays",
+    "capita": "Revenu par habitant du pays",
+    "life": "Espérance de vie du pays",
+    "population": "Population du pays",
+    "unemployment": "Force de travail au chômage du pays",
+    "visit": "Visiter"
+  },
+  "Chart": {
+    "search": "Sélectionnez les pays",
+    "gdp": "PIB des pays",
+    "gdpDesc": "Le PIB signifie Produit Intérieur Brut. C'est la valeur totale de tous les biens et services produits dans un pays en une année.",
+    "capita": "Revenu par habitant des pays",
+    "capitaDesc": "Le revenu par habitant est le revenu moyen des citoyens d'un pays. Il est calculé en divisant le revenu total du pays par sa population.",
+    "life": "Espérance de vie des pays",
+    "lifeDesc": "L'espérance de vie est le nombre moyen d'années qu'une personne est censée vivre en fonction de l'année de sa naissance.",
+    "population": "Population du pays",
+    "populationDesc": "La population représente le nombre total de personnes vivant dans un pays.",
+    "unemployment": "Force de travail au chômage du pays",
+    "unemploymentDesc": "Le taux de chômage est le pourcentage de la population active totale qui est au chômage mais qui recherche activement un emploi et qui est prête à travailler."
+  },
+  "Language": {
+    "en": "Anglais",
+    "es": "Espagnol",
+    "fr": "Français",
+    "hi": "Hindi"
+  },
+  "ChartName": {
+    "bar": "Diagramme à bandes",
+    "line": "Graphique linéaire",
+    "area": "Graphique à aires",
+    "radar": "Graphique radar"
+  }, 
+  "NotFound":{
+    "message": "Oups! Cette page n'est pas trouvée"
+  }
+}

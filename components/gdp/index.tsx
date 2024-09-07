@@ -3,6 +3,7 @@
 import { useCountryData } from '@/hooks';
 import MainChartComp from '../shared';
 import { useGDPStore } from '@/store/use-gdp';
+import { useTranslations } from 'next-intl';
 
 const GDPChart = () => {
   const {
@@ -24,6 +25,8 @@ const GDPChart = () => {
       indicator: 'NY.GDP.MKTP.CD',
     });
 
+  const t = useTranslations('Chart');
+
   return (
     <MainChartComp
       isLoading={isLoading}
@@ -33,8 +36,8 @@ const GDPChart = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title="GDP of Countries"
-      toolTipMessage="GDP stands for Gross Domestic Product. It is the total value of all goods and services produced in a country in a year."
+      title={t('gdp')}
+      toolTipMessage={t('gdpDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}

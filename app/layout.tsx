@@ -5,6 +5,8 @@ import AppStart from '@/components/custom-ui/app-start';
 import { commonMetaData } from '@/utils';
 import Header from '@/components/layouts/header';
 import Footer from '@/components/layouts/footer';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,28 +24,33 @@ export const generateMetadata = async () => {
   };
 };
 
-const RootLayout = ({
+const RootLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <AppStart>
-            <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto]">
-              <Header />
-              {children}
-              <Footer />
-            </div>
-          </AppStart>
-        </ThemeProvider>
+        <NextIntlClientProvider messages={messages}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <AppStart>
+              <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto]">
+                <Header />
+                {children}
+                <Footer />
+              </div>
+            </AppStart>
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
