@@ -30,6 +30,7 @@
     "prettier-plugin-tailwindcss": "^0.6.6",
     "react": "^18",
     "react-dom": "^18",
+    "react-hotkeys-hook": "^4.5.1",
     "recharts": "^2.12.7",
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.5.2",

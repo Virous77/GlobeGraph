@@ -2,7 +2,7 @@ export const Loader = ({ type = 'normal' }: { type?: 'full' | 'normal' }) => {
   if (type === 'normal') return <BounceLoader />;
 
   return (
-    <div className="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed left-0 top-0 z-[102] flex h-full w-full items-center justify-center bg-black bg-opacity-50">
       <BounceLoader />
     </div>
   );

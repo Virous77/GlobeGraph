@@ -74,3 +74,7 @@
 .spp-clone {
   margin-bottom: -15px;
 }
+
+.tooltipPaddingC {
+  padding-bottom: 15px !important;
+}

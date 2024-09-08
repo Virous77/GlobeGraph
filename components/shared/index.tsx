@@ -14,15 +14,13 @@ import TimeRange from './time-range';
 import ChartType from './chart-type';
 import { ToolTipComp } from '../ui/tooltip';
 import { BadgeInfo, CameraIcon } from 'lucide-react';
-import BarChartComp from './bar-chart';
 import MultiSelect from './multi-select';
-import RadarChartComp from './radar-chart';
-import AreaChartComp from './area-chart';
-import LineChartComp from './line-chart';
 import { useTheme } from 'next-themes';
 import PreviewScreenshot from './preview-screenshot';
 import { useLocale } from 'next-intl';
 import { TCountries } from '@/hooks/use-data';
+import { useHotkeys } from 'react-hotkeys-hook';
+import ChartRenderer from './chart-renderer';
 
 export type TChart = 'area' | 'bar' | 'line' | 'radar';
 
@@ -64,6 +62,14 @@ const MainChartComp: React.FC<TMainChart> = ({
   const [open, setOpen] = React.useState<string>('');
   const locale = useLocale();
 
+  useHotkeys('ctrl+s', () => {
+    captureScreenshot({
+      elementId: 'capture-chart',
+      theme: theme || 'light',
+      callback: setOpen,
+    });
+  });
+
   const modifyConfig = countries.map((country) => {
     return {
       name: country.value,
@@ -72,58 +78,6 @@ const MainChartComp: React.FC<TMainChart> = ({
   });
 
   const chartConfig = createChartConfig(modifyConfig);
-
-  const renderChart = (chart: string) => {
-    switch (chart) {
-      case 'bar':
-        return (
-          <BarChartComp
-            chartData={chartData}
-            chartConfig={chartConfig}
-            countries={countries}
-            isCurrencySymbol={isCurrencySymbol}
-            icon={icon}
-          />
-        );
-      case 'radar':
-        return (
-          <RadarChartComp
-            chartConfig={chartConfig}
-            chartData={chartData}
-            isCurrencySymbol={isCurrencySymbol}
-          />
-        );
-      case 'area':
-        return (
-          <AreaChartComp
-            chartConfig={chartConfig}
-            chartData={chartData}
-            isCurrencySymbol={isCurrencySymbol}
-            icon={icon}
-          />
-        );
-      case 'line':
-        return (
-          <LineChartComp
-            chartData={chartData}
-            chartConfig={chartConfig}
-            countries={countries}
-            isCurrencySymbol={isCurrencySymbol}
-            icon={icon}
-          />
-        );
-      default:
-        return (
-          <BarChartComp
-            chartData={chartData}
-            chartConfig={chartConfig}
-            countries={countries}
-            isCurrencySymbol={isCurrencySymbol}
-            icon={icon}
-          />
-        );
-    }
-  };
 
   return (
     <Card
@@ -231,7 +185,14 @@ const MainChartComp: React.FC<TMainChart> = ({
       </div>
 
       <CardContent className="h-[500px] w-[97vw] rounded-xl px-0 py-4 md:p-4">
-        {renderChart(chartType)}
+        <ChartRenderer
+          chartType={chartType}
+          chartData={chartData}
+          icon={icon}
+          chartConfig={chartConfig}
+          countries={countries}
+          isCurrencySymbol={isCurrencySymbol}
+        />
       </CardContent>
       {isLoading && <Loader type="full" />}
       <PreviewScreenshot open={open} setOpen={setOpen} />

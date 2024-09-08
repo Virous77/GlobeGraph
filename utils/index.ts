@@ -226,6 +226,11 @@ export const captureScreenshot = async ({
       el.forEach((el) => {
         el.classList.add('spp-clone');
       });
+
+      const tooltip = doc.querySelector('.tooltipPadding');
+      if (tooltip) {
+        tooltip.classList.add('tooltipPaddingC');
+      }
     },
   });
 
