@@ -7,6 +7,7 @@
     "population": "Country Population",
     "unemployment": "Country Unemployment Labour Force",
     "fdi": "Country Foreign Direct Investment",
+    "debt": "Country Central Government Debt",
     "visit": "Visit"
   },
   "Chart": {
@@ -22,7 +23,9 @@
     "unemployment": "Country Unemployment Labour Force",
     "unemploymentDesc": "Unemployment rate is the percentage of the total labor force that is unemployed but actively seeking employment and willing to work.",
     "fdi": "Foreign Direct Investment of Countries",
-    "fdiDesc": "Foreign Direct Investment is an investment made by a company or individual in one country in business interests in another country, in the form of either establishing business operations or acquiring business assets in the other country, such as ownership or controlling interest in a foreign company."
+    "fdiDesc": "Foreign Direct Investment is an investment made by a company or individual in one country in business interests in another country, in the form of either establishing business operations or acquiring business assets in the other country, such as ownership or controlling interest in a foreign company.",
+    "debt": "Central Government Debt of Countries",
+    "debtDesc": "This indicator measures the total debt of the central government as a percentage of the country's Gross Domestic Product (GDP). It provides a view of how much debt the government owes relative to the size of the economy."
   },
   "Language": {
     "en": "English",

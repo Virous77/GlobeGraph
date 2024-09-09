@@ -38,6 +38,18 @@ const sitemap = async () => {
       priority: 0.9,
       changeFrequency: 'weekly',
     },
+    {
+      url: `${URL}/country-fdi`,
+      lastModified: new Date(),
+      priority: 0.9,
+      changeFrequency: 'weekly',
+    },
+    {
+      url: `${URL}/country-debt`,
+      lastModified: new Date(),
+      priority: 0.9,
+      changeFrequency: 'weekly',
+    },
   ];
 
   return [...restUrls];

@@ -39,6 +39,11 @@ const Home = () => {
       name: t('fdi'),
       color: 'pink',
     },
+    {
+      href: '/country-debt',
+      name: t('debt'),
+      color: 'yellow',
+    },
   ];
 
   return (
