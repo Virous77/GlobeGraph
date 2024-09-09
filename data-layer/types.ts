@@ -1,4 +1,4 @@
-export type TGDPData = {
+export type TResponseData = {
   indicator: {
     id: string;
     value: string;
@@ -17,25 +17,25 @@ export type TGDPData = {
 
 export type TCountryData = {
   country: string;
-  data: TGDPData[];
+  data: TResponseData[];
 };
 
 export type TPerCapitaIncome = {
   country: string;
-  data: TGDPData[];
+  data: TResponseData[];
 };
 
 export type TLifeExpectancy = {
   country: string;
-  data: TGDPData[];
+  data: TResponseData[];
 };
 
 export type TPopulation = {
   country: string;
-  data: TGDPData[];
+  data: TResponseData[];
 };
 
 export type TUnemployment = {
   country: string;
-  data: TGDPData[];
+  data: TResponseData[];
 };

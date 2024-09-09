@@ -32,6 +32,12 @@ const sitemap = async () => {
       priority: 0.9,
       changeFrequency: 'weekly',
     },
+    {
+      url: `${URL}/country-unemployment-labor-force`,
+      lastModified: new Date(),
+      priority: 0.9,
+      changeFrequency: 'weekly',
+    },
   ];
 
   return [...restUrls];

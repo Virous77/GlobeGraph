@@ -143,7 +143,7 @@ export const commonMetaData = ({
     },
     robots: 'index, follow',
     alternates: {
-      canonical: `https://reetesh.inhttps://globe-graph.vercel.app${url}`,
+      canonical: `https://globe-graph.vercel.app${url}`,
       languages: {
         'en-US': '/',
       },

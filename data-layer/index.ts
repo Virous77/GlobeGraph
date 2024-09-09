@@ -1,4 +1,4 @@
-import { TGDPData } from './types';
+import { TResponseData } from './types';
 
 const generateUrl = (
   countryCode: string,
@@ -30,7 +30,7 @@ export const getData = async ({
 
     const response = await res.json();
     if (response[1].length === 0) return [];
-    return response[1] as TGDPData[];
+    return response[1] as TResponseData[];
   } catch (error) {
     return [];
   }
