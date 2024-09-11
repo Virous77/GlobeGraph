@@ -114,13 +114,13 @@ const convertInrLakhToUsdBillion = (inrLakh: number, exchangeRate: number) => {
 export const commonMetaData = ({
   name,
   desc,
-  image,
+  image = 'https://res.cloudinary.com/dw6wav4jg/image/upload/v1725522213/Image_05-09-24_at_1.12_PM_hnwwl7.jpg',
   url,
   keywords,
 }: {
   name: string;
   desc: string;
-  image: string;
+  image?: string;
   url: string;
   keywords: string[];
 }) => {

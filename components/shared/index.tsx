@@ -29,8 +29,8 @@ type TMainChart = {
   timeRange: TTimeRange;
   isLoading: boolean;
   chartData: any[];
-  fetchSingleCountryGDPData: (name: string) => void;
-  fetchGDPData: ({ from, to }: { from: number; to: number }) => void;
+  fetchSingleCountryData: (name: string) => void;
+  fetchCountryData: ({ from, to }: { from: number; to: number }) => void;
   setTimeRange: (timeRange: TTimeRange) => void;
   title: string;
   toolTipMessage: string;
@@ -46,8 +46,8 @@ const MainChartComp: React.FC<TMainChart> = ({
   timeRange,
   isLoading,
   chartData,
-  fetchSingleCountryGDPData,
-  fetchGDPData,
+  fetchSingleCountryData,
+  fetchCountryData,
   setTimeRange,
   title,
   toolTipMessage,
@@ -145,14 +145,14 @@ const MainChartComp: React.FC<TMainChart> = ({
         <div className="custom-hide mr-4 mt-4 hidden w-[300px] flex-col mobile992:flex">
           <MultiSelect
             countries={countries}
-            fetchNewCountryData={fetchSingleCountryGDPData}
+            fetchNewCountryData={fetchSingleCountryData}
             setCountries={setCountries}
             removeCountry={removeCountry}
             removeLastCountry={removeLastCountry}
             lang={locale}
           />
           <TimeRange
-            fetchGDPData={fetchGDPData}
+            fetchCountryData={fetchCountryData}
             timeRange={timeRange}
             setTimeRange={setTimeRange}
           />
@@ -167,7 +167,7 @@ const MainChartComp: React.FC<TMainChart> = ({
         <div className="-mt-4 flex items-center gap-1 px-4">
           <ChartType chartType={chartType} setChartType={setChartType} />
           <TimeRange
-            fetchGDPData={fetchGDPData}
+            fetchCountryData={fetchCountryData}
             timeRange={timeRange}
             setTimeRange={setTimeRange}
           />
@@ -176,7 +176,7 @@ const MainChartComp: React.FC<TMainChart> = ({
           <MultiSelect
             lang={locale}
             countries={countries}
-            fetchNewCountryData={fetchSingleCountryGDPData}
+            fetchNewCountryData={fetchSingleCountryData}
             setCountries={setCountries}
             removeCountry={removeCountry}
             removeLastCountry={removeLastCountry}

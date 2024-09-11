@@ -8,11 +8,11 @@ type TTimeRangeL = {
 };
 
 const TimeRange = ({
-  fetchGDPData,
+  fetchCountryData,
   timeRange,
   setTimeRange,
 }: {
-  fetchGDPData: (timeRange: { from: number; to: number }) => void;
+  fetchCountryData: (timeRange: { from: number; to: number }) => void;
   timeRange: TTimeRange;
   setTimeRange: (timeRange: TTimeRange) => void;
 }) => {
@@ -62,7 +62,7 @@ const TimeRange = ({
         onChange={(value) => {
           const newTimeRange = { from: parseInt(value), to: timeRange.to };
           setTimeRange(newTimeRange);
-          fetchGDPData(newTimeRange);
+          fetchCountryData(newTimeRange);
         }}
       />
       -
@@ -78,7 +78,7 @@ const TimeRange = ({
         onChange={(value) => {
           const newTimeRange = { from: timeRange.from, to: parseInt(value) };
           setTimeRange(newTimeRange);
-          fetchGDPData(newTimeRange);
+          fetchCountryData(newTimeRange);
         }}
       />
     </div>

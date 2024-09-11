@@ -16,8 +16,8 @@ const PerCapita = () => {
     setCountries,
     removeCountry,
     removeLastCountry,
-    fetchSingleCountryGDPData,
-    fetchGDPData,
+    fetchSingleCountryData,
+    fetchCountryData,
   } = useCountryData({
     indicator: 'NY.GDP.PCAP.CD',
     countryKey: 'capitaCountries',
@@ -31,8 +31,8 @@ const PerCapita = () => {
   return (
     <MainChartComp
       isLoading={isLoading}
-      fetchGDPData={fetchGDPData}
-      fetchSingleCountryGDPData={fetchSingleCountryGDPData}
+      fetchCountryData={fetchCountryData}
+      fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}
       setTimeRange={setTimeRange}
       countries={countries}

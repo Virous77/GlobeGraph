@@ -6,10 +6,8 @@ export const generateMetadata = async () => {
   const metaData = commonMetaData({
     name: 'Country Life Expectancy',
     desc: 'Explore the life expectancy of different countries using Globe Graph.',
-    image:
-      'https://res.cloudinary.com/dw6wav4jg/image/upload/v1725522213/Image_05-09-24_at_1.12_PM_hnwwl7.jpg',
     url: '/country-life-expectancy',
-    keywords: ['geo chart'],
+    keywords: ['geo chart', 'life expectancy', 'country life expectancy'],
   });
   return {
     ...metaData,

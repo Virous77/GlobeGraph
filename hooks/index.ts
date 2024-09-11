@@ -29,7 +29,13 @@ export const useCountryData = ({
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchGDPData = async ({ from, to }: { from: number; to: number }) => {
+  const fetchCountryData = async ({
+    from,
+    to,
+  }: {
+    from: number;
+    to: number;
+  }) => {
     if (!countries.length) return;
     setIsLoading(true);
     const data = await Promise.all(
@@ -52,10 +58,10 @@ export const useCountryData = ({
   };
 
   useEffect(() => {
-    fetchGDPData(timeRange);
+    fetchCountryData(timeRange);
   }, []);
 
-  const fetchSingleCountryGDPData = async (name: string) => {
+  const fetchSingleCountryData = async (name: string) => {
     if (countryData.find((d) => d.country === name)) return;
     setIsLoading(true);
     const data = await getData({
@@ -94,10 +100,10 @@ export const useCountryData = ({
   }, [modifyData]);
 
   return {
-    fetchSingleCountryGDPData,
+    fetchSingleCountryData,
     chartData,
     isLoading,
-    fetchGDPData,
+    fetchCountryData,
     setCountries,
     setMultipleCountries,
     removeCountry,
