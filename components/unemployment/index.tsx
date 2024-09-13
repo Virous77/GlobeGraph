@@ -43,6 +43,7 @@ const Unemployment = () => {
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
       isCurrencySymbol={false}
+      icon="%"
     />
   );
 };

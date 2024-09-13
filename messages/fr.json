@@ -6,8 +6,8 @@
     "life": "Espérance de vie du pays",
     "population": "Population du pays",
     "unemployment": "Force de travail au chômage du pays",
-    "fdi": "Investissement direct étranger du pays",
-    "debt": "Dette du gouvernement central du pays",
+    "fdi": "Investissement direct étranger du pays à PIB",
+    "debt": "Dette du gouvernement central du pays à PIB",
     "visit": "Visiter"
   },
   "Chart": {
@@ -22,9 +22,9 @@
     "populationDesc": "La population représente le nombre total de personnes vivant dans un pays.",
     "unemployment": "Force de travail au chômage du pays",
     "unemploymentDesc": "Le taux de chômage est le pourcentage de la population active totale qui est au chômage mais qui recherche activement un emploi et qui est prête à travailler.",
-    "fdi": "Investissement direct étranger des pays",
+    "fdi": "Investissement direct étranger des pays à PIB",
     "fdiDesc": "L'investissement direct étranger est un investissement réalisé par une entreprise ou un individu dans un pays dans des intérêts commerciaux dans un autre pays, sous forme d'établissement d'opérations commerciales ou d'acquisition d'actifs commerciaux dans l'autre pays, tels que la propriété ou l'intérêt de contrôle dans une entreprise étrangère.",
-    "debt": "Dette du gouvernement central des pays",
+    "debt": "Dette du gouvernement central des pays à PIB",
     "debtDesc": "Cet indicateur mesure la dette totale du gouvernement central en pourcentage du Produit Intérieur Brut (PIB) du pays. Il donne une idée de la dette que le gouvernement doit par rapport à la taille de l'économie."
   },
   "Language": {

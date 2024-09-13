@@ -6,8 +6,8 @@
     "life": "Esperanza de vida del país",
     "population": "Población del país",
     "unemployment": "Fuerza laboral desempleada del país",
-    "fdi": "Inversión extranjera directa del país",
-    "debt": "Deuda del gobierno central del país",
+    "fdi": "Inversión extranjera directa del país a PIB",
+    "debt": "Deuda del gobierno central del país a PIB",
     "visit": "Visitar"
   },
   "Chart": {
@@ -22,9 +22,9 @@
     "populationDesc": "La población representa el número total de personas que viven en un país.",
     "unemployment": "Fuerza laboral desempleada del país",
     "unemploymentDesc": "La tasa de desempleo es el porcentaje de la fuerza laboral total que está desempleada pero que busca activamente empleo y está dispuesta a trabajar.",
-    "fdi": "Inversión extranjera directa de los países",
+    "fdi": "Inversión extranjera directa de los países a PIB",
     "fdiDesc": "La Inversión Extranjera Directa es una inversión realizada por una empresa o individuo en un país en intereses comerciales en otro país, en forma de establecer operaciones comerciales o adquirir activos comerciales en el otro país, como propiedad o interés de control en una empresa extranjera.",
-    "debt": "Deuda del gobierno central de los países",
+    "debt": "Deuda del gobierno central de los países a PIB",
     "debtDesc": "Este indicador mide la deuda total del gobierno central como porcentaje del Producto Interno Bruto (PIB) del país. Proporciona una visión de cuánta deuda debe el gobierno en relación con el tamaño de la economía."
   },
   "Language": {
