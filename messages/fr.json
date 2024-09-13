@@ -8,6 +8,7 @@
     "unemployment": "Force de travail au chômage du pays",
     "fdi": "Investissement direct étranger du pays à PIB",
     "debt": "Dette du gouvernement central du pays à PIB",
+    "fdiInflow": "Investissement direct étranger du pays",
     "visit": "Visiter"
   },
   "Chart": {
@@ -25,7 +26,9 @@
     "fdi": "Investissement direct étranger des pays à PIB",
     "fdiDesc": "L'investissement direct étranger est un investissement réalisé par une entreprise ou un individu dans un pays dans des intérêts commerciaux dans un autre pays, sous forme d'établissement d'opérations commerciales ou d'acquisition d'actifs commerciaux dans l'autre pays, tels que la propriété ou l'intérêt de contrôle dans une entreprise étrangère.",
     "debt": "Dette du gouvernement central des pays à PIB",
-    "debtDesc": "Cet indicateur mesure la dette totale du gouvernement central en pourcentage du Produit Intérieur Brut (PIB) du pays. Il donne une idée de la dette que le gouvernement doit par rapport à la taille de l'économie."
+    "debtDesc": "Cet indicateur mesure la dette totale du gouvernement central en pourcentage du Produit Intérieur Brut (PIB) du pays. Il donne une idée de la dette que le gouvernement doit par rapport à la taille de l'économie.",
+    "fdiInflow": "Investissement direct étranger du pays",
+    "fdiInflowDesc": "L'investissement direct étranger Inflow est la valeur totale des investissements directs étrangers qui entrent dans un pays au cours d'une période donnée."
   },
   "Language": {
     "en": "Anglais",

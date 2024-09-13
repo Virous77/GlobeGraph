@@ -44,6 +44,11 @@ const Home = () => {
       name: t('debt'),
       color: 'yellow',
     },
+    {
+      href: '/country-fdi-inflows',
+      name: t('fdiInflow'),
+      color: 'orange',
+    },
   ];
 
   return (
@@ -56,7 +61,9 @@ const Home = () => {
             className="relative m-0 w-full flex-1 rounded-[1rem] p-0 md:min-w-[300px]"
           >
             <CardContent className="flex h-[100px] w-full flex-col items-center justify-center gap-1 rounded-[1rem] border p-3 md:min-w-[300px]">
-              <h2 className="relative z-10 text-lg font-semibold">{name}</h2>
+              <h2 className="relative z-10 text-center text-lg font-semibold">
+                {name}
+              </h2>
               <Link
                 href={href}
                 className="relative z-10 flex items-center gap-1 text-sm font-semibold hover:underline hover:underline-offset-4"

@@ -1,3 +1,5 @@
+import { url } from 'inspector';
+
 const sitemap = async () => {
   const URL = 'https://globe-graph.vercel.app';
 
@@ -46,6 +48,12 @@ const sitemap = async () => {
     },
     {
       url: `${URL}/country-debt`,
+      lastModified: new Date(),
+      priority: 0.9,
+      changeFrequency: 'weekly',
+    },
+    {
+      url: `${URL}/country-fdi-inflows`,
       lastModified: new Date(),
       priority: 0.9,
       changeFrequency: 'weekly',

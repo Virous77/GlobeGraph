@@ -8,6 +8,7 @@
     "unemployment": "Country Unemployment Labour Force",
     "fdi": "Country Foreign Direct Investment to GDP",
     "debt": "Country Central Government Debt to GDP",
+    "fdiInflow": "Country Foreign Direct Investment Inflow",
     "visit": "Visit"
   },
   "Chart": {
@@ -25,7 +26,9 @@
     "fdi": "Foreign Direct Investment of Countries to GDP",
     "fdiDesc": "Foreign Direct Investment is an investment made by a company or individual in one country in business interests in another country, in the form of either establishing business operations or acquiring business assets in the other country, such as ownership or controlling interest in a foreign company.",
     "debt": "Central Government Debt of Countries to GDP",
-    "debtDesc": "This indicator measures the total debt of the central government as a percentage of the country's Gross Domestic Product (GDP). It provides a view of how much debt the government owes relative to the size of the economy."
+    "debtDesc": "This indicator measures the total debt of the central government as a percentage of the country's Gross Domestic Product (GDP). It provides a view of how much debt the government owes relative to the size of the economy.",
+    "fdiInflow": "Foreign Direct Investment Inflow of Countries",
+    "fdiInflowDesc": "Foreign Direct Investment Inflow is the total value of foreign direct investments that flow into a country in a given period of time."
   },
   "Language": {
     "en": "English",
