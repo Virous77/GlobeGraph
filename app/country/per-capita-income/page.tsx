@@ -6,7 +6,7 @@ export const generateMetadata = async () => {
   const metaData = commonMetaData({
     name: 'Country Per Capita Income',
     desc: 'Explore the per capita income of different countries using Globe Graph.',
-    url: '/country-per-capita-income',
+    url: '/per-capita-income',
     keywords: ['geo chart', 'per capita income', 'country per capita income'],
   });
   return {

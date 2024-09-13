@@ -37,7 +37,7 @@ const PerCapita = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title={t('capita')}
+      title={t('perCapitaIncome')}
       toolTipMessage={t('capitaDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}

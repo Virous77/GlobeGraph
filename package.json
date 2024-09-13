@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "ts-node utils/url.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prettier": "npx prettier --write ."
+    "prettier": "npx prettier --write .",
+    "newFile": "ts-node utils/indicator.ts"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",
@@ -45,6 +47,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }

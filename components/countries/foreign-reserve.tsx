@@ -1,11 +1,10 @@
 'use client';
-
-import MainChartComp from '@/components/shared';
 import { useCountryData } from '@/hooks';
-import useCountryLanguage from '@/hooks/use-country-language';
+import MainChartComp from '@/components/shared';
 import { useLocale, useTranslations } from 'next-intl';
+import useCountryLanguage from '@/hooks/use-country-language';
 
-const Unemployment = () => {
+const ForeignReserveChart = () => {
   const {
     isLoading,
     chartData,
@@ -19,9 +18,9 @@ const Unemployment = () => {
     fetchSingleCountryData,
     fetchCountryData,
   } = useCountryData({
-    indicator: 'SL.UEM.TOTL.ZS',
-    countryKey: 'uCountries',
-    timeRangeKey: 'uTimeRange',
+    indicator: 'FI.RES.TOTL.CD',
+    countryKey: 'foreignCountries',
+    timeRangeKey: 'foreignTimeRange',
   });
 
   const t = useTranslations('Chart');
@@ -37,15 +36,14 @@ const Unemployment = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title={t('unemploymentLaborForce')}
-      toolTipMessage={t('unemploymentDesc')}
+      title={t('foreignReserve')}
+      toolTipMessage={t('foreignReserveDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
-      isCurrencySymbol={false}
-      icon="%"
+      isCurrencySymbol={true}
     />
   );
 };
 
-export default Unemployment;
+export default ForeignReserveChart;

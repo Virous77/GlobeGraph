@@ -37,7 +37,7 @@ const FDIInflowsChart = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title={t('fdiInflow')}
+      title={t('fdiInflows')}
       toolTipMessage={t('fdiInflowDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}

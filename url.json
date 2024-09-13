@@ -1,0 +1,52 @@
+[
+  {
+    "href": "/country/debt",
+    "name": "debt",
+    "color": "#FF0000"
+  },
+  {
+    "href": "/country/fdi",
+    "name": "fdi",
+    "color": "#00FF00"
+  },
+  {
+    "href": "/country/fdi-inflows",
+    "name": "fdiInflows",
+    "color": "#0000FF"
+  },
+  {
+    "href": "/country/foreign-reserve",
+    "name": "foreignReserve",
+    "color": "#FFFF00"
+  },
+  {
+    "href": "/country/gdp",
+    "name": "gdp",
+    "color": "#FF00FF"
+  },
+  {
+    "href": "/country/inflation",
+    "name": "inflation",
+    "color": "#00FFFF"
+  },
+  {
+    "href": "/country/life-expectancy",
+    "name": "lifeExpectancy",
+    "color": "#800000"
+  },
+  {
+    "href": "/country/per-capita-income",
+    "name": "perCapitaIncome",
+    "color": "#808000"
+  },
+  {
+    "href": "/country/population",
+    "name": "population",
+    "color": "#008000"
+  },
+  {
+    "href": "/country/unemployment-labor-force",
+    "name": "unemploymentLaborForce",
+    "color": "#800080"
+  }
+]

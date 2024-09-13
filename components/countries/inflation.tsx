@@ -1,11 +1,11 @@
 'use client';
 
-import MainChartComp from '@/components/shared';
 import { useCountryData } from '@/hooks';
-import useCountryLanguage from '@/hooks/use-country-language';
+import MainChartComp from '@/components/shared';
 import { useLocale, useTranslations } from 'next-intl';
+import useCountryLanguage from '@/hooks/use-country-language';
 
-const Unemployment = () => {
+const InflationChart = () => {
   const {
     isLoading,
     chartData,
@@ -19,9 +19,9 @@ const Unemployment = () => {
     fetchSingleCountryData,
     fetchCountryData,
   } = useCountryData({
-    indicator: 'SL.UEM.TOTL.ZS',
-    countryKey: 'uCountries',
-    timeRangeKey: 'uTimeRange',
+    indicator: 'FP.CPI.TOTL.ZG',
+    countryKey: 'GGInflation',
+    timeRangeKey: 'GGInflationTR',
   });
 
   const t = useTranslations('Chart');
@@ -37,8 +37,8 @@ const Unemployment = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title={t('unemploymentLaborForce')}
-      toolTipMessage={t('unemploymentDesc')}
+      title={t('inflation')}
+      toolTipMessage={t('inflationDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
@@ -48,4 +48,4 @@ const Unemployment = () => {
   );
 };
 
-export default Unemployment;
+export default InflationChart;

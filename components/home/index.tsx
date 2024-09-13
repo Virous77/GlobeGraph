@@ -4,52 +4,18 @@ import Link from 'next/link';
 import { SquareArrowOutUpRight } from 'lucide-react';
 import BackgroundDots from '../custom-ui/background';
 import { useTranslations } from 'next-intl';
+import urls from '@/url.json';
 
 const Home = () => {
   const t = useTranslations('HomePage');
 
-  const URLS = [
-    {
-      href: '/country/gdp',
-      name: t('gdp'),
-      color: 'red',
-    },
-    {
-      href: '/country/per-capita-income',
-      name: t('capita'),
-      color: 'blue',
-    },
-    {
-      href: '/country/life-expectancy',
-      name: t('life'),
-      color: 'green',
-    },
-    {
-      href: '/country/population',
-      name: t('population'),
-      color: 'brown',
-    },
-    {
-      href: '/country/unemployment-labor-force',
-      name: t('unemployment'),
-      color: 'purple',
-    },
-    {
-      href: '/country/fdi',
-      name: t('fdi'),
-      color: 'pink',
-    },
-    {
-      href: '/country/debt',
-      name: t('debt'),
-      color: 'yellow',
-    },
-    {
-      href: '/country/fdi-inflows',
-      name: t('fdiInflow'),
-      color: 'orange',
-    },
-  ];
+  const URLS = urls.map((url) => {
+    const { name } = url;
+    return {
+      ...url,
+      name: t(name),
+    };
+  });
 
   return (
     <section className="w-full rounded-[1rem] border p-5 md:w-fit">

@@ -37,7 +37,7 @@ const LifeExpectancy = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title={t('life')}
+      title={t('lifeExpectancy')}
       toolTipMessage={t('lifeDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}

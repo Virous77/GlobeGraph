@@ -6,7 +6,7 @@ export const generateMetadata = async () => {
   const metaData = commonMetaData({
     name: 'Country Life Expectancy',
     desc: 'Explore the life expectancy of different countries using Globe Graph.',
-    url: '/country-life-expectancy',
+    url: '/life-expectancy',
     keywords: ['geo chart', 'life expectancy', 'country life expectancy'],
   });
   return {
