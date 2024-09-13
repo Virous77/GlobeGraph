@@ -25,6 +25,7 @@ export const createChartConfig = (data: TChartConfig['data']): ChartConfig => {
 };
 
 const twoLetterToThreeLetter = (twoLetterCode: string) => {
+  if (twoLetterCode.toLowerCase() === 'xk') return `XKX`;
   return countries.alpha2ToAlpha3(twoLetterCode);
 };
 
