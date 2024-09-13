@@ -1,11 +1,11 @@
 'use client';
 
+import MainChartComp from '@/components/shared';
 import { useCountryData } from '@/hooks';
-import MainChartComp from '../shared';
 import { useLocale, useTranslations } from 'next-intl';
 import useCountryLanguage from '@/hooks/use-country-language';
 
-const CountryDebt = () => {
+const PerCapita = () => {
   const {
     isLoading,
     chartData,
@@ -19,9 +19,9 @@ const CountryDebt = () => {
     fetchSingleCountryData,
     fetchCountryData,
   } = useCountryData({
-    indicator: 'GC.DOD.TOTL.GD.ZS',
-    countryKey: 'DebtCountries',
-    timeRangeKey: 'DebtTimeRange',
+    indicator: 'NY.GDP.PCAP.CD',
+    countryKey: 'capitaCountries',
+    timeRangeKey: 'capitaTimeRange',
   });
 
   const t = useTranslations('Chart');
@@ -37,15 +37,14 @@ const CountryDebt = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title={t('debt')}
-      toolTipMessage={t('debtDesc')}
+      title={t('capita')}
+      toolTipMessage={t('capitaDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
-      isCurrencySymbol={false}
-      icon="%"
+      isCurrencySymbol={true}
     />
   );
 };
 
-export default CountryDebt;
+export default PerCapita;

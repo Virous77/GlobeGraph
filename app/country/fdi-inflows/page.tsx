@@ -1,12 +1,12 @@
-import CountryDebt from '@/components/country-debt';
+import FDIInflowsChart from '@/components/countries/fdi-inflows';
 import { commonMetaData } from '@/utils';
 
 export const generateMetadata = async () => {
   const metaData = commonMetaData({
-    name: 'Country Debt',
-    desc: 'Explore the Debt of different countries using Globe Graph.',
-    url: '/country-debt',
-    keywords: ['geo chart'],
+    name: 'Country FDI Inflows',
+    desc: 'Explore the FDI inflows of different countries using Globe Graph.',
+    url: '/country-fdi-inflows',
+    keywords: ['fdi', 'foreign direct investment', 'foreign investment'],
   });
   return {
     ...metaData,
@@ -17,7 +17,7 @@ const CountryFDIPage = () => {
   return (
     <main>
       <section className="p-1">
-        <CountryDebt />
+        <FDIInflowsChart />
       </section>
     </main>
   );

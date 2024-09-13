@@ -1,4 +1,4 @@
-import FDIChart from '@/components/fdi';
+import FDIChart from '@/components/countries/fdi';
 import { commonMetaData } from '@/utils';
 
 export const generateMetadata = async () => {

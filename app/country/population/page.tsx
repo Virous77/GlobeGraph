@@ -1,4 +1,4 @@
-import Population from '@/components/population';
+import Population from '@/components/countries/population';
 import { commonMetaData } from '@/utils';
 import React from 'react';
 

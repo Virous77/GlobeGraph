@@ -1,11 +1,11 @@
 'use client';
 
 import { useCountryData } from '@/hooks';
-import MainChartComp from '../shared';
+import MainChartComp from '@/components/shared';
 import { useLocale, useTranslations } from 'next-intl';
 import useCountryLanguage from '@/hooks/use-country-language';
 
-const FDIInflowsChart = () => {
+const CountryDebt = () => {
   const {
     isLoading,
     chartData,
@@ -19,9 +19,9 @@ const FDIInflowsChart = () => {
     fetchSingleCountryData,
     fetchCountryData,
   } = useCountryData({
-    indicator: 'BX.KLT.DINV.CD.WD',
-    countryKey: 'fiCountries',
-    timeRangeKey: 'fiTimeRange',
+    indicator: 'GC.DOD.TOTL.GD.ZS',
+    countryKey: 'DebtCountries',
+    timeRangeKey: 'DebtTimeRange',
   });
 
   const t = useTranslations('Chart');
@@ -37,14 +37,15 @@ const FDIInflowsChart = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title={t('fdiInflow')}
-      toolTipMessage={t('fdiInflowDesc')}
+      title={t('debt')}
+      toolTipMessage={t('debtDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
-      isCurrencySymbol={true}
+      isCurrencySymbol={false}
+      icon="%"
     />
   );
 };
 
-export default FDIInflowsChart;
+export default CountryDebt;

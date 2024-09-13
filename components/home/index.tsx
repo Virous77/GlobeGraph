@@ -10,42 +10,42 @@ const Home = () => {
 
   const URLS = [
     {
-      href: '/country-gdp',
+      href: '/country/gdp',
       name: t('gdp'),
       color: 'red',
     },
     {
-      href: '/country-per-capita-income',
+      href: '/country/per-capita-income',
       name: t('capita'),
       color: 'blue',
     },
     {
-      href: '/country-life-expectancy',
+      href: '/country/life-expectancy',
       name: t('life'),
       color: 'green',
     },
     {
-      href: '/country-population',
+      href: '/country/population',
       name: t('population'),
       color: 'brown',
     },
     {
-      href: '/country-unemployment-labor-force',
+      href: '/country/unemployment-labor-force',
       name: t('unemployment'),
       color: 'purple',
     },
     {
-      href: '/country-fdi',
+      href: '/country/fdi',
       name: t('fdi'),
       color: 'pink',
     },
     {
-      href: '/country-debt',
+      href: '/country/debt',
       name: t('debt'),
       color: 'yellow',
     },
     {
-      href: '/country-fdi-inflows',
+      href: '/country/fdi-inflows',
       name: t('fdiInflow'),
       color: 'orange',
     },

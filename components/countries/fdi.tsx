@@ -1,11 +1,11 @@
 'use client';
 
-import MainChartComp from '../shared';
 import { useCountryData } from '@/hooks';
+import MainChartComp from '@/components/shared';
 import { useLocale, useTranslations } from 'next-intl';
 import useCountryLanguage from '@/hooks/use-country-language';
 
-const PerCapita = () => {
+const FDIChart = () => {
   const {
     isLoading,
     chartData,
@@ -19,9 +19,9 @@ const PerCapita = () => {
     fetchSingleCountryData,
     fetchCountryData,
   } = useCountryData({
-    indicator: 'NY.GDP.PCAP.CD',
-    countryKey: 'capitaCountries',
-    timeRangeKey: 'capitaTimeRange',
+    indicator: 'BX.KLT.DINV.WD.GD.ZS',
+    countryKey: 'fCountries',
+    timeRangeKey: 'fTimeRange',
   });
 
   const t = useTranslations('Chart');
@@ -37,14 +37,15 @@ const PerCapita = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title={t('capita')}
-      toolTipMessage={t('capitaDesc')}
+      title={t('fdi')}
+      toolTipMessage={t('fdiDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
-      isCurrencySymbol={true}
+      isCurrencySymbol={false}
+      icon="%"
     />
   );
 };
 
-export default PerCapita;
+export default FDIChart;

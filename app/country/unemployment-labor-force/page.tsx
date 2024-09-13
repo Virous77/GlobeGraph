@@ -1,4 +1,4 @@
-import Unemployment from '@/components/unemployment';
+import Unemployment from '@/components/countries/unemployment';
 import { commonMetaData } from '@/utils';
 import React from 'react';
 

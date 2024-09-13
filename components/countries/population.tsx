@@ -1,6 +1,6 @@
 'use client';
 
-import MainChartComp from '../shared';
+import MainChartComp from '@/components/shared';
 import { useCountryData } from '@/hooks';
 import useCountryLanguage from '@/hooks/use-country-language';
 import { useLocale, useTranslations } from 'next-intl';

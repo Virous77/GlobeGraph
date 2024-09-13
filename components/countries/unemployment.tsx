@@ -1,11 +1,11 @@
 'use client';
 
+import MainChartComp from '@/components/shared';
 import { useCountryData } from '@/hooks';
-import MainChartComp from '../shared';
-import { useLocale, useTranslations } from 'next-intl';
 import useCountryLanguage from '@/hooks/use-country-language';
+import { useLocale, useTranslations } from 'next-intl';
 
-const LifeExpectancy = () => {
+const Unemployment = () => {
   const {
     isLoading,
     chartData,
@@ -19,9 +19,9 @@ const LifeExpectancy = () => {
     fetchSingleCountryData,
     fetchCountryData,
   } = useCountryData({
-    indicator: 'SP.DYN.LE00.IN',
-    countryKey: 'lifeExpectancyCountries',
-    timeRangeKey: 'lifeTimeRange',
+    indicator: 'SL.UEM.TOTL.ZS',
+    countryKey: 'uCountries',
+    timeRangeKey: 'uTimeRange',
   });
 
   const t = useTranslations('Chart');
@@ -37,14 +37,15 @@ const LifeExpectancy = () => {
       setTimeRange={setTimeRange}
       countries={countries}
       chartData={chartData}
-      title={t('life')}
-      toolTipMessage={t('lifeDesc')}
+      title={t('unemployment')}
+      toolTipMessage={t('unemploymentDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
       isCurrencySymbol={false}
+      icon="%"
     />
   );
 };
 
-export default LifeExpectancy;
+export default Unemployment;

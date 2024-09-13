@@ -1,4 +1,4 @@
-import GDPChart from '@/components/gdp';
+import GDPChart from '@/components/countries/gdp';
 import { commonMetaData } from '@/utils';
 
 export const generateMetadata = async () => {

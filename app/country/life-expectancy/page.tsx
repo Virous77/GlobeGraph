@@ -1,4 +1,4 @@
-import LifeExpectancy from '@/components/life-expectancy';
+import LifeExpectancy from '@/components/countries/life-expectancy';
 import { commonMetaData } from '@/utils';
 import React from 'react';
 

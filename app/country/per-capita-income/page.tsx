@@ -1,4 +1,4 @@
-import PerCapita from '@/components/per-capita';
+import PerCapita from '@/components/countries/per-capita';
 import { commonMetaData } from '@/utils';
 import React from 'react';
 
