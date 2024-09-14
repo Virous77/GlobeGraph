@@ -6,7 +6,7 @@ export const generateMetadata = async () => {
   const metaData = commonMetaData({
     name: 'Country Population',
     desc: 'Explore the population of different countries using Globe Graph.',
-    url: '/population',
+    url: '/country/population',
     keywords: ['geo chart', 'population', 'country population'],
   });
   return {

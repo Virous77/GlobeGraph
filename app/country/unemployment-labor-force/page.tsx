@@ -6,7 +6,7 @@ export const generateMetadata = async () => {
   const metaData = commonMetaData({
     name: 'Country Unemployment Labour Force',
     desc: 'Explore the unemployment rate of different countries using Globe Graph.',
-    url: '/unemployment-labor-force',
+    url: '/country/unemployment-labor-force',
     keywords: ['geo chart', 'unemployment', 'country unemployment'],
   });
   return {

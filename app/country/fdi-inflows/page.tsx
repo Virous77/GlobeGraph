@@ -5,7 +5,7 @@ export const generateMetadata = async () => {
   const metaData = commonMetaData({
     name: 'Country FDI Inflows',
     desc: 'Explore the FDI inflows of different countries using Globe Graph.',
-    url: '/fdi-inflows',
+    url: '/country/fdi-inflows',
     keywords: ['fdi', 'foreign direct investment', 'foreign investment'],
   });
   return {

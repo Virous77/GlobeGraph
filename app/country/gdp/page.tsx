@@ -5,7 +5,7 @@ export const generateMetadata = async () => {
   const metaData = commonMetaData({
     name: 'Country GDP',
     desc: 'Explore the GDP of different countries using Globe Graph.',
-    url: '/gdp',
+    url: '/country/gdp',
     keywords: ['geo chart', 'gdp', 'gross domestic product', 'country gdp'],
   });
   return {

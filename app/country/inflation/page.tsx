@@ -5,7 +5,7 @@ export const generateMetadata = async () => {
   const metaData = commonMetaData({
     name: 'Country CPI',
     desc: 'Explore the CPI of different countries using Globe Graph.',
-    url: '/inflation',
+    url: '/country/inflation',
     keywords: ['geo chart', 'inflation', 'cpi', 'consumer price index'],
   });
   return {

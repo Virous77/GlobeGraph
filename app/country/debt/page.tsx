@@ -5,7 +5,7 @@ export const generateMetadata = async () => {
   const metaData = commonMetaData({
     name: 'Country Debt',
     desc: 'Explore the Debt of different countries using Globe Graph.',
-    url: '/debt',
+    url: '/country/debt',
     keywords: ['geo chart'],
   });
   return {

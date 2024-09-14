@@ -5,7 +5,7 @@ export const generateMetadata = async () => {
   const metaData = commonMetaData({
     name: 'Country Foreign Reserve',
     desc: 'Explore the foreign reserve of different countries using Globe Graph.',
-    url: '/foreign-reserve',
+    url: '/country/foreign-reserve',
     keywords: ['geo chart', 'foreign reserve', 'foreign reserve chart'],
   });
   return {

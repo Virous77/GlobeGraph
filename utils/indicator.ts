@@ -73,7 +73,7 @@ export const generateMetadata = async () => {
   const metaData = commonMetaData({
     name: 'Country ${name}',
     desc: '${desc}',
-    url: "/${fileName}",
+    url: "/country/${fileName}",
     keywords: ['geo chart'],
   });
   return {
