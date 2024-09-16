@@ -45,8 +45,13 @@
     "color": "#008000"
   },
   {
+    "href": "/country/poverty-level",
+    "name": "povertyLevel",
+    "color": "#800080"
+  },
+  {
     "href": "/country/unemployment-labor-force",
     "name": "unemploymentLaborForce",
-    "color": "#800080"
+    "color": "#008080"
   }
 ]

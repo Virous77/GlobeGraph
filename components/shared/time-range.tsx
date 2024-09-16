@@ -17,14 +17,14 @@ const TimeRange = ({
   setTimeRange: (timeRange: TTimeRange) => void;
 }) => {
   const [range, setRange] = useState<TTimeRangeL[]>([]);
+  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     const from = 1974;
-    const to = 2024;
 
     const addTimeRange = () => {
       const range = [] as TTimeRangeL[];
-      for (let i = from; i <= to; i++) {
+      for (let i = from; i <= currentYear - 1; i++) {
         range.push({
           value: i.toString(),
           name: i.toString(),
@@ -33,7 +33,7 @@ const TimeRange = ({
       setRange(range);
     };
     addTimeRange();
-  }, []);
+  }, [currentYear]);
 
   const fromRange = useMemo(() => {
     return range.filter((r) => parseInt(r.value) < timeRange.to);

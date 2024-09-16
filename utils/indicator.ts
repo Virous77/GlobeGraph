@@ -1,3 +1,5 @@
+// const fs = require('fs');
+
 const writeNewFile = ({
   localKey,
   indicator,
@@ -101,10 +103,10 @@ export default Country${name}Page;
 };
 
 writeNewFile({
-  localKey: 'foreign',
-  indicator: 'FI.RES.TOTL.CD',
-  titleKey: 'foreignReserve',
-  name: 'ForeignReserve',
-  fileName: 'foreign-reserve',
-  desc: 'Explore the foreign reserve of different countries using Globe Graph.',
+  localKey: 'poverty',
+  indicator: 'SI.POV.DDAY',
+  titleKey: 'povertyLevel',
+  name: 'PovertyLevel',
+  fileName: 'poverty-level',
+  desc: 'Explore the poverty level of countries using Globe Graph.',
 });

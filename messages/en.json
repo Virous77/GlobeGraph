@@ -11,6 +11,7 @@
     "fdiInflows": "Country Foreign Direct Investment Inflow",
     "inflation": "Country Consumer Price Inflation",
     "foreignReserve": "Country Foreign Reserve",
+    "povertyLevel": "Population Living Below the Poverty Line",
     "visit": "Visit"
   },
   "Chart": {
@@ -34,7 +35,9 @@
     "inflation": "Consumer Price Inflation of Countries",
     "inflationDesc": "Inflation is the rate at which the general level of prices for goods and services is rising, and subsequently, the purchasing power of currency is falling.",
     "foreignReserve": "Foreign Reserve of Countries",
-    "foreignReserveDesc": "Foreign exchange reserves are assets held on reserve by a central bank in foreign currencies. These reserves are used to back liabilities and influence monetary policy."
+    "foreignReserveDesc": "Foreign exchange reserves are assets held on reserve by a central bank in foreign currencies. These reserves are used to back liabilities and influence monetary policy.",
+    "povertyLevel": "Population Living Below the Poverty Line",
+    "povertyLevelDesc": "The percentage of the population living below the national poverty line."
   },
   "Language": {
     "en": "English",

@@ -11,6 +11,7 @@
     "fdiInflows": "Investissement direct étranger du pays",
     "inflation": "Inflation des prix à la consommation du pays",
     "foreignReserve": "Réserve étrangère du pays",
+    "povertyLevel": "Population vivant en dessous du seuil de pauvreté",
     "visit": "Visiter"
   },
   "Chart": {
@@ -34,7 +35,9 @@
     "inflation": "Inflation des prix à la consommation des pays",
     "inflationDesc": "L'inflation est le taux auquel le niveau général des prix des biens et services augmente, et par conséquent, le pouvoir d'achat de la monnaie diminue.",
     "foreignReserve": "Réserve étrangère des pays",
-    "foreignReserveDesc": "Les réserves de change sont des actifs détenus en réserve par une banque centrale dans des devises étrangères. Ces réserves sont utilisées pour garantir des passifs et influencer la politique monétaire."
+    "foreignReserveDesc": "Les réserves de change sont des actifs détenus en réserve par une banque centrale dans des devises étrangères. Ces réserves sont utilisées pour garantir des passifs et influencer la politique monétaire.",
+    "povertyLevel": "Population vivant en dessous du seuil de pauvreté",
+    "povertyLevelDesc": "Le pourcentage de la population vivant en dessous du seuil de pauvreté national."
   },
   "Language": {
     "en": "Anglais",

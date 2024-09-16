@@ -11,6 +11,7 @@
     "fdiInflows": "Inversión extranjera directa del país",
     "inflation": "Inflación de precios al consumidor del país",
     "foreignReserve": "Reserva extranjera del país",
+    "povertyLevel": "Población que vive por debajo de la línea de pobreza",
     "visit": "Visitar"
   },
   "Chart": {
@@ -34,7 +35,9 @@
     "inflation": "Inflación de precios al consumidor del país",
     "inflationDesc": "La inflación es la tasa a la que el nivel general de precios de bienes y servicios está aumentando, y posteriormente, el poder adquisitivo de la moneda está disminuyendo.",
     "foreignReserve": "Reserva extranjera del país",
-    "foreignReserveDesc": "Las reservas de divisas son activos mantenidos en reserva por un banco central en monedas extranjeras. Estas reservas se utilizan para respaldar pasivos e influir en la política monetaria."
+    "foreignReserveDesc": "Las reservas de divisas son activos mantenidos en reserva por un banco central en monedas extranjeras. Estas reservas se utilizan para respaldar pasivos e influir en la política monetaria.",
+    "povertyLevel": "Población que vive por debajo de la línea de pobreza",
+    "povertyLevelDesc": "El porcentaje de la población que vive por debajo de la línea de pobreza nacional."
   },
   "Language": {
     "en": "Inglés",
