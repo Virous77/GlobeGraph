@@ -42,6 +42,8 @@ const ForeignReserveChart = () => {
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
       isCurrencySymbol={true}
+      indicator="FI.RES.TOTL.CD"
+      type="foreignReserve"
     />
   );
 };

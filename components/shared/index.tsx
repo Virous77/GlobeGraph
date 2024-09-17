@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   Card,
   CardContent,
@@ -21,6 +21,7 @@ import { useLocale } from 'next-intl';
 import { TCountries } from '@/hooks/use-data';
 import { useHotkeys } from 'react-hotkeys-hook';
 import ChartRenderer from './chart-renderer';
+import Share from './share';
 
 export type TChart = 'area' | 'bar' | 'line' | 'radar';
 
@@ -39,6 +40,8 @@ type TMainChart = {
   removeLastCountry: () => void;
   isCurrencySymbol: boolean;
   icon?: string;
+  indicator: string;
+  type: string;
 };
 
 const MainChartComp: React.FC<TMainChart> = ({
@@ -56,6 +59,8 @@ const MainChartComp: React.FC<TMainChart> = ({
   removeLastCountry,
   isCurrencySymbol,
   icon,
+  indicator,
+  type,
 }) => {
   const { theme } = useTheme();
   const [chartType, setChartType] = React.useState<TChart>('bar');
@@ -70,14 +75,22 @@ const MainChartComp: React.FC<TMainChart> = ({
     });
   });
 
-  const modifyConfig = countries.map((country) => {
-    return {
-      name: country.value,
-      label: `${country.label}`,
-    };
-  });
+  const modifyConfig = useMemo(
+    () =>
+      countries.map((country) => {
+        return {
+          name: country.value,
+          label: `${country.label}`,
+        };
+      }),
+    [countries]
+  );
 
   const chartConfig = createChartConfig(modifyConfig);
+  const countriesValue = useMemo(
+    () => countries.map((country) => country.value),
+    [countries]
+  );
 
   return (
     <Card
@@ -91,7 +104,7 @@ const MainChartComp: React.FC<TMainChart> = ({
         <CardHeader className="p-5">
           <div className="-mb-1 flex items-start gap-4">
             <ToolTipComp name={toolTipMessage}>
-              <CardTitle className="flex items-center gap-1 whitespace-nowrap text-xl md:text-2xl">
+              <CardTitle className="flex items-center gap-1 text-xl md:text-2xl">
                 {title}
                 <BadgeInfo
                   className="custom-hide mt-[3px] hidden lg:block"
@@ -112,6 +125,17 @@ const MainChartComp: React.FC<TMainChart> = ({
               }
               className="custom-hide mt-[2px] md:mt-1"
               cursor="pointer"
+            />
+            <Share
+              icon={icon}
+              chartType={chartType}
+              countries={countriesValue}
+              to={timeRange.to}
+              from={timeRange.from}
+              indicator={indicator}
+              isCurrencySymbol={isCurrencySymbol}
+              language={locale}
+              type={type}
             />
           </div>
 

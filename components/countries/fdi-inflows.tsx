@@ -43,6 +43,8 @@ const FDIInflowsChart = () => {
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
       isCurrencySymbol={true}
+      indicator="BX.KLT.DINV.CD.WD"
+      type="fdiInflows"
     />
   );
 };

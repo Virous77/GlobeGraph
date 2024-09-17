@@ -43,6 +43,8 @@ const PovertyLevelChart = () => {
       removeLastCountry={removeLastCountry}
       isCurrencySymbol={false}
       icon="%"
+      indicator="SI.POV.DDAY"
+      type='povertyLevel'
     />
   );
 };

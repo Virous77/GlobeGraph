@@ -38,11 +38,13 @@ const PerCapita = () => {
       countries={countries}
       chartData={chartData}
       title={t('perCapitaIncome')}
-      toolTipMessage={t('capitaDesc')}
+      toolTipMessage={t('perCapitaIncomeDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
       isCurrencySymbol={true}
+      indicator="NY.GDP.PCAP.CD"
+      type="perCapitaIncome"
     />
   );
 };

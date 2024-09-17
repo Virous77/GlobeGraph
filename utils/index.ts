@@ -245,3 +245,38 @@ export const captureScreenshot = async ({
     link.click();
   }
 };
+
+export type TShareLink = {
+  countries: string[];
+  to: number;
+  from: number;
+  indicator: string;
+  chartType: string;
+  icon?: string;
+  isCurrencySymbol: boolean;
+  language: string;
+  type: string;
+};
+
+export const createShareLink = (data: TShareLink) => {
+  const {
+    countries,
+    to,
+    from,
+    indicator,
+    chartType,
+    icon,
+    isCurrencySymbol,
+    language,
+    type,
+  } = data;
+
+  const baseUrl =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000'
+      : 'https://globe-graph.vercel.app';
+
+  const isIcon = icon ? icon : '';
+  const countriesStr = countries.join('-');
+  return `${baseUrl}/share?countries=${countriesStr}&from=${from}&to=${to}&indicator=${indicator}&chartType=${chartType}&icon=${isIcon}&isCurrencySymbol=${isCurrencySymbol}&language=${language}&type=${type}`;
+};

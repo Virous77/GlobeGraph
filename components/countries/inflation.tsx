@@ -44,6 +44,8 @@ const InflationChart = () => {
       removeLastCountry={removeLastCountry}
       isCurrencySymbol={false}
       icon="%"
+      indicator="FP.CPI.TOTL.ZG"
+      type="inflation"
     />
   );
 };

@@ -43,6 +43,8 @@ const GDPChart = () => {
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
       isCurrencySymbol={true}
+      indicator="NY.GDP.MKTP.CD"
+      type="gdp"
     />
   );
 };

@@ -35,3 +35,16 @@ export const getAllCountries = (locale: string) => {
     value: twoLetterToThreeLetter(alpha2)!,
   }));
 };
+
+export const getCountriesLabelWithValues = (
+  pCountries: string[],
+  locale: string
+) => {
+  return pCountries.map((country) => {
+    const alpha2 = countries.alpha3ToAlpha2(country)!;
+    return {
+      label: countries.getName(alpha2, locale)!,
+      value: country,
+    };
+  });
+};

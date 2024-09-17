@@ -28,6 +28,7 @@
     "next-intl": "^3.19.1",
     "next-themes": "^0.3.0",
     "nextjs-toploader": "^3.6.15",
+    "nuqs": "^1.19.1",
     "react": "^18",
     "react-dom": "^18",
     "react-hotkeys-hook": "^4.5.1",

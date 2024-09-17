@@ -43,6 +43,8 @@ const Population = () => {
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
       isCurrencySymbol={false}
+      indicator="SP.POP.TOTL"
+      type="population"
     />
   );
 };

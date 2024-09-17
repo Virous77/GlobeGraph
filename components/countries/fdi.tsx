@@ -44,6 +44,8 @@ const FDIChart = () => {
       removeLastCountry={removeLastCountry}
       isCurrencySymbol={false}
       icon="%"
+      indicator="BX.KLT.DINV.WD.GD.ZS"
+      type='fdi'
     />
   );
 };

@@ -38,12 +38,14 @@ const Unemployment = () => {
       countries={countries}
       chartData={chartData}
       title={t('unemploymentLaborForce')}
-      toolTipMessage={t('unemploymentDesc')}
+      toolTipMessage={t('unemploymentLaborForceDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
       isCurrencySymbol={false}
       icon="%"
+      indicator="SL.UEM.TOTL.ZS"
+      type="unemploymentLaborForce"
     />
   );
 };

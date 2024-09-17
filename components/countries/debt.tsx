@@ -44,6 +44,8 @@ const CountryDebt = () => {
       removeLastCountry={removeLastCountry}
       isCurrencySymbol={false}
       icon="%"
+      indicator="GC.DOD.TOTL.GD.ZS"
+      type='debt'
     />
   );
 };

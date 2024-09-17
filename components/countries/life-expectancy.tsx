@@ -38,11 +38,13 @@ const LifeExpectancy = () => {
       countries={countries}
       chartData={chartData}
       title={t('lifeExpectancy')}
-      toolTipMessage={t('lifeDesc')}
+      toolTipMessage={t('lifeExpectancyDesc')}
       setCountries={setCountries}
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
       isCurrencySymbol={false}
+      indicator="SP.DYN.LE00.IN"
+      type="lifeExpectancy"
     />
   );
 };
