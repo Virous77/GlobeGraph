@@ -1,3 +1,4 @@
+import NotFoundMessage from '@/components/not-found-message';
 import notFound from '../public/404_image.png';
 import { Home } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -15,6 +16,7 @@ const NotFound = () => {
       <div className="flex flex-col items-center justify-center">
         <Image src={notFound.src} alt="404 image" width={350} height={350} />
         <p>{t('message')}...</p>
+        <NotFoundMessage message={`${t('message')}...`} />
         <Link href="/" aria-label="Go back to the home page" className="mt-4">
           <Home size={24} />
         </Link>

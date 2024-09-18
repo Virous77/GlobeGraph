@@ -1,7 +1,7 @@
 import { ChartConfig } from '../ui/chart';
 import countries from 'i18n-iso-countries';
 
-const locales = ['en', 'fr', 'es', 'hi'];
+export const locales = ['en', 'fr', 'es', 'hi'];
 
 locales.forEach((locale) => {
   countries.registerLocale(require(`i18n-iso-countries/langs/${locale}.json`));
@@ -48,3 +48,17 @@ export const getCountriesLabelWithValues = (
     };
   });
 };
+
+export const INDICATORS = [
+  'GC.DOD.TOTL.GD.ZS',
+  'BX.KLT.DINV.CD.WD',
+  'BX.KLT.DINV.WD.GD.ZS',
+  'FI.RES.TOTL.CD',
+  'NY.GDP.MKTP.CD',
+  'FP.CPI.TOTL.ZG',
+  'SP.DYN.LE00.IN',
+  'NY.GDP.PCAP.CD',
+  'SP.POP.TOTL',
+  'SI.POV.DDAY',
+  'SL.UEM.TOTL.ZS',
+];

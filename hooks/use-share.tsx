@@ -10,21 +10,74 @@ import {
   parseAsBoolean,
 } from 'nuqs';
 import { getData } from '@/data-layer';
-import { getCountriesLabelWithValues } from '@/components/shared/config';
+import {
+  getAllCountries,
+  getCountriesLabelWithValues,
+  INDICATORS,
+  locales,
+} from '@/components/shared/config';
 import z from 'zod';
+import { useRouter } from 'next/navigation';
+import en from '@/messages/en.json';
 
 export type TCountries = Record<'value' | 'label', string>;
 
 const schema = z.object({
-  countries: z.array(z.string()).min(1),
-  chartType: z.string().min(1),
-  from: z.number().min(1),
-  to: z.number().min(1),
-  indicator: z.string().min(1),
+  language: z
+    .string()
+    .min(2)
+    .refine(
+      (val) => locales.find((loc) => loc.toLowerCase() === val.toLowerCase()),
+      {
+        message: 'Invalid language',
+      }
+    ),
+  countries: z.array(z.string()).refine(
+    (val) => {
+      const countries = getAllCountries('en');
+      return val.every((v) =>
+        countries.find((c) => c.value.toLowerCase() === v.toLowerCase())
+      );
+    },
+    { message: 'Invalid country' }
+  ),
+  chartType: z
+    .string()
+    .min(1)
+    .refine(
+      (val) =>
+        ['bar', 'line', 'area', 'radar'].find(
+          (type) => type === val.toLowerCase()
+        ),
+      { message: 'Invalid chart type' }
+    ),
+  from: z
+    .number()
+    .min(1)
+    .refine((val) => val > 1974, { message: 'Invalid year' }),
+  to: z
+    .number()
+    .min(1)
+    .refine((val) => val < new Date().getFullYear(), {
+      message: 'Invalid year',
+    }),
+  indicator: z
+    .string()
+    .refine(
+      (val) =>
+        INDICATORS.find((ind) => ind.toLowerCase() === val.toLowerCase()),
+      {
+        message: 'Invalid indicator key',
+      }
+    ),
   icon: z.string().optional(),
   isCurrencySymbol: z.boolean().optional(),
-  language: z.string().min(2),
-  type: z.string().min(1),
+
+  type: z
+    .string()
+    .min(1)
+    // @ts-ignore
+    .refine((val) => en.Chart[val], { message: 'Invalid chart name' }),
 });
 
 export const useShare = () => {
@@ -40,12 +93,13 @@ export const useShare = () => {
     type: parseAsString,
   });
   const [isValidated, setIsValidated] = useState(false);
+  const router = useRouter();
 
   const validateSharedData = () => {
     const result = schema.safeParse(sharedData);
     if (!result.success) {
-      alert('Invalid url');
-      return false;
+      router.push(`/not-found?error=${result.error.errors[0].message}`);
+      return;
     }
     setIsValidated(true);
   };
@@ -139,5 +193,6 @@ export const useShare = () => {
     chartData,
     setSharedData,
     sharedData,
+    isValidated,
   };
 };

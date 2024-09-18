@@ -37,7 +37,8 @@ const LANGUAGES: TLanguage = {
 const ShareComp = () => {
   const [open, setOpen] = useState('');
   const { theme } = useTheme();
-  const { chartData, countries, sharedData, isLoading } = useShare();
+  const { chartData, countries, sharedData, isLoading, isValidated } =
+    useShare();
 
   const modifyConfig = useMemo(
     () =>
@@ -52,6 +53,8 @@ const ShareComp = () => {
 
   const chartConfig = createChartConfig(modifyConfig);
   const currentLangData = LANGUAGES[sharedData.language as string];
+
+  if (!isValidated) return null;
 
   return (
     <Card
