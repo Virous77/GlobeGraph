@@ -12,6 +12,8 @@
     "inflation": "Country Consumer Price Inflation",
     "foreignReserve": "Country Foreign Reserve",
     "povertyLevel": "Population Living Below the Poverty Line",
+    "incomeInequality": "Income Inequality",
+    "internetUsers": "Country Internet Users",
     "visit": "Visit"
   },
   "Chart": {
@@ -37,7 +39,11 @@
     "foreignReserve": "Foreign Reserve of Countries",
     "foreignReserveDesc": "Foreign exchange reserves are assets held on reserve by a central bank in foreign currencies. These reserves are used to back liabilities and influence monetary policy.",
     "povertyLevel": "Population Living Below the Poverty Line",
-    "povertyLevelDesc": "The percentage of the population living below the national poverty line."
+    "povertyLevelDesc": "The percentage of the population living below the national poverty line.",
+    "incomeInequality": "Income Inequality of Countries",
+    "incomeInequalityDesc": "Income inequality is the extent to which income is distributed in an uneven manner among a population.",
+    "internetUsers": "Internet Users percentage of Population",
+    "internetUsersDesc": "The percentage of the population that uses the internet."
   },
   "Language": {
     "en": "English",

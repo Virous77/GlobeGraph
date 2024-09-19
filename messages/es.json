@@ -12,6 +12,8 @@
     "inflation": "Inflación de precios al consumidor del país",
     "foreignReserve": "Reserva extranjera del país",
     "povertyLevel": "Población que vive por debajo de la línea de pobreza",
+    "incomeInequality": "Desigualdad de ingresos",
+    "internetUsers": "Usuarios de Internet del país",
     "visit": "Visitar"
   },
   "Chart": {
@@ -37,7 +39,11 @@
     "foreignReserve": "Reserva extranjera del país",
     "foreignReserveDesc": "Las reservas de divisas son activos mantenidos en reserva por un banco central en monedas extranjeras. Estas reservas se utilizan para respaldar pasivos e influir en la política monetaria.",
     "povertyLevel": "Población que vive por debajo de la línea de pobreza",
-    "povertyLevelDesc": "El porcentaje de la población que vive por debajo de la línea de pobreza nacional."
+    "povertyLevelDesc": "El porcentaje de la población que vive por debajo de la línea de pobreza nacional.",
+    "incomeInequality": "Desigualdad de ingresos de los países",
+    "incomeInequalityDesc": "La desigualdad de ingresos es la medida en que los ingresos se distribuyen de manera desigual entre una población.",
+    "internetUsers": "Porcentaje de usuarios de Internet de la población",
+    "internetUsersDesc": "El porcentaje de la población que utiliza Internet."
   },
   "Language": {
     "en": "Inglés",

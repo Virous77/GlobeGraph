@@ -12,6 +12,8 @@
     "inflation": "Inflation des prix à la consommation du pays",
     "foreignReserve": "Réserve étrangère du pays",
     "povertyLevel": "Population vivant en dessous du seuil de pauvreté",
+    "incomeInequality": "Inégalité des revenus",
+    "internetUsers": "Utilisateurs d'Internet du pays",
     "visit": "Visiter"
   },
   "Chart": {
@@ -37,7 +39,11 @@
     "foreignReserve": "Réserve étrangère des pays",
     "foreignReserveDesc": "Les réserves de change sont des actifs détenus en réserve par une banque centrale dans des devises étrangères. Ces réserves sont utilisées pour garantir des passifs et influencer la politique monétaire.",
     "povertyLevel": "Population vivant en dessous du seuil de pauvreté",
-    "povertyLevelDesc": "Le pourcentage de la population vivant en dessous du seuil de pauvreté national."
+    "povertyLevelDesc": "Le pourcentage de la population vivant en dessous du seuil de pauvreté national.",
+    "incomeInequality": "Inégalité des revenus des pays",
+    "incomeInequalityDesc": "L'inégalité des revenus est la mesure dans laquelle les revenus sont distribués de manière inégale parmi une population.",
+    "internetUsers": "Pourcentage d'utilisateurs d'Internet de la population",
+    "internetUsersDesc": "Le pourcentage de la population qui utilise Internet."
   },
   "Language": {
     "en": "Anglais",

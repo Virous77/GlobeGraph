@@ -25,33 +25,43 @@
     "color": "#FF00FF"
   },
   {
+    "href": "/country/income-inequality",
+    "name": "incomeInequality",
+    "color": "#00FFFF"
+  },
+  {
     "href": "/country/inflation",
     "name": "inflation",
-    "color": "#00FFFF"
+    "color": "#800000"
+  },
+  {
+    "href": "/country/internet-users",
+    "name": "internetUsers",
+    "color": "#808000"
   },
   {
     "href": "/country/life-expectancy",
     "name": "lifeExpectancy",
-    "color": "#800000"
+    "color": "#008000"
   },
   {
     "href": "/country/per-capita-income",
     "name": "perCapitaIncome",
-    "color": "#808000"
+    "color": "#800080"
   },
   {
     "href": "/country/population",
     "name": "population",
-    "color": "#008000"
+    "color": "#008080"
   },
   {
     "href": "/country/poverty-level",
     "name": "povertyLevel",
-    "color": "#800080"
+    "color": "#000080"
   },
   {
     "href": "/country/unemployment-labor-force",
     "name": "unemploymentLaborForce",
-    "color": "#008080"
+    "color": "#FF4500"
   }
 ]

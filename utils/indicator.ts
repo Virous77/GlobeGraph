@@ -59,7 +59,8 @@ const ${name}Chart = () => {
       removeCountry={removeCountry}
       removeLastCountry={removeLastCountry}
       isCurrencySymbol={false}
-      icon="%"
+      indicator="${indicator}"
+      type="${titleKey}"
     />
   );
 };
@@ -103,10 +104,10 @@ export default Country${name}Page;
 };
 
 writeNewFile({
-  localKey: 'poverty',
-  indicator: 'SI.POV.DDAY',
-  titleKey: 'povertyLevel',
-  name: 'PovertyLevel',
-  fileName: 'poverty-level',
-  desc: 'Explore the poverty level of countries using Globe Graph.',
+  localKey: 'internetUsers',
+  indicator: 'IT.NET.USER.ZS',
+  titleKey: 'internetUsers',
+  name: 'InternetUsers',
+  fileName: 'internet-users',
+  desc: 'Explore the internet users percentage of countries population around the world.',
 });

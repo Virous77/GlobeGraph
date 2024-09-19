@@ -41,7 +41,9 @@ export const getCountriesLabelWithValues = (
   locale: string
 ) => {
   return pCountries.map((country) => {
-    const alpha2 = countries.alpha3ToAlpha2(country)!;
+    const alpha2 = countries.alpha3ToAlpha2(
+      country === 'XKX' ? 'XKK' : country
+    )!;
     return {
       label: countries.getName(alpha2, locale)!,
       value: country,
@@ -61,4 +63,6 @@ export const INDICATORS = [
   'SP.POP.TOTL',
   'SI.POV.DDAY',
   'SL.UEM.TOTL.ZS',
+  'SI.POV.GINI',
+  'IT.NET.USER.ZS',
 ];
