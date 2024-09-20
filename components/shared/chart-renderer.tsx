@@ -7,7 +7,7 @@ import { ChartConfig } from '../ui/chart';
 import { TCountries } from '@/hooks/use-data';
 
 type TChartRenderer = {
-  chartType: string;
+  chartType: 'bar' | 'radar' | 'area' | 'line';
   chartData: any[];
   icon: string | undefined;
   chartConfig: ChartConfig;

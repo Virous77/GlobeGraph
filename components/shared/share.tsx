@@ -1,4 +1,4 @@
-import { Share2 } from 'lucide-react';
+import { Share2, X } from 'lucide-react';
 import React from 'react';
 import { createShareLink, TShareLink } from '@/utils';
 import { toast } from 'sonner';
@@ -9,7 +9,16 @@ const Share: React.FC<TShareLink> = (props) => {
       onClick={() => {
         const url = createShareLink(props);
         navigator.clipboard.writeText(url);
-        toast.success('Link Copied to clipboard');
+        toast.success('Link Copied to clipboard', {
+          action: (
+            <X
+              onClick={() => toast.dismiss()}
+              cursor="pointer"
+              size={18}
+              className="absolute right-2 top-[33%]"
+            />
+          ),
+        });
       }}
       className="mt-[2px] md:mt-1"
       cursor="pointer"

@@ -20,6 +20,8 @@ const RadarChartComp = ({
 }) => {
   const sortedCountry = transformOBJtoARR(chartData[0]).reverse();
 
+  if (!sortedCountry.length) return null;
+
   return (
     <ChartContainer
       config={chartConfig}

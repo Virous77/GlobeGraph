@@ -42,7 +42,7 @@ const ShareComp = () => {
 
   const modifyConfig = useMemo(
     () =>
-      countries.map((country) => {
+      countries?.map((country) => {
         return {
           name: country.value,
           label: `${country.label}`,
@@ -122,7 +122,7 @@ const ShareComp = () => {
 
       <CardContent className="h-[500px] w-[97vw] rounded-xl px-0 py-4 md:p-4">
         <ChartRenderer
-          chartType="bar"
+          chartType={sharedData.chartType as 'bar' | 'radar' | 'area' | 'line'}
           chartData={chartData}
           icon={sharedData.icon as string}
           chartConfig={chartConfig}

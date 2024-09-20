@@ -10,6 +10,7 @@ import { getLocale, getMessages } from 'next-intl/server';
 import { Analytics } from '@vercel/analytics/react';
 import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from 'sonner';
+import ToastProvider from '@/lib/providers/toast-provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -59,7 +60,7 @@ const RootLayout = async ({
                 <Header />
                 {children}
                 <Analytics />
-                <Toaster />
+                <ToastProvider />
                 <Footer />
               </div>
             </AppStart>

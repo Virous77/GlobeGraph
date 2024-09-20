@@ -20,6 +20,8 @@ const AreaChartComp = ({
 }) => {
   const sortedCountry = transformOBJtoARR(chartData[0]);
 
+  if (!sortedCountry.length) return null;
+
   return (
     <ChartContainer config={chartConfig} className="h-full w-full">
       <AreaChart accessibilityLayer data={chartData}>
