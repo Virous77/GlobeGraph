@@ -19,6 +19,7 @@ import {
 import z from 'zod';
 import { useRouter } from 'next/navigation';
 import en from '@/messages/en.json';
+import { handleGlobalError } from '@/utils';
 
 export type TCountries = Record<'value' | 'label', string>;
 
@@ -115,33 +116,37 @@ export const useShare = () => {
     from: number;
     to: number;
   }) => {
-    if (!countries || countries?.length === 0) return;
-    if (!indicator) return;
+    try {
+      if (!countries || countries?.length === 0) return;
+      if (!indicator) return;
 
-    const pCountries = getCountriesLabelWithValues(
-      countries,
-      sharedData.language || 'en'
-    );
+      const pCountries = getCountriesLabelWithValues(
+        countries,
+        sharedData.language || 'en'
+      );
 
-    setIsLoading(true);
-    const data = await Promise.all(
-      pCountries.map(async (country) => {
-        return await getData({
-          countryCode: country.value,
-          from: from,
-          to: to,
-          indicator: indicator,
-        });
-      })
-    );
+      setIsLoading(true);
+      const data = await Promise.all(
+        pCountries.map(async (country) => {
+          return await getData({
+            countryCode: country.value,
+            from: from,
+            to: to,
+            indicator: indicator,
+          });
+        })
+      );
 
-    setIsLoading(false);
-    setData(
-      data.map((d, idx) => {
-        // @ts-ignore
-        return { country: countries[idx].value, data: d };
-      })
-    );
+      setIsLoading(false);
+      setData(
+        data.map((d, idx) => {
+          // @ts-ignore
+          return { country: countries[idx].value, data: d };
+        })
+      );
+    } catch (error) {
+      handleGlobalError(error);
+    }
   };
 
   const modifyData = useMemo(() => {

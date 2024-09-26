@@ -2,6 +2,7 @@ import currency from 'currency.js';
 import { z } from 'zod';
 import html2canvas from 'html2canvas';
 import { getAllCountries } from '@/components/shared/config';
+import { toast } from 'sonner';
 
 type TColor = string[];
 
@@ -279,4 +280,20 @@ export const createShareLink = (data: TShareLink) => {
   const isIcon = icon ? icon : '';
   const countriesStr = countries.join('-');
   return `${baseUrl}/share?countries=${countriesStr}&from=${from}&to=${to}&indicator=${indicator}&chartType=${chartType}&icon=${isIcon}&isCurrencySymbol=${isCurrencySymbol}&language=${language}&type=${type}`;
+};
+
+export const handleGlobalError = (error: unknown) => {
+  let errorMessage = 'Something went wrong';
+
+  if (error instanceof Error) {
+    errorMessage = error.message;
+  } else if (error && typeof error === 'object' && 'message' in error) {
+    errorMessage = String((error as { message: unknown }).message);
+  } else if (typeof error === 'string') {
+    errorMessage = error;
+  } else if (error === null || error === undefined) {
+    errorMessage = 'An error occurred';
+  }
+
+  return toast.error(errorMessage);
 };

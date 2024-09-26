@@ -1,6 +1,7 @@
 import { getData } from '@/data-layer';
 import { useState, useEffect, useMemo } from 'react';
 import { useData } from './use-data';
+import { handleGlobalError } from '@/utils';
 
 type TCountryData = {
   indicator: string;
@@ -36,25 +37,29 @@ export const useCountryData = ({
     from: number;
     to: number;
   }) => {
-    if (!countries.length) return;
-    setIsLoading(true);
-    const data = await Promise.all(
-      countries.map(async (country) => {
-        return await getData({
-          countryCode: country.value,
-          from: from,
-          to: to,
-          indicator: indicator,
-        });
-      })
-    );
+    try {
+      if (!countries.length) return;
+      setIsLoading(true);
+      const data = await Promise.all(
+        countries.map(async (country) => {
+          return await getData({
+            countryCode: country.value,
+            from: from,
+            to: to,
+            indicator: indicator,
+          });
+        })
+      );
 
-    setIsLoading(false);
-    setData(
-      data.map((d, idx) => {
-        return { country: countries[idx].value, data: d };
-      })
-    );
+      setIsLoading(false);
+      setData(
+        data.map((d, idx) => {
+          return { country: countries[idx].value, data: d };
+        })
+      );
+    } catch (error) {
+      handleGlobalError(error);
+    }
   };
 
   useEffect(() => {
@@ -62,17 +67,21 @@ export const useCountryData = ({
   }, []);
 
   const fetchSingleCountryData = async (name: string) => {
-    if (countryData.find((d) => d.country === name)) return;
-    setIsLoading(true);
-    const data = await getData({
-      countryCode: name,
-      from: timeRange.from,
-      to: timeRange.to,
-      indicator: indicator,
-    });
+    try {
+      if (countryData.find((d) => d.country === name)) return;
+      setIsLoading(true);
+      const data = await getData({
+        countryCode: name,
+        from: timeRange.from,
+        to: timeRange.to,
+        indicator: indicator,
+      });
 
-    setIsLoading(false);
-    setData((prev) => [...prev, { country: name, data }]);
+      setIsLoading(false);
+      setData((prev) => [...prev, { country: name, data }]);
+    } catch (error) {
+      handleGlobalError(error);
+    }
   };
 
   const modifyData = useMemo(() => {
