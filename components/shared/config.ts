@@ -1,7 +1,7 @@
 import { ChartConfig } from '../ui/chart';
 import countries from 'i18n-iso-countries';
 
-export const locales = ['en', 'fr', 'es', 'hi'];
+export const locales = ['en', 'fr', 'es', 'hi', 'de'];
 
 locales.forEach((locale) => {
   countries.registerLocale(require(`i18n-iso-countries/langs/${locale}.json`));

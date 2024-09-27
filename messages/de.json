@@ -1,0 +1,64 @@
+{
+  "HomePage": {
+    "title": "Daten erkunden",
+    "gdp": "Bruttoinlandsprodukt des Landes",
+    "perCapitaIncome": "Pro-Kopf-Einkommen des Landes",
+    "lifeExpectancy": "Lebenserwartung des Landes",
+    "population": "Bevölkerung des Landes",
+    "unemploymentLaborForce": "Arbeitslosenquote des Landes",
+    "fdi": "Ausländische Direktinvestitionen im Verhältnis zum BIP des Landes",
+    "debt": "Staatsschulden des Landes im Verhältnis zum BIP",
+    "fdiInflows": "Zufluss ausländischer Direktinvestitionen des Landes",
+    "inflation": "Verbraucherpreis-Inflation des Landes",
+    "foreignReserve": "Währungsreserven des Landes",
+    "povertyLevel": "Bevölkerung unterhalb der Armutsgrenze",
+    "incomeInequality": "Einkommensungleichheit",
+    "internetUsers": "Internetnutzer des Landes",
+    "visit": "Besuchen"
+  },
+  "Chart": {
+    "search": "Länder auswählen",
+    "gdp": "BIP der Länder",
+    "gdpDesc": "BIP steht für Bruttoinlandsprodukt. Es ist der Gesamtwert aller Waren und Dienstleistungen, die in einem Land in einem Jahr produziert werden.",
+    "perCapitaIncome": "Pro-Kopf-Einkommen der Länder",
+    "perCapitaIncomeDesc": "Das Pro-Kopf-Einkommen ist das Durchschnittseinkommen der Bürger eines Landes. Es wird berechnet, indem das Gesamteinkommen des Landes durch die Bevölkerung geteilt wird.",
+    "lifeExpectancy": "Lebenserwartung der Länder",
+    "lifeExpectancyDesc": "Die Lebenserwartung ist die durchschnittliche Anzahl von Jahren, die eine Person ab dem Geburtsjahr voraussichtlich leben wird.",
+    "population": "Bevölkerung des Landes",
+    "populationDesc": "Die Bevölkerung bezeichnet die Gesamtzahl der Menschen, die in einem Land leben.",
+    "unemploymentLaborForce": "Arbeitslosenquote des Landes",
+    "unemploymentLaborForceDesc": "Die Arbeitslosenquote ist der Prozentsatz der Gesamtarbeitskraft, der arbeitslos ist, aber aktiv Arbeit sucht und bereit ist zu arbeiten.",
+    "fdi": "Ausländische Direktinvestitionen der Länder im Verhältnis zum BIP",
+    "fdiDesc": "Ausländische Direktinvestitionen sind Investitionen, die ein Unternehmen oder eine Einzelperson in einem Land in Geschäftsinteressen in einem anderen Land tätigt, sei es durch die Gründung von Geschäftsaktivitäten oder den Erwerb von Geschäftsvermögen im anderen Land.",
+    "debt": "Staatsschulden der Länder im Verhältnis zum BIP",
+    "debtDesc": "Dieser Indikator misst die Gesamtschulden des Staates als Prozentsatz des Bruttoinlandsprodukts (BIP) des Landes. Er zeigt, wie hoch die Schulden im Verhältnis zur Größe der Wirtschaft sind.",
+    "fdiInflows": "Zufluss ausländischer Direktinvestitionen der Länder",
+    "fdiInflowDesc": "Der Zufluss ausländischer Direktinvestitionen ist der Gesamtwert der ausländischen Direktinvestitionen, die in einem bestimmten Zeitraum in ein Land fließen.",
+    "inflation": "Verbraucherpreis-Inflation der Länder",
+    "inflationDesc": "Inflation ist die Rate, mit der das allgemeine Preisniveau für Waren und Dienstleistungen steigt und folglich die Kaufkraft der Währung sinkt.",
+    "foreignReserve": "Währungsreserven der Länder",
+    "foreignReserveDesc": "Währungsreserven sind von einer Zentralbank in Fremdwährungen gehaltene Vermögenswerte. Diese Reserven werden verwendet, um Verbindlichkeiten abzusichern und die Geldpolitik zu beeinflussen.",
+    "povertyLevel": "Bevölkerung unterhalb der Armutsgrenze",
+    "povertyLevelDesc": "Der Prozentsatz der Bevölkerung, der unterhalb der nationalen Armutsgrenze lebt.",
+    "incomeInequality": "Einkommensungleichheit der Länder",
+    "incomeInequalityDesc": "Einkommensungleichheit beschreibt das Ausmaß, in dem das Einkommen in einer Bevölkerung ungleich verteilt ist.",
+    "internetUsers": "Internetnutzeranteil der Bevölkerung",
+    "internetUsersDesc": "Der Prozentsatz der Bevölkerung, der das Internet nutzt."
+  },
+  "Language": {
+    "en": "Englisch",
+    "es": "Spanisch",
+    "fr": "Französisch",
+    "hi": "Hindi",
+    "de": "Deutsch"
+  },
+  "ChartName": {
+    "bar": "Balkendiagramm",
+    "line": "Liniendiagramm",
+    "area": "Flächendiagramm",
+    "radar": "Radar-Diagramm"
+  },
+  "NotFound": {
+    "message": "Hoppla! Diese Seite wurde nicht gefunden"
+  }
+}

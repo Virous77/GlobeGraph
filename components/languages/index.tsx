@@ -26,6 +26,10 @@ const Languages = ({ lang }: { lang: string }) => {
       name: t('fr'),
       value: 'fr',
     },
+    {
+      name: t('de'),
+      value: 'de',
+    },
   ];
 
   return (
