@@ -11,6 +11,7 @@ import { Analytics } from '@vercel/analytics/react';
 import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from 'sonner';
 import ToastProvider from '@/lib/providers/toast-provider';
+import ReactQueryProvider from '@/lib/providers/reactQuery-provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -44,26 +45,28 @@ const RootLayout = async ({
             enableSystem
             disableTransitionOnChange
           >
-            <NextTopLoader
-              color="#22dd4e"
-              initialPosition={0.08}
-              crawlSpeed={200}
-              height={3}
-              crawl={true}
-              showSpinner={false}
-              easing="ease"
-              speed={200}
-              shadow="0 0 10px #22DD4e,0 0 5px #22DD4e"
-            />
-            <AppStart>
-              <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto]">
-                <Header />
-                {children}
-                <Analytics />
-                <ToastProvider />
-                <Footer />
-              </div>
-            </AppStart>
+            <ReactQueryProvider>
+              <NextTopLoader
+                color="#22dd4e"
+                initialPosition={0.08}
+                crawlSpeed={200}
+                height={3}
+                crawl={true}
+                showSpinner={false}
+                easing="ease"
+                speed={200}
+                shadow="0 0 10px #22DD4e,0 0 5px #22DD4e"
+              />
+              <AppStart>
+                <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto]">
+                  <Header />
+                  {children}
+                  <Analytics />
+                  <ToastProvider />
+                  <Footer />
+                </div>
+              </AppStart>
+            </ReactQueryProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

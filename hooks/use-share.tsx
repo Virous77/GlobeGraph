@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
-import { TCountryData } from '@/data-layer/types';
+import { useMemo } from 'react';
 import {
   useQueryStates,
   parseAsArrayOf,
@@ -20,6 +19,7 @@ import z from 'zod';
 import { useRouter } from 'next/navigation';
 import en from '@/messages/en.json';
 import { handleGlobalError } from '@/utils';
+import { useQuery } from '@tanstack/react-query';
 
 export type TCountries = Record<'value' | 'label', string>;
 
@@ -93,7 +93,6 @@ export const useShare = () => {
     language: parseAsString,
     type: parseAsString,
   });
-  const [isValidated, setIsValidated] = useState(false);
   const router = useRouter();
 
   const validateSharedData = () => {
@@ -102,11 +101,9 @@ export const useShare = () => {
       router.push(`/not-found?error=${result.error.errors[0].message}`);
       return;
     }
-    setIsValidated(true);
+    return true;
   };
 
-  const [data, setData] = useState<TCountryData[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
   const { countries, to, from, indicator } = sharedData;
 
   const fetchCountryData = async ({
@@ -125,7 +122,6 @@ export const useShare = () => {
         sharedData.language || 'en'
       );
 
-      setIsLoading(true);
       const data = await Promise.all(
         pCountries.map(async (country) => {
           return await getData({
@@ -137,20 +133,26 @@ export const useShare = () => {
         })
       );
 
-      setIsLoading(false);
-      setData(
-        data.map((d, idx) => {
-          // @ts-ignore
-          return { country: countries[idx].value, data: d };
-        })
-      );
+      return data.map((d, idx) => {
+        // @ts-ignore
+        return { country: countries[idx].value, data: d };
+      });
     } catch (error) {
       handleGlobalError(error);
     }
   };
 
+  const { data, isLoading, isFetching } = useQuery({
+    queryKey: ['share', sharedData.indicator, sharedData.from, sharedData.to],
+    queryFn: () => {
+      if (!from || !to) return;
+      return fetchCountryData({ from, to });
+    },
+    enabled: validateSharedData(),
+  });
+
   const modifyData = useMemo(() => {
-    return data.map((d) => {
+    return data?.map((d) => {
       return d.data.map((dd) => ({
         year: dd.date,
         [dd.countryiso3code]: Number(dd.value),
@@ -160,7 +162,7 @@ export const useShare = () => {
 
   const chartData = useMemo(() => {
     const data = [] as any[];
-    modifyData.forEach((group) => {
+    modifyData?.forEach((group) => {
       group.forEach((item) => {
         const existingItem = data.find((res) => res.year === item.year);
         if (existingItem) {
@@ -180,24 +182,12 @@ export const useShare = () => {
     );
   }, [sharedData.countries, sharedData.language]);
 
-  useEffect(() => {
-    if (isValidated) {
-      if (!from || !to) return;
-      fetchCountryData({ from, to });
-    }
-  }, [isValidated]);
-
-  useEffect(() => {
-    validateSharedData();
-  }, [indicator]);
-
   return {
-    data,
+    data: data!,
     countries: pCountries,
-    isLoading,
+    isLoading: isLoading || isFetching,
     chartData,
     setSharedData,
     sharedData,
-    isValidated,
   };
 };

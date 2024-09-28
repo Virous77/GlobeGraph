@@ -17,7 +17,6 @@ const FDIChart = () => {
     removeCountry,
     removeLastCountry,
     fetchSingleCountryData,
-    fetchCountryData,
   } = useCountryData({
     indicator: 'BX.KLT.DINV.WD.GD.ZS',
     countryKey: 'fCountries',
@@ -31,7 +30,6 @@ const FDIChart = () => {
   return (
     <MainChartComp
       isLoading={isLoading}
-      fetchCountryData={fetchCountryData}
       fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}
       setTimeRange={setTimeRange}
@@ -45,7 +43,7 @@ const FDIChart = () => {
       isCurrencySymbol={false}
       icon="%"
       indicator="BX.KLT.DINV.WD.GD.ZS"
-      type='fdi'
+      type="fdi"
     />
   );
 };

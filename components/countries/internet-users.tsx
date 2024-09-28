@@ -16,11 +16,10 @@ const InternetUsersChart = () => {
     removeCountry,
     removeLastCountry,
     fetchSingleCountryData,
-    fetchCountryData,
   } = useCountryData({
-    indicator: "IT.NET.USER.ZS",
-    countryKey: "internetUsersCountries",
-    timeRangeKey: "internetUsersTimeRange",
+    indicator: 'IT.NET.USER.ZS',
+    countryKey: 'internetUsersCountries',
+    timeRangeKey: 'internetUsersTimeRange',
   });
 
   const t = useTranslations('Chart');
@@ -30,7 +29,6 @@ const InternetUsersChart = () => {
   return (
     <MainChartComp
       isLoading={isLoading}
-      fetchCountryData={fetchCountryData}
       fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}
       setTimeRange={setTimeRange}

@@ -17,7 +17,6 @@ const GDPChart = () => {
     removeCountry,
     removeLastCountry,
     fetchSingleCountryData,
-    fetchCountryData,
   } = useCountryData({
     indicator: 'NY.GDP.MKTP.CD',
     countryKey: 'countries',
@@ -31,7 +30,6 @@ const GDPChart = () => {
   return (
     <MainChartComp
       isLoading={isLoading}
-      fetchCountryData={fetchCountryData}
       fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}
       setTimeRange={setTimeRange}

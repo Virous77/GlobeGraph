@@ -17,7 +17,6 @@ const InflationChart = () => {
     removeCountry,
     removeLastCountry,
     fetchSingleCountryData,
-    fetchCountryData,
   } = useCountryData({
     indicator: 'FP.CPI.TOTL.ZG',
     countryKey: 'GGInflation',
@@ -31,7 +30,6 @@ const InflationChart = () => {
   return (
     <MainChartComp
       isLoading={isLoading}
-      fetchCountryData={fetchCountryData}
       fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}
       setTimeRange={setTimeRange}

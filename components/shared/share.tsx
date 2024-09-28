@@ -20,7 +20,7 @@ const Share: React.FC<TShareLink> = (props) => {
           ),
         });
       }}
-      className="mt-[2px] md:mt-1"
+      className="custom-hide mt-[2px] md:mt-1"
       cursor="pointer"
     />
   );

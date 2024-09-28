@@ -1,6 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import MainSelect from '../custom-ui/main-select';
 import { TTimeRange } from '@/utils';
+import { useQuery } from '@tanstack/react-query';
 
 type TTimeRangeL = {
   value: string;
@@ -8,39 +9,36 @@ type TTimeRangeL = {
 };
 
 const TimeRange = ({
-  fetchCountryData,
   timeRange,
   setTimeRange,
 }: {
-  fetchCountryData: (timeRange: { from: number; to: number }) => void;
   timeRange: TTimeRange;
   setTimeRange: (timeRange: TTimeRange) => void;
 }) => {
-  const [range, setRange] = useState<TTimeRangeL[]>([]);
   const currentYear = new Date().getFullYear();
+  const addTimeRange = () => {
+    const range = [] as TTimeRangeL[];
+    for (let i = 1974; i <= currentYear - 1; i++) {
+      range.push({
+        value: i.toString(),
+        name: i.toString(),
+      });
+    }
 
-  useEffect(() => {
-    const from = 1974;
+    return range;
+  };
 
-    const addTimeRange = () => {
-      const range = [] as TTimeRangeL[];
-      for (let i = from; i <= currentYear - 1; i++) {
-        range.push({
-          value: i.toString(),
-          name: i.toString(),
-        });
-      }
-      setRange(range);
-    };
-    addTimeRange();
-  }, [currentYear]);
+  const { data: range } = useQuery({
+    queryKey: ['timeRange', currentYear],
+    queryFn: () => addTimeRange(),
+  });
 
   const fromRange = useMemo(() => {
-    return range.filter((r) => parseInt(r.value) < timeRange.to);
+    return range?.filter((r) => parseInt(r.value) < timeRange.to);
   }, [range, timeRange.to]);
 
   const toRange = useMemo(() => {
-    return range.filter((r) => parseInt(r.value) > timeRange.from);
+    return range?.filter((r) => parseInt(r.value) > timeRange.from);
   }, [range, timeRange.from]);
 
   return (
@@ -52,7 +50,7 @@ const TimeRange = ({
     >
       <MainSelect
         id="from"
-        data={fromRange}
+        data={fromRange!}
         placeholder="From"
         classNames={{
           trigger:
@@ -62,13 +60,12 @@ const TimeRange = ({
         onChange={(value) => {
           const newTimeRange = { from: parseInt(value), to: timeRange.to };
           setTimeRange(newTimeRange);
-          fetchCountryData(newTimeRange);
         }}
       />
       -
       <MainSelect
         id="to"
-        data={toRange}
+        data={toRange!}
         placeholder="To"
         classNames={{
           trigger:
@@ -78,7 +75,6 @@ const TimeRange = ({
         onChange={(value) => {
           const newTimeRange = { from: timeRange.from, to: parseInt(value) };
           setTimeRange(newTimeRange);
-          fetchCountryData(newTimeRange);
         }}
       />
     </div>

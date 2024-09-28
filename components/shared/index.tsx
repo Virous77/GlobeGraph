@@ -31,7 +31,6 @@ type TMainChart = {
   isLoading: boolean;
   chartData: any[];
   fetchSingleCountryData: (name: string) => void;
-  fetchCountryData: ({ from, to }: { from: number; to: number }) => void;
   setTimeRange: (timeRange: TTimeRange) => void;
   title: string;
   toolTipMessage: string;
@@ -50,7 +49,6 @@ const MainChartComp: React.FC<TMainChart> = ({
   isLoading,
   chartData,
   fetchSingleCountryData,
-  fetchCountryData,
   setTimeRange,
   title,
   toolTipMessage,
@@ -175,11 +173,7 @@ const MainChartComp: React.FC<TMainChart> = ({
             removeLastCountry={removeLastCountry}
             lang={locale}
           />
-          <TimeRange
-            fetchCountryData={fetchCountryData}
-            timeRange={timeRange}
-            setTimeRange={setTimeRange}
-          />
+          <TimeRange timeRange={timeRange} setTimeRange={setTimeRange} />
 
           <div className="mt-2 w-full">
             <ChartType chartType={chartType} setChartType={setChartType} />
@@ -190,11 +184,7 @@ const MainChartComp: React.FC<TMainChart> = ({
       <div className="custom-hide block w-full mobile992:hidden">
         <div className="-mt-4 flex items-center gap-1 px-4">
           <ChartType chartType={chartType} setChartType={setChartType} />
-          <TimeRange
-            fetchCountryData={fetchCountryData}
-            timeRange={timeRange}
-            setTimeRange={setTimeRange}
-          />
+          <TimeRange timeRange={timeRange} setTimeRange={setTimeRange} />
         </div>
         <div className="mr-4 mt-4 w-full px-3">
           <MultiSelect

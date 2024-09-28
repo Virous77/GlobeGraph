@@ -17,7 +17,6 @@ const LifeExpectancy = () => {
     removeCountry,
     removeLastCountry,
     fetchSingleCountryData,
-    fetchCountryData,
   } = useCountryData({
     indicator: 'SP.DYN.LE00.IN',
     countryKey: 'lifeExpectancyCountries',
@@ -31,7 +30,6 @@ const LifeExpectancy = () => {
   return (
     <MainChartComp
       isLoading={isLoading}
-      fetchCountryData={fetchCountryData}
       fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}
       setTimeRange={setTimeRange}

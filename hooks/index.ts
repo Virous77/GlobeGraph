@@ -1,7 +1,8 @@
 import { getData } from '@/data-layer';
-import { useState, useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useData } from './use-data';
 import { handleGlobalError } from '@/utils';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 type TCountryData = {
   indicator: string;
@@ -15,10 +16,8 @@ export const useCountryData = ({
   timeRangeKey,
 }: TCountryData) => {
   const {
-    data: countryData,
     countries,
     timeRange,
-    setData,
     setCountries,
     setMultipleCountries,
     removeCountry,
@@ -28,7 +27,7 @@ export const useCountryData = ({
     countryKey,
     timeRangeKey,
   });
-  const [isLoading, setIsLoading] = useState(false);
+  const queryClient = useQueryClient();
 
   const fetchCountryData = async ({
     from,
@@ -39,7 +38,6 @@ export const useCountryData = ({
   }) => {
     try {
       if (!countries.length) return;
-      setIsLoading(true);
       const data = await Promise.all(
         countries.map(async (country) => {
           return await getData({
@@ -51,25 +49,27 @@ export const useCountryData = ({
         })
       );
 
-      setIsLoading(false);
-      setData(
-        data.map((d, idx) => {
-          return { country: countries[idx].value, data: d };
-        })
-      );
+      return data.map((d, idx) => {
+        return { country: countries[idx].value, data: d };
+      });
     } catch (error) {
       handleGlobalError(error);
     }
   };
 
-  useEffect(() => {
-    fetchCountryData(timeRange);
-  }, []);
+  const {
+    data: countryData,
+    isLoading,
+    isFetching,
+  } = useQuery({
+    queryKey: ['countryData', timeRange, indicator],
+    queryFn: () => fetchCountryData(timeRange),
+  });
 
   const fetchSingleCountryData = async (name: string) => {
     try {
+      if (!countryData?.length) return;
       if (countryData.find((d) => d.country === name)) return;
-      setIsLoading(true);
       const data = await getData({
         countryCode: name,
         from: timeRange.from,
@@ -77,15 +77,17 @@ export const useCountryData = ({
         indicator: indicator,
       });
 
-      setIsLoading(false);
-      setData((prev) => [...prev, { country: name, data }]);
+      queryClient.setQueryData(
+        ['countryData', timeRange, indicator],
+        [...countryData, { country: name, data }]
+      );
     } catch (error) {
       handleGlobalError(error);
     }
   };
 
   const modifyData = useMemo(() => {
-    return countryData.map((d) => {
+    return countryData?.map((d) => {
       return d.data.map((dd) => ({
         year: dd.date,
         [dd.countryiso3code]: Number(dd.value),
@@ -95,7 +97,7 @@ export const useCountryData = ({
 
   const chartData = useMemo(() => {
     const data = [] as any[];
-    modifyData.forEach((group) => {
+    modifyData?.forEach((group) => {
       group.forEach((item) => {
         const existingItem = data.find((res) => res.year === item.year);
         if (existingItem) {
@@ -111,8 +113,7 @@ export const useCountryData = ({
   return {
     fetchSingleCountryData,
     chartData,
-    isLoading,
-    fetchCountryData,
+    isLoading: isLoading || isFetching,
     setCountries,
     setMultipleCountries,
     removeCountry,

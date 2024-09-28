@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { TCountryData } from '@/data-layer/types';
 import {
   getLocalCountries,
   getLocalTimeRange,
@@ -18,7 +17,6 @@ export const useData = ({
   countryKey: string;
   timeRangeKey: string;
 }) => {
-  const [data, setData] = useState<TCountryData[]>([]);
   const [countries, setCountriesState] = useState<TCountries[]>(
     getLocalCountries(countryKey)
   );
@@ -60,10 +58,8 @@ export const useData = ({
   }, []);
 
   return {
-    data,
     countries,
     setCountries,
-    setData,
     setMultipleCountries,
     removeCountry,
     removeLastCountry,

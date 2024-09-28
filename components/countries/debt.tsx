@@ -17,7 +17,6 @@ const CountryDebt = () => {
     removeCountry,
     removeLastCountry,
     fetchSingleCountryData,
-    fetchCountryData,
   } = useCountryData({
     indicator: 'GC.DOD.TOTL.GD.ZS',
     countryKey: 'DebtCountries',
@@ -31,7 +30,6 @@ const CountryDebt = () => {
   return (
     <MainChartComp
       isLoading={isLoading}
-      fetchCountryData={fetchCountryData}
       fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}
       setTimeRange={setTimeRange}
@@ -45,7 +43,7 @@ const CountryDebt = () => {
       isCurrencySymbol={false}
       icon="%"
       indicator="GC.DOD.TOTL.GD.ZS"
-      type='debt'
+      type="debt"
     />
   );
 };

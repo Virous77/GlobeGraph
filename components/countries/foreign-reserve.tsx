@@ -16,7 +16,6 @@ const ForeignReserveChart = () => {
     removeCountry,
     removeLastCountry,
     fetchSingleCountryData,
-    fetchCountryData,
   } = useCountryData({
     indicator: 'FI.RES.TOTL.CD',
     countryKey: 'foreignCountries',
@@ -30,7 +29,6 @@ const ForeignReserveChart = () => {
   return (
     <MainChartComp
       isLoading={isLoading}
-      fetchCountryData={fetchCountryData}
       fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}
       setTimeRange={setTimeRange}
