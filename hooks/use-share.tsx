@@ -8,7 +8,6 @@ import {
   parseAsInteger,
   parseAsBoolean,
 } from 'nuqs';
-import { getData } from '@/data-layer';
 import {
   getAllCountries,
   getCountriesLabelWithValues,
@@ -18,7 +17,12 @@ import {
 import z from 'zod';
 import { useRouter } from 'next/navigation';
 import en from '@/messages/en.json';
-import { handleGlobalError } from '@/utils';
+import {
+  formatChartData,
+  getAllCountriesData,
+  handleGlobalError,
+  TTimeRange,
+} from '@/utils';
 import { useQuery } from '@tanstack/react-query';
 
 export type TCountries = Record<'value' | 'label', string>;
@@ -106,37 +110,13 @@ export const useShare = () => {
 
   const { countries, to, from, indicator } = sharedData;
 
-  const fetchCountryData = async ({
-    from,
-    to,
-  }: {
-    from: number;
-    to: number;
-  }) => {
+  const fetchCountryData = async ({ from, to }: TTimeRange) => {
     try {
-      if (!countries || countries?.length === 0) return;
-      if (!indicator) return;
-
       const pCountries = getCountriesLabelWithValues(
-        countries,
+        countries!,
         sharedData.language || 'en'
       );
-
-      const data = await Promise.all(
-        pCountries.map(async (country) => {
-          return await getData({
-            countryCode: country.value,
-            from: from,
-            to: to,
-            indicator: indicator,
-          });
-        })
-      );
-
-      return data.map((d, idx) => {
-        // @ts-ignore
-        return { country: countries[idx].value, data: d };
-      });
+      return getAllCountriesData(pCountries, from, to, indicator!);
     } catch (error) {
       handleGlobalError(error);
     }
@@ -148,32 +128,12 @@ export const useShare = () => {
       if (!from || !to) return;
       return fetchCountryData({ from, to });
     },
-    enabled: validateSharedData(),
+    enabled: !!indicator && !!countries?.length && validateSharedData(),
   });
 
-  const modifyData = useMemo(() => {
-    return data?.map((d) => {
-      return d.data.map((dd) => ({
-        year: dd.date,
-        [dd.countryiso3code]: Number(dd.value),
-      }));
-    });
-  }, [data]);
-
   const chartData = useMemo(() => {
-    const data = [] as any[];
-    modifyData?.forEach((group) => {
-      group.forEach((item) => {
-        const existingItem = data.find((res) => res.year === item.year);
-        if (existingItem) {
-          Object.assign(existingItem, item);
-        } else {
-          data.push({ ...item });
-        }
-      });
-    });
-    return data;
-  }, [modifyData]);
+    return formatChartData(data);
+  }, [data]);
 
   const pCountries = useMemo(() => {
     return getCountriesLabelWithValues(

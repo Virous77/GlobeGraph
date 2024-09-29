@@ -1,7 +1,12 @@
 import { getData } from '@/data-layer';
 import { useMemo } from 'react';
 import { useData } from './use-data';
-import { handleGlobalError } from '@/utils';
+import {
+  formatChartData,
+  getAllCountriesData,
+  handleGlobalError,
+  TTimeRange,
+} from '@/utils';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 type TCountryData = {
@@ -29,29 +34,9 @@ export const useCountryData = ({
   });
   const queryClient = useQueryClient();
 
-  const fetchCountryData = async ({
-    from,
-    to,
-  }: {
-    from: number;
-    to: number;
-  }) => {
+  const fetchCountryData = async ({ from, to }: TTimeRange) => {
     try {
-      if (!countries.length) return;
-      const data = await Promise.all(
-        countries.map(async (country) => {
-          return await getData({
-            countryCode: country.value,
-            from: from,
-            to: to,
-            indicator: indicator,
-          });
-        })
-      );
-
-      return data.map((d, idx) => {
-        return { country: countries[idx].value, data: d };
-      });
+      return getAllCountriesData(countries, from, to, indicator);
     } catch (error) {
       handleGlobalError(error);
     }
@@ -64,6 +49,7 @@ export const useCountryData = ({
   } = useQuery({
     queryKey: ['countryData', timeRange, indicator],
     queryFn: () => fetchCountryData(timeRange),
+    enabled: !!countries.length,
   });
 
   const fetchSingleCountryData = async (name: string) => {
@@ -86,29 +72,9 @@ export const useCountryData = ({
     }
   };
 
-  const modifyData = useMemo(() => {
-    return countryData?.map((d) => {
-      return d.data.map((dd) => ({
-        year: dd.date,
-        [dd.countryiso3code]: Number(dd.value),
-      }));
-    });
-  }, [countryData]);
-
   const chartData = useMemo(() => {
-    const data = [] as any[];
-    modifyData?.forEach((group) => {
-      group.forEach((item) => {
-        const existingItem = data.find((res) => res.year === item.year);
-        if (existingItem) {
-          Object.assign(existingItem, item);
-        } else {
-          data.push({ ...item });
-        }
-      });
-    });
-    return data;
-  }, [modifyData]);
+    return formatChartData(countryData);
+  }, [countryData]);
 
   return {
     fetchSingleCountryData,

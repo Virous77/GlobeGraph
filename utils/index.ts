@@ -3,6 +3,9 @@ import { z } from 'zod';
 import html2canvas from 'html2canvas';
 import { getAllCountries } from '@/components/shared/config';
 import { toast } from 'sonner';
+import { TResponseData } from '@/data-layer/types';
+import { TCountries } from '@/hooks/use-data';
+import { getData } from '@/data-layer';
 
 type TColor = string[];
 
@@ -296,4 +299,55 @@ export const handleGlobalError = (error: unknown) => {
   }
 
   return toast.error(errorMessage);
+};
+
+export const formatChartData = (
+  rawData:
+    | {
+        country: any;
+        data: TResponseData[];
+      }[]
+    | undefined
+) => {
+  const modifyData = rawData?.map((d) => {
+    return d.data.map((dd) => ({
+      year: dd.date,
+      [dd.countryiso3code]: Number(dd.value),
+    }));
+  });
+
+  const data = [] as any[];
+  modifyData?.forEach((group) => {
+    group.forEach((item) => {
+      const existingItem = data.find((res) => res.year === item.year);
+      if (existingItem) {
+        Object.assign(existingItem, item);
+      } else {
+        data.push({ ...item });
+      }
+    });
+  });
+  return data;
+};
+
+export const getAllCountriesData = async (
+  countries: TCountries[],
+  from: number,
+  to: number,
+  indicator: string
+) => {
+  const data = await Promise.all(
+    countries.map(async (country) => {
+      return await getData({
+        countryCode: country.value,
+        from: from,
+        to: to,
+        indicator: indicator,
+      });
+    })
+  );
+
+  return data.map((d, idx) => {
+    return { country: countries[idx].value, data: d };
+  });
 };
