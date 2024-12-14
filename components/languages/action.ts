@@ -17,7 +17,8 @@ export const languageAction = async ({ language }: { language: string }) => {
     lang = data.data.language;
   }
 
-  cookies().set({
+  const Cookies = await cookies();
+  Cookies.set({
     name: 'lang',
     value: lang,
     httpOnly: true,
