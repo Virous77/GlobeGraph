@@ -7,7 +7,6 @@ import Header from '@/components/layouts/header';
 import Footer from '@/components/layouts/footer';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
-import { Analytics } from '@vercel/analytics/react';
 import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from 'sonner';
 import ToastProvider from '@/lib/providers/toast-provider';
@@ -61,7 +60,6 @@ const RootLayout = async ({
                 <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto]">
                   <Header />
                   {children}
-                  <Analytics />
                   <ToastProvider />
                   <Footer />
                 </div>
