@@ -11,6 +11,7 @@ import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from 'sonner';
 import ToastProvider from '@/lib/providers/toast-provider';
 import ReactQueryProvider from '@/lib/providers/reactQuery-provider';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -59,7 +60,7 @@ const RootLayout = async ({
               <AppStart>
                 <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto]">
                   <Header />
-                  {children}
+                  <NuqsAdapter>{children}</NuqsAdapter>
                   <ToastProvider />
                   <Footer />
                 </div>

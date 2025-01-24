@@ -3,7 +3,10 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
+  experimental: {
+    reactCompiler: true,
+  },
 };
 
 export default withNextIntl(nextConfig);
