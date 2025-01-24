@@ -76,7 +76,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
               <Badge key={framework.value} variant="secondary">
                 {framework.label}
                 <button
-                  className="ml-1 rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                  className="ml-1 rounded-full outline-hidden ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
                       handleUnselect(framework);
@@ -100,7 +100,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
               onBlur={() => setOpen(false)}
               onFocus={() => setOpen(true)}
               placeholder={`${t('search')}...`}
-              className="ml-2 flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground"
+              className="ml-2 flex-1 bg-transparent text-base outline-hidden placeholder:text-muted-foreground"
             />
           )}
         </div>
@@ -109,7 +109,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
         <CommandList className="border-none">
           {open && selectTables.length > 0 && countries.length <= 4 ? (
             <div
-              className="absolute top-0 z-10 max-h-[400px] min-h-fit w-full overflow-scroll rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in"
+              className="absolute top-0 z-10 max-h-[400px] min-h-fit w-full overflow-scroll rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden animate-in"
               style={{
                 borderRadius: '1rem',
               }}
