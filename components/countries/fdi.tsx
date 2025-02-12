@@ -17,6 +17,7 @@ const FDIChart = () => {
     removeCountry,
     removeLastCountry,
     fetchSingleCountryData,
+    isFetching,
   } = useCountryData({
     indicator: 'BX.KLT.DINV.WD.GD.ZS',
     countryKey: 'fCountries',
@@ -29,6 +30,7 @@ const FDIChart = () => {
 
   return (
     <MainChartComp
+      isFetching={isFetching}
       isLoading={isLoading}
       fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}

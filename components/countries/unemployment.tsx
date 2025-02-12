@@ -17,6 +17,7 @@ const Unemployment = () => {
     removeCountry,
     removeLastCountry,
     fetchSingleCountryData,
+    isFetching,
   } = useCountryData({
     indicator: 'SL.UEM.TOTL.ZS',
     countryKey: 'uCountries',
@@ -29,6 +30,7 @@ const Unemployment = () => {
 
   return (
     <MainChartComp
+      isFetching={isFetching}
       isLoading={isLoading}
       fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}

@@ -16,6 +16,7 @@ const InternetUsersChart = () => {
     removeCountry,
     removeLastCountry,
     fetchSingleCountryData,
+    isFetching,
   } = useCountryData({
     indicator: 'IT.NET.USER.ZS',
     countryKey: 'internetUsersCountries',
@@ -28,6 +29,7 @@ const InternetUsersChart = () => {
 
   return (
     <MainChartComp
+      isFetching={isFetching}
       isLoading={isLoading}
       fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}

@@ -1,5 +1,5 @@
 import { getData } from '@/data-layer';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useData } from './use-data';
 import {
   formatChartData,
@@ -33,6 +33,7 @@ export const useCountryData = ({
     timeRangeKey,
   });
   const queryClient = useQueryClient();
+  const [isNewCountryLoading, setIsNewCountryLoading] = useState(false);
 
   const fetchCountryData = async ({ from, to }: TTimeRange) => {
     try {
@@ -44,30 +45,34 @@ export const useCountryData = ({
 
   const {
     data: countryData,
-    isLoading,
+    isPending,
     isFetching,
   } = useQuery({
     queryKey: ['countryData', timeRange, indicator],
     queryFn: () => fetchCountryData(timeRange),
     enabled: !!countries.length,
+    placeholderData: (previousData) => previousData,
   });
 
   const fetchSingleCountryData = async (name: string) => {
     try {
       if (!countryData?.length) return;
       if (countryData.find((d) => d.country === name)) return;
+      setIsNewCountryLoading(true);
       const data = await getData({
         countryCode: name,
         from: timeRange.from,
         to: timeRange.to,
         indicator: indicator,
       });
+      setIsNewCountryLoading(false);
 
       queryClient.setQueryData(
         ['countryData', timeRange, indicator],
         [...countryData, { country: name, data }]
       );
     } catch (error) {
+      setIsNewCountryLoading(false);
       handleGlobalError(error);
     }
   };
@@ -79,7 +84,7 @@ export const useCountryData = ({
   return {
     fetchSingleCountryData,
     chartData,
-    isLoading: isLoading || isFetching,
+    isLoading: isPending,
     setCountries,
     setMultipleCountries,
     removeCountry,
@@ -87,5 +92,6 @@ export const useCountryData = ({
     setTimeRange,
     countries,
     timeRange,
+    isFetching: isFetching || isNewCountryLoading,
   };
 };

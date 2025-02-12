@@ -65,7 +65,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
       className="overflow-visible bg-transparent"
     >
       <div
-        className="group border border-input px-3 py-2 text-sm ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
+        className="group border-input ring-offset-background focus-within:ring-ring border px-3 py-2 text-sm focus-within:ring-2 focus-within:ring-offset-2"
         style={{
           borderRadius: '1rem',
         }}
@@ -76,7 +76,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
               <Badge key={framework.value} variant="secondary">
                 {framework.label}
                 <button
-                  className="ml-1 rounded-full outline-hidden ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                  className="ring-offset-background focus:ring-ring ml-1 rounded-full outline-hidden focus:ring-2 focus:ring-offset-2"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
                       handleUnselect(framework);
@@ -88,7 +88,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
                   }}
                   onClick={() => handleUnselect(framework)}
                 >
-                  <X className="h-3 w-3 text-muted-foreground hover:text-foreground" />
+                  <X className="text-muted-foreground hover:text-foreground h-3 w-3" />
                 </button>
               </Badge>
             );
@@ -100,7 +100,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
               onBlur={() => setOpen(false)}
               onFocus={() => setOpen(true)}
               placeholder={`${t('search')}...`}
-              className="ml-2 flex-1 bg-transparent text-base outline-hidden placeholder:text-muted-foreground"
+              className="placeholder:text-muted-foreground ml-2 flex-1 bg-transparent text-base outline-hidden"
             />
           )}
         </div>
@@ -109,7 +109,7 @@ const MultiSelect: React.FC<TMultiSelect> = ({
         <CommandList className="border-none">
           {open && selectTables.length > 0 && countries.length <= 4 ? (
             <div
-              className="absolute top-0 z-10 max-h-[400px] min-h-fit w-full overflow-scroll rounded-md border bg-popover text-popover-foreground shadow-md outline-hidden animate-in"
+              className="bg-popover text-popover-foreground animate-in absolute top-0 z-10 h-[300px] min-h-fit w-full overflow-scroll rounded-md border shadow-md outline-hidden"
               style={{
                 borderRadius: '1rem',
               }}

@@ -34,6 +34,7 @@ const ${name}Chart = () => {
     removeLastCountry,
     fetchSingleCountryData,
     fetchCountryData,
+    isFetching
   } = useCountryData({
     indicator: "${indicator}",
     countryKey: "${localKey}Countries",
@@ -46,6 +47,7 @@ const ${name}Chart = () => {
 
   return (
     <MainChartComp
+      isFetching={isFetching}
       isLoading={isLoading}
       fetchCountryData={fetchCountryData}
       fetchSingleCountryData={fetchSingleCountryData}

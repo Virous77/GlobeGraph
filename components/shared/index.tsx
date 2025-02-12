@@ -41,6 +41,7 @@ type TMainChart = {
   icon?: string;
   indicator: string;
   type: string;
+  isFetching: boolean;
 };
 
 const MainChartComp: React.FC<TMainChart> = ({
@@ -58,6 +59,7 @@ const MainChartComp: React.FC<TMainChart> = ({
   isCurrencySymbol,
   icon,
   indicator,
+  isFetching,
   type,
 }) => {
   const { theme } = useTheme();
@@ -145,10 +147,10 @@ const MainChartComp: React.FC<TMainChart> = ({
             {chartData[0]?.year} - {chartData[chartData.length - 1]?.year}
           </CardDescription>
           {countries.length > 0 && (
-            <div className="flex flex-wrap items-center gap-2 p-5 pl-0 pt-2">
+            <div className="flex flex-wrap items-center gap-2 p-5 pt-2 pl-0">
               {countries.map((country, idx) => (
                 <span
-                  className="mr-2 flex items-center whitespace-nowrap text-sm"
+                  className="mr-2 flex items-center text-sm whitespace-nowrap"
                   key={country.value}
                 >
                   {country.label}
@@ -164,7 +166,7 @@ const MainChartComp: React.FC<TMainChart> = ({
           )}
         </CardHeader>
 
-        <div className="custom-hide mr-4 mt-4 hidden w-[300px] flex-col mobile992:flex">
+        <div className="custom-hide mobile992:flex mt-4 mr-4 hidden w-[300px] flex-col">
           <MultiSelect
             countries={countries}
             fetchNewCountryData={fetchSingleCountryData}
@@ -181,12 +183,12 @@ const MainChartComp: React.FC<TMainChart> = ({
         </div>
       </div>
 
-      <div className="custom-hide block w-full mobile992:hidden">
+      <div className="custom-hide mobile992:hidden block w-full">
         <div className="-mt-4 flex items-center gap-1 px-4">
           <ChartType chartType={chartType} setChartType={setChartType} />
           <TimeRange timeRange={timeRange} setTimeRange={setTimeRange} />
         </div>
-        <div className="mr-4 mt-4 w-full px-3">
+        <div className="mt-4 mr-4 w-full px-3">
           <MultiSelect
             lang={locale}
             countries={countries}
@@ -209,6 +211,7 @@ const MainChartComp: React.FC<TMainChart> = ({
         />
       </CardContent>
       {isLoading && <Loader type="full" />}
+      {isFetching && <Loader type="full" isFetching={isFetching} />}
       <PreviewScreenshot open={open} setOpen={setOpen} />
     </Card>
   );

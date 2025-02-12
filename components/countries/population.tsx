@@ -17,6 +17,7 @@ const Population = () => {
     removeCountry,
     removeLastCountry,
     fetchSingleCountryData,
+    isFetching,
   } = useCountryData({
     indicator: 'SP.POP.TOTL',
     countryKey: 'populationCountries',
@@ -29,6 +30,7 @@ const Population = () => {
 
   return (
     <MainChartComp
+      isFetching={isFetching}
       isLoading={isLoading}
       fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}

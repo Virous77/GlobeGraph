@@ -17,6 +17,7 @@ const IncomeInequalityChart = () => {
     removeCountry,
     removeLastCountry,
     fetchSingleCountryData,
+    isFetching,
   } = useCountryData({
     indicator: 'SI.POV.GINI',
     countryKey: 'incomeInequalityCountries',
@@ -29,6 +30,7 @@ const IncomeInequalityChart = () => {
 
   return (
     <MainChartComp
+      isFetching={isFetching}
       isLoading={isLoading}
       fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}

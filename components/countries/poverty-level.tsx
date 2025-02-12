@@ -16,6 +16,7 @@ const PovertyLevelChart = () => {
     removeCountry,
     removeLastCountry,
     fetchSingleCountryData,
+    isFetching,
   } = useCountryData({
     indicator: 'SI.POV.DDAY',
     countryKey: 'povertyCountries',
@@ -28,6 +29,7 @@ const PovertyLevelChart = () => {
 
   return (
     <MainChartComp
+      isFetching={isFetching}
       isLoading={isLoading}
       fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}

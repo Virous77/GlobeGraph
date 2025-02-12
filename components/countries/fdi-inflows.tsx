@@ -17,6 +17,7 @@ const FDIInflowsChart = () => {
     removeCountry,
     removeLastCountry,
     fetchSingleCountryData,
+    isFetching,
   } = useCountryData({
     indicator: 'BX.KLT.DINV.CD.WD',
     countryKey: 'fiCountries',
@@ -29,6 +30,7 @@ const FDIInflowsChart = () => {
 
   return (
     <MainChartComp
+      isFetching={isFetching}
       isLoading={isLoading}
       fetchSingleCountryData={fetchSingleCountryData}
       timeRange={timeRange}
