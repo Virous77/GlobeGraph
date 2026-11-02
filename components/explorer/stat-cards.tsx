@@ -27,6 +27,7 @@ const StatCards = ({
   slots,
   format,
   isLoading,
+  failed,
   onRemove,
 }: {
   countries: string[];
@@ -35,6 +36,7 @@ const StatCards = ({
   slots: Record<string, number>;
   format: TMetricFormat;
   isLoading: boolean;
+  failed: string[];
   onRemove: (code: string) => void;
 }) => {
   const t = useTranslations('Explorer');
@@ -98,7 +100,9 @@ const StatCards = ({
                 <div className="bg-sunken h-3 w-16 animate-pulse rounded" />
               </div>
             ) : (
-              <p className="text-ink-2 mt-2 text-sm">{t('noData')}</p>
+              <p className="text-ink-2 mt-2 text-sm">
+                {failed.includes(code) ? t('unavailable') : t('noData')}
+              </p>
             )}
           </li>
         );

@@ -159,7 +159,8 @@
     "insightLeader": "{country} est en tête avec {value} en {year}.",
     "insightSingle": "{country} : {value} en {year}.",
     "sourceLink": "Voir les données source",
-    "points": "{value} pts"
+    "points": "{value} pts",
+    "unavailable": "Indisponible"
   },
   "Layout": {
     "language": "Langue",

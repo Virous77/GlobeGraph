@@ -159,7 +159,8 @@
     "insightLeader": "{year} में {country} {value} के साथ सबसे ऊपर है।",
     "insightSingle": "{country}: {year} में {value}।",
     "sourceLink": "स्रोत डेटा देखें",
-    "points": "{value} अंक"
+    "points": "{value} अंक",
+    "unavailable": "उपलब्ध नहीं"
   },
   "Layout": {
     "language": "भाषा",

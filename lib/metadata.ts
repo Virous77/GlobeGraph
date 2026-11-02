@@ -16,7 +16,7 @@ import {
   withSiteName,
 } from '@/lib/seo';
 
-export const getDefaultTitle = async (metric: TMetric, isHome: boolean) => {
+const getDefaultTitle = async (metric: TMetric, isHome: boolean) => {
   const t = await getTranslations();
   return withSiteName(
     isHome

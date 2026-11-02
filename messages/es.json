@@ -159,7 +159,8 @@
     "insightLeader": "{country} es el más alto con {value} en {year}.",
     "insightSingle": "{country}: {value} en {year}.",
     "sourceLink": "Ver los datos de origen",
-    "points": "{value} pts"
+    "points": "{value} pts",
+    "unavailable": "No disponible"
   },
   "Layout": {
     "language": "Idioma",

@@ -1,8 +1,16 @@
 'use client';
 
+import { useRef } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { useQueryClient } from '@tanstack/react-query';
+import { useQueryStates } from 'nuqs';
+import { normalizeSelection, selectionParsers } from '@/lib/selection';
 import { cn } from '@/lib/utils';
+import { seriesQuery } from './series-query';
+import { useMetric } from './use-metric';
+
+const PREFETCH_DELAY_MS = 120;
 
 type TGroup = {
   group: string;
@@ -10,19 +18,27 @@ type TGroup = {
   metrics: { slug: string; name: string }[];
 };
 
-// Real links, so crawlers reach every metric. The query string carries the
-// countries and years across metrics.
-const MetricNav = ({
-  active,
-  label,
-  groups,
-}: {
-  active: string;
-  label: string;
-  groups: TGroup[];
-}) => {
+// Real links, so crawlers reach every metric and a new tab works. A normal
+// click only changes the URL: the shell stays put and the chart swaps in place.
+const MetricNav = ({ label, groups }: { label: string; groups: TGroup[] }) => {
   const query = useSearchParams().toString();
+  const { metric } = useMetric();
+  const client = useQueryClient();
+  const [raw] = useQueryStates(selectionParsers);
+  const { countries } = normalizeSelection(raw);
+  const hoverTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+
   const href = (slug: string) => `/country/${slug}${query ? `?${query}` : ''}`;
+
+  // Load on intent, so the click finds its data ready. The delay skips metrics
+  // the pointer only passes over, and cached ones cost no request at all.
+  const prefetch = (slug: string) => {
+    hoverTimer.current = setTimeout(() => {
+      countries.forEach((code) => {
+        client.prefetchQuery(seriesQuery(slug, code));
+      });
+    }, PREFETCH_DELAY_MS);
+  };
 
   return (
     <nav
@@ -40,11 +56,21 @@ const MetricNav = ({
                 <li key={slug} className="shrink-0">
                   <Link
                     href={href(slug)}
+                    prefetch={false}
                     scroll={false}
-                    aria-current={slug === active ? 'page' : undefined}
+                    aria-current={slug === metric.slug ? 'page' : undefined}
+                    onPointerEnter={() => prefetch(slug)}
+                    onPointerLeave={() => clearTimeout(hoverTimer.current)}
+                    onClick={(e) => {
+                      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+                        return;
+                      }
+                      e.preventDefault();
+                      window.history.pushState(null, '', href(slug));
+                    }}
                     className={cn(
                       'block rounded-lg px-3 py-1.5 text-sm whitespace-nowrap lg:whitespace-normal',
-                      slug === active
+                      slug === metric.slug
                         ? 'bg-sunken font-medium'
                         : 'text-ink-2 hover:bg-sunken'
                     )}

@@ -12,7 +12,7 @@ export const generateMetadata = async ({
   buildMetadata({ metric: DEFAULT_METRIC, searchParams, isHome: true });
 
 const HomePage = ({ searchParams }: TProps) => (
-  <ExplorerPage metric={DEFAULT_METRIC} searchParams={searchParams} isHome />
+  <ExplorerPage metric={DEFAULT_METRIC} searchParams={searchParams} />
 );
 
 export default HomePage;
