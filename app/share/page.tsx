@@ -1,26 +1,24 @@
-import ShareComp from '@/components/share';
-import { commonMetaData } from '@/utils';
+import { permanentRedirect } from 'next/navigation';
+import { DEFAULT_METRIC, getMetricByIndicator } from '@/data-layer/metrics';
 
-export const generateMetadata = async () => {
-  const metaData = commonMetaData({
-    name: '',
-    desc: 'Globe Graph is a web app that visualizes the countries data like GDP, GDP per capita, and population in different years using many charts.',
-    url: '/share',
-    keywords: ['geo chart'],
-  });
-  return {
-    ...metaData,
-  };
+type TProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
 
-const SharePage = () => {
-  return (
-    <main>
-      <section className="p-1">
-        <ShareComp />
-      </section>
-    </main>
-  );
+// Old share links. The explorer's own URL is the share link now.
+const SharePage = async ({ searchParams }: TProps) => {
+  const { countries, from, to, indicator, chartType } = await searchParams;
+  const metric =
+    (typeof indicator === 'string' && getMetricByIndicator(indicator)) ||
+    DEFAULT_METRIC;
+
+  const query = new URLSearchParams();
+  if (typeof countries === 'string') query.set('c', countries);
+  if (typeof from === 'string') query.set('from', from);
+  if (typeof to === 'string') query.set('to', to);
+  if (chartType === 'bar') query.set('view', 'ranking');
+
+  permanentRedirect(`/country/${metric.slug}?${query}`);
 };
 
 export default SharePage;

@@ -1,71 +1,43 @@
+import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
-import ThemeProvider from '@/lib/providers/theme-provider';
-import AppStart from '@/components/custom-ui/app-start';
-import { commonMetaData } from '@/utils';
-import Header from '@/components/layouts/header';
-import Footer from '@/components/layouts/footer';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
-import NextTopLoader from 'nextjs-toploader';
-import { Toaster } from 'sonner';
-import ToastProvider from '@/lib/providers/toast-provider';
-import ReactQueryProvider from '@/lib/providers/reactQuery-provider';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import './globals.css';
+import Footer from '@/components/layout/footer';
+import Header from '@/components/layout/header';
+import QueryProvider from '@/lib/providers/query-provider';
+import ThemeProvider from '@/lib/providers/theme-provider';
+import { SITE_NAME, SITE_URL } from '@/lib/seo';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const generateMetadata = async () => {
-  const metaData = commonMetaData({
-    name: '',
-    desc: 'Globe Graph is a web app that visualizes the countries data like GDP, GDP per capita, and population in different years using many charts.',
-    url: '/',
-    keywords: ['geo chart'],
-  });
-  return {
-    ...metaData,
-  };
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
+  authors: [{ name: 'Reetesh Kumar', url: 'https://reetesh.in/' }],
+  icons: { apple: '/apple-touch-icon.png' },
+  twitter: { card: 'summary_large_image', creator: '@imbitcoinb' },
 };
 
 const RootLayout = async ({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) => {
+}: Readonly<{ children: React.ReactNode }>) => {
   const locale = await getLocale();
   const messages = await getMessages();
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={inter.className}>
+      <body
+        className={`${inter.className} flex min-h-dvh flex-col antialiased`}
+      >
         <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <ReactQueryProvider>
-              <NextTopLoader
-                color="#22dd4e"
-                initialPosition={0.08}
-                crawlSpeed={200}
-                height={3}
-                crawl={true}
-                showSpinner={false}
-                easing="ease"
-                speed={200}
-                shadow="0 0 10px #22DD4e,0 0 5px #22DD4e"
-              />
-              <AppStart>
-                <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto]">
-                  <Header />
-                  <NuqsAdapter>{children}</NuqsAdapter>
-                  <ToastProvider />
-                  <Footer />
-                </div>
-              </AppStart>
-            </ReactQueryProvider>
+          <ThemeProvider>
+            <QueryProvider>
+              <Header />
+              <NuqsAdapter>{children}</NuqsAdapter>
+              <Footer />
+            </QueryProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

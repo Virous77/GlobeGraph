@@ -1,34 +1,14 @@
-import fs from 'fs';
+import { MetadataRoute } from 'next';
+import { METRICS } from '@/data-layer/metrics';
+import { getMetricUrl, SITE_URL } from '@/lib/seo';
 
-const sitemap = async () => {
-  const URL = 'https://globe-graph.vercel.app';
-
-  const pages = fs
-    .readdirSync('app/country')
-    .map((page) => page.replace('.tsx', ''));
-
-  const makeUrls = (pages: string[]) => {
-    return pages.map((page) => {
-      return {
-        url: `${URL}/country/${page}`,
-        lastModified: new Date(),
-        priority: 0.9,
-        changeFrequency: 'weekly',
-      };
-    });
-  };
-
-  const restUrls = [
-    {
-      url: `${URL}/`,
-      lastModified: new Date(),
-      priority: 1.0,
-      changeFrequency: 'weekly',
-    },
-    ...makeUrls(pages),
-  ];
-
-  return [...restUrls];
-};
+const sitemap = (): MetadataRoute.Sitemap => [
+  { url: `${SITE_URL}/`, priority: 1, changeFrequency: 'monthly' },
+  ...METRICS.map(({ slug }) => ({
+    url: getMetricUrl(slug),
+    priority: 0.9,
+    changeFrequency: 'monthly' as const,
+  })),
+];
 
 export default sitemap;
