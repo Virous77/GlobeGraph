@@ -1,45 +1,33 @@
 # Globe Graph
 
-This app let you explore different type of countries data like `GDP`, `Population`, `Income` and `Life Expectancy` in a multiple charts.
+Compare up to 5 countries across 30 World Bank statistics, from GDP and population to CO2 and life expectancy. See the trend, the ranking and the full data table, then share any view with a link.
 
-## Clone the repository
+Live at [globe-graph.vercel.app](https://globe-graph.vercel.app). Data comes from [World Bank Open Data](https://data.worldbank.org/) (CC BY 4.0).
+
+## Getting started
+
+Use the Node version in `.nvmrc` and [pnpm](https://pnpm.io/).
 
 ```bash
 git clone https://github.com/Virous77/GlobeGraph.git
-# or
-gh repo clone Virous77/GlobeGraph
-```
-
-## Install the dependencies
-
-It's recommended to use give node version in `.nvmrc` file.
-
-```bash
+cd GlobeGraph
 nvm use
-```
-
-Install the dependencies using `pnpm`. It enforces the supply-chain rules in `pnpm-workspace.yaml`: a 15 day release cooldown, patched overrides and no install scripts.
-
-```bash
 pnpm install
-```
-
-## Security check
-
-Scans the repo for malware and audits the dependencies. CI runs both.
-
-```bash
-pnpm security
-```
-
-## Start the development server
-
-```bash
 pnpm dev
 ```
 
-## Build the app
+The app runs at [localhost:3000](http://localhost:3000).
 
-```bash
-pnpm build
-```
+## Scripts
+
+| Command         | What it does                         |
+| --------------- | ------------------------------------ |
+| `pnpm dev`      | Start the development server         |
+| `pnpm build`    | Build for production                 |
+| `pnpm start`    | Run the production build             |
+| `pnpm lint`     | Run ESLint                           |
+| `pnpm security` | Scan for malware and audit packages  |
+
+## Dependencies
+
+`pnpm-workspace.yaml` skips package versions published in the last 15 days and blocks install scripts.
