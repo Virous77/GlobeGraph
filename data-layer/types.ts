@@ -1,16 +1,10 @@
-export type TResponseData = {
-  indicator: {
-    id: string;
-    value: string;
-  };
-  country: {
-    id: string;
-    value: string;
-  };
-  countryiso3code: string;
-  date: string;
-  value: number;
-  unit: string;
-  obs_status: string;
-  decimal: number;
+// One observation: [year, value]. Years with no data are left out.
+export type TPoint = [number, number];
+
+export type TSeriesMap = Record<string, TPoint[]>;
+
+export type TCountryOption = {
+  code: string;
+  label: string;
+  keywords: string[];
 };

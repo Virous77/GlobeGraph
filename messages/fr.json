@@ -1,64 +1,180 @@
 {
-  "HomePage": {
-    "title": "Explorer les données",
-    "gdp": "PIB du pays",
-    "perCapitaIncome": "Revenu par habitant du pays",
-    "lifeExpectancy": "Espérance de vie du pays",
-    "population": "Population du pays",
-    "unemploymentLaborForce": "Force de travail au chômage du pays",
-    "fdi": "Investissement direct étranger du pays à PIB",
-    "debt": "Dette du gouvernement central du pays à PIB",
-    "fdiInflows": "Investissement direct étranger du pays",
-    "inflation": "Inflation des prix à la consommation du pays",
-    "foreignReserve": "Réserve étrangère du pays",
-    "povertyLevel": "Population vivant en dessous du seuil de pauvreté",
-    "incomeInequality": "Inégalité des revenus",
-    "internetUsers": "Utilisateurs d'Internet du pays",
-    "visit": "Visiter"
+  "Metric": {
+    "gdp": {
+      "name": "PIB",
+      "about": "Produit intérieur brut : la valeur totale de ce qu'un pays produit en un an, en dollars américains courants."
+    },
+    "perCapitaIncome": {
+      "name": "PIB par habitant",
+      "about": "Le PIB divisé par la population, en dollars courants : une mesure courante de la production moyenne par personne."
+    },
+    "inflation": {
+      "name": "Inflation",
+      "about": "La vitesse à laquelle les prix à la consommation augmentent chaque année, selon l'indice des prix."
+    },
+    "unemploymentLaborForce": {
+      "name": "Chômage",
+      "about": "La part de la population active sans emploi, disponible et en recherche de travail."
+    },
+    "debt": {
+      "name": "Dette publique",
+      "about": "La dette de l'administration centrale en part du PIB. Beaucoup de pays ne la publient que certaines années."
+    },
+    "foreignReserve": {
+      "name": "Réserves de change",
+      "about": "Les réserves totales, or compris, de la banque centrale d'un pays, en dollars courants."
+    },
+    "fdiInflows": {
+      "name": "Entrées d'IDE",
+      "about": "Les investissements directs étrangers nets entrant dans un pays en un an, en dollars courants."
+    },
+    "fdi": {
+      "name": "IDE par rapport au PIB",
+      "about": "Les entrées nettes d'investissements directs étrangers en part du PIB, qui montrent leur poids dans l'économie."
+    },
+    "population": {
+      "name": "Population",
+      "about": "Le nombre total de personnes vivant dans un pays, selon les estimations de milieu d'année."
+    },
+    "lifeExpectancy": {
+      "name": "Espérance de vie",
+      "about": "Le nombre d'années qu'un nouveau-né vivrait aux taux de mortalité actuels."
+    },
+    "internetUsers": {
+      "name": "Utilisateurs d'internet",
+      "about": "La part de la population d'un pays qui utilise internet."
+    },
+    "povertyLevel": {
+      "name": "Extrême pauvreté",
+      "about": "La part des personnes vivant avec moins de 3,00 $ par jour (PPA 2021), d'après des enquêtes auprès des ménages."
+    },
+    "incomeInequality": {
+      "name": "Inégalités de revenus",
+      "about": "L'indice de Gini : 0 signifie que tous ont le même revenu, 100 qu'une seule personne a tout."
+    },
+    "gdpGrowth": {
+      "name": "Croissance du PIB",
+      "about": "La variation annuelle du PIB d'un pays, hors inflation."
+    },
+    "manufacturing": {
+      "name": "Industrie manufacturière",
+      "about": "La valeur ajoutée de l'industrie manufacturière en part du PIB."
+    },
+    "exports": {
+      "name": "Exportations",
+      "about": "Les biens et services vendus à l'étranger, en part du PIB."
+    },
+    "imports": {
+      "name": "Importations",
+      "about": "Les biens et services achetés à l'étranger, en part du PIB."
+    },
+    "remittances": {
+      "name": "Envois de fonds",
+      "about": "L'argent envoyé au pays par les personnes travaillant à l'étranger, en part du PIB."
+    },
+    "militarySpending": {
+      "name": "Dépenses militaires",
+      "about": "Les dépenses publiques militaires en part du PIB."
+    },
+    "populationGrowth": {
+      "name": "Croissance démographique",
+      "about": "La variation annuelle de la population d'un pays, en pourcentage."
+    },
+    "urbanPopulation": {
+      "name": "Population urbaine",
+      "about": "La part de la population vivant en zone urbaine."
+    },
+    "fertilityRate": {
+      "name": "Taux de fécondité",
+      "about": "Le nombre moyen d'enfants qu'aurait une femme aux taux de natalité actuels."
+    },
+    "femaleLaborForce": {
+      "name": "Femmes actives",
+      "about": "La part des femmes de 15 ans et plus qui travaillent ou cherchent un emploi."
+    },
+    "infantMortality": {
+      "name": "Mortalité infantile",
+      "about": "Les décès d'enfants de moins d'un an pour 1 000 naissances vivantes."
+    },
+    "healthSpending": {
+      "name": "Dépenses de santé",
+      "about": "Les dépenses courantes totales de santé en part du PIB."
+    },
+    "educationSpending": {
+      "name": "Dépenses d'éducation",
+      "about": "Les dépenses publiques d'éducation en part du PIB. Beaucoup de pays ne les publient que certaines années."
+    },
+    "co2Emissions": {
+      "name": "Émissions de CO2",
+      "about": "Les émissions annuelles de dioxyde de carbone par personne, en tonnes."
+    },
+    "renewableEnergy": {
+      "name": "Énergie renouvelable",
+      "about": "La part de la consommation finale d'énergie issue de sources renouvelables."
+    },
+    "electricityAccess": {
+      "name": "Accès à l'électricité",
+      "about": "La part de la population ayant accès à l'électricité."
+    },
+    "forestArea": {
+      "name": "Surface forestière",
+      "about": "La part du territoire d'un pays couverte par la forêt."
+    }
   },
-  "Chart": {
-    "search": "Sélectionnez les pays",
-    "gdp": "PIB des pays",
-    "gdpDesc": "Le PIB signifie Produit Intérieur Brut. C'est la valeur totale de tous les biens et services produits dans un pays en une année.",
-    "perCapitaIncome": "Revenu par habitant des pays",
-    "perCapitaIncomeDesc": "Le revenu par habitant est le revenu moyen des citoyens d'un pays. Il est calculé en divisant le revenu total du pays par sa population.",
-    "lifeExpectancy": "Espérance de vie des pays",
-    "lifeExpectancyDesc": "L'espérance de vie est le nombre moyen d'années qu'une personne est censée vivre en fonction de l'année de sa naissance.",
-    "population": "Population du pays",
-    "populationDesc": "La population représente le nombre total de personnes vivant dans un pays.",
-    "unemploymentLaborForce": "Force de travail au chômage du pays",
-    "unemploymentLaborForceDesc": "Le taux de chômage est le pourcentage de la population active totale qui est au chômage mais qui recherche activement un emploi et qui est prête à travailler.",
-    "fdi": "Investissement direct étranger des pays à PIB",
-    "fdiDesc": "L'investissement direct étranger est un investissement réalisé par une entreprise ou un individu dans un pays dans des intérêts commerciaux dans un autre pays, sous forme d'établissement d'opérations commerciales ou d'acquisition d'actifs commerciaux dans l'autre pays, tels que la propriété ou l'intérêt de contrôle dans une entreprise étrangère.",
-    "debt": "Dette du gouvernement central des pays à PIB",
-    "debtDesc": "Cet indicateur mesure la dette totale du gouvernement central en pourcentage du Produit Intérieur Brut (PIB) du pays. Il donne une idée de la dette que le gouvernement doit par rapport à la taille de l'économie.",
-    "fdiInflows": "Investissement direct étranger du pays",
-    "fdiInflowDesc": "L'investissement direct étranger Inflow est la valeur totale des investissements directs étrangers qui entrent dans un pays au cours d'une période donnée.",
-    "inflation": "Inflation des prix à la consommation des pays",
-    "inflationDesc": "L'inflation est le taux auquel le niveau général des prix des biens et services augmente, et par conséquent, le pouvoir d'achat de la monnaie diminue.",
-    "foreignReserve": "Réserve étrangère des pays",
-    "foreignReserveDesc": "Les réserves de change sont des actifs détenus en réserve par une banque centrale dans des devises étrangères. Ces réserves sont utilisées pour garantir des passifs et influencer la politique monétaire.",
-    "povertyLevel": "Population vivant en dessous du seuil de pauvreté",
-    "povertyLevelDesc": "Le pourcentage de la population vivant en dessous du seuil de pauvreté national.",
-    "incomeInequality": "Inégalité des revenus des pays",
-    "incomeInequalityDesc": "L'inégalité des revenus est la mesure dans laquelle les revenus sont distribués de manière inégale parmi une population.",
-    "internetUsers": "Pourcentage d'utilisateurs d'Internet de la population",
-    "internetUsersDesc": "Le pourcentage de la population qui utilise Internet."
+  "Nav": {
+    "label": "Indicateurs",
+    "economy": "Économie",
+    "finance": "Finance et commerce",
+    "people": "Population",
+    "health": "Santé et éducation",
+    "environment": "Environnement"
   },
-  "Language": {
-    "en": "Anglais",
-    "es": "Espagnol",
-    "fr": "Français",
-    "hi": "Hindi",
-    "de": "Allemagne"
+  "Explorer": {
+    "addCountry": "Ajouter un pays",
+    "noMatch": "Aucun pays trouvé",
+    "maxReached": "Jusqu'à {max} pays",
+    "removeCountry": "Retirer {country}",
+    "emptyTitle": "Aucun pays sélectionné",
+    "emptyHint": "Cherchez ci-dessus pour en ajouter un.",
+    "noData": "Aucune donnée",
+    "noDataRange": "Aucune donnée pour ces pays sur ces années. Essayez une période plus large.",
+    "trend": "Évolution",
+    "ranking": "Classement",
+    "viewLabel": "Vue du graphique",
+    "rangeLabel": "Période",
+    "lastYears": "{count} ans",
+    "allYears": "Tout",
+    "from": "Année de début",
+    "to": "Année de fin",
+    "share": "Copier le lien",
+    "copied": "Copié",
+    "saveImage": "Enregistrer l'image",
+    "loadError": "Certaines données n'ont pas pu être chargées.",
+    "retry": "Réessayer",
+    "changeSince": "{change} depuis {year}",
+    "tableTitle": "Tableau de données",
+    "year": "Année",
+    "rankingNote": "Dernier chiffre de chaque pays sur les années choisies.",
+    "sparseNote": "Données irrégulières. Les points sont des chiffres réels ; les lignes les relient.",
+    "insightLeader": "{country} est en tête avec {value} en {year}.",
+    "insightSingle": "{country} : {value} en {year}.",
+    "sourceLink": "Voir les données source",
+    "points": "{value} pts"
   },
-  "ChartName": {
-    "bar": "Diagramme à bandes",
-    "line": "Graphique linéaire",
-    "area": "Graphique à aires",
-    "radar": "Graphique radar"
+  "Layout": {
+    "language": "Langue",
+    "theme": "Changer de thème",
+    "source": "Données :"
+  },
+  "Seo": {
+    "title": "{metric} par pays : graphiques et données à comparer",
+    "keyword": "{metric} par pays",
+    "homeTitle": "Comparez les pays en graphiques : PIB, population et plus",
+    "homeDescription": "Comparez le PIB, la population, l'inflation, l'espérance de vie et plus pour tout pays, avec des graphiques gratuits et les données de la Banque mondiale."
   },
   "NotFound": {
-    "message": "Oups! Cette page n'est pas trouvée"
+    "title": "Page introuvable",
+    "message": "Cette page n'existe pas.",
+    "back": "Retour aux graphiques"
   }
 }

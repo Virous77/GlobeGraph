@@ -1,64 +1,180 @@
 {
-  "HomePage": {
-    "title": "Explore the Data",
-    "gdp": "Country GDP",
-    "perCapitaIncome": "Country per Capita Income",
-    "lifeExpectancy": "Country Life Expectancy",
-    "population": "Country Population",
-    "unemploymentLaborForce": "Country Unemployment Labour Force",
-    "fdi": "Country Foreign Direct Investment to GDP",
-    "debt": "Country Central Government Debt to GDP",
-    "fdiInflows": "Country Foreign Direct Investment Inflow",
-    "inflation": "Country Consumer Price Inflation",
-    "foreignReserve": "Country Foreign Reserve",
-    "povertyLevel": "Population Living Below the Poverty Line",
-    "incomeInequality": "Income Inequality",
-    "internetUsers": "Country Internet Users",
-    "visit": "Visit"
+  "Metric": {
+    "gdp": {
+      "name": "GDP",
+      "about": "Gross domestic product: the total value of everything a country produces in a year, in current US dollars."
+    },
+    "perCapitaIncome": {
+      "name": "GDP per capita",
+      "about": "GDP divided by population, in current US dollars: a common measure of average economic output per person."
+    },
+    "inflation": {
+      "name": "Inflation",
+      "about": "How fast consumer prices rise each year, measured by the consumer price index."
+    },
+    "unemploymentLaborForce": {
+      "name": "Unemployment",
+      "about": "The share of the labour force without a job that is available for and looking for work."
+    },
+    "debt": {
+      "name": "Government debt",
+      "about": "Central government debt as a share of GDP. Many countries report it only for some years."
+    },
+    "foreignReserve": {
+      "name": "Foreign reserves",
+      "about": "Total reserves including gold held by a country's central bank, in current US dollars."
+    },
+    "fdiInflows": {
+      "name": "FDI inflows",
+      "about": "Net foreign direct investment entering a country in a year, in current US dollars."
+    },
+    "fdi": {
+      "name": "FDI to GDP",
+      "about": "Net foreign direct investment inflows as a share of GDP, which shows their size against the economy."
+    },
+    "population": {
+      "name": "Population",
+      "about": "The total number of people living in a country, by mid-year estimates."
+    },
+    "lifeExpectancy": {
+      "name": "Life expectancy",
+      "about": "The number of years a newborn would be expected to live at current death rates."
+    },
+    "internetUsers": {
+      "name": "Internet users",
+      "about": "The share of a country's population using the internet."
+    },
+    "povertyLevel": {
+      "name": "Extreme poverty",
+      "about": "The share of people living on less than $3.00 a day (2021 PPP), from household surveys."
+    },
+    "incomeInequality": {
+      "name": "Income inequality",
+      "about": "The Gini index: 0 means everyone has the same income, 100 means one person has it all."
+    },
+    "gdpGrowth": {
+      "name": "GDP growth",
+      "about": "The yearly change in a country's GDP after removing inflation."
+    },
+    "manufacturing": {
+      "name": "Manufacturing",
+      "about": "The value added by manufacturing as a share of GDP."
+    },
+    "exports": {
+      "name": "Exports",
+      "about": "Goods and services sold abroad, as a share of GDP."
+    },
+    "imports": {
+      "name": "Imports",
+      "about": "Goods and services bought from abroad, as a share of GDP."
+    },
+    "remittances": {
+      "name": "Remittances",
+      "about": "Money sent home by people working abroad, as a share of GDP."
+    },
+    "militarySpending": {
+      "name": "Military spending",
+      "about": "Government spending on the military as a share of GDP."
+    },
+    "populationGrowth": {
+      "name": "Population growth",
+      "about": "The yearly change in a country's population, in percent."
+    },
+    "urbanPopulation": {
+      "name": "Urban population",
+      "about": "The share of people living in urban areas."
+    },
+    "fertilityRate": {
+      "name": "Fertility rate",
+      "about": "The average number of children a woman would have at current birth rates."
+    },
+    "femaleLaborForce": {
+      "name": "Women in the workforce",
+      "about": "The share of women aged 15 and over who are working or looking for work."
+    },
+    "infantMortality": {
+      "name": "Infant mortality",
+      "about": "Deaths of babies under one year old, per 1,000 live births."
+    },
+    "healthSpending": {
+      "name": "Health spending",
+      "about": "Total current spending on health care as a share of GDP."
+    },
+    "educationSpending": {
+      "name": "Education spending",
+      "about": "Government spending on education as a share of GDP. Many countries report it only for some years."
+    },
+    "co2Emissions": {
+      "name": "CO2 emissions",
+      "about": "Carbon dioxide emissions per person each year, in tonnes."
+    },
+    "renewableEnergy": {
+      "name": "Renewable energy",
+      "about": "The share of final energy use that comes from renewable sources."
+    },
+    "electricityAccess": {
+      "name": "Electricity access",
+      "about": "The share of people with access to electricity."
+    },
+    "forestArea": {
+      "name": "Forest area",
+      "about": "The share of a country's land covered by forest."
+    }
   },
-  "Chart": {
-    "search": "Select Countries",
-    "gdp": "GDP of Countries",
-    "gdpDesc": "GDP stands for Gross Domestic Product. It is the total value of all goods and services produced in a country in a year.",
-    "perCapitaIncome": "Per Capita Income of Countries",
-    "perCapitaIncomeDesc": "Per Capita Income is the average income of a country's citizens. It is calculated by dividing the country's total income by its population.",
-    "lifeExpectancy": "Life Expectancy of Countries",
-    "lifeExpectancyDesc": "Life expectancy is the average number of years a person is expected to live based on the year of their birth.",
-    "population": "Country Population",
-    "populationDesc": "Population stands for the total number of people living in a country.",
-    "unemploymentLaborForce": "Country Unemployment Labour Force",
-    "unemploymentLaborForceDesc": "Unemployment rate is the percentage of the total labor force that is unemployed but actively seeking employment and willing to work.",
-    "fdi": "Foreign Direct Investment of Countries to GDP",
-    "fdiDesc": "Foreign Direct Investment is an investment made by a company or individual in one country in business interests in another country, in the form of either establishing business operations or acquiring business assets in the other country, such as ownership or controlling interest in a foreign company.",
-    "debt": "Central Government Debt of Countries to GDP",
-    "debtDesc": "This indicator measures the total debt of the central government as a percentage of the country's Gross Domestic Product (GDP). It provides a view of how much debt the government owes relative to the size of the economy.",
-    "fdiInflows": "Foreign Direct Investment Inflow of Countries",
-    "fdiInflowDesc": "Foreign Direct Investment Inflow is the total value of foreign direct investments that flow into a country in a given period of time.",
-    "inflation": "Consumer Price Inflation of Countries",
-    "inflationDesc": "Inflation is the rate at which the general level of prices for goods and services is rising, and subsequently, the purchasing power of currency is falling.",
-    "foreignReserve": "Foreign Reserve of Countries",
-    "foreignReserveDesc": "Foreign exchange reserves are assets held on reserve by a central bank in foreign currencies. These reserves are used to back liabilities and influence monetary policy.",
-    "povertyLevel": "Population Living Below the Poverty Line",
-    "povertyLevelDesc": "The percentage of the population living below the national poverty line.",
-    "incomeInequality": "Income Inequality of Countries",
-    "incomeInequalityDesc": "Income inequality is the extent to which income is distributed in an uneven manner among a population.",
-    "internetUsers": "Internet Users percentage of Population",
-    "internetUsersDesc": "The percentage of the population that uses the internet."
+  "Nav": {
+    "label": "Metrics",
+    "economy": "Economy",
+    "finance": "Finance and trade",
+    "people": "People",
+    "health": "Health and education",
+    "environment": "Environment"
   },
-  "Language": {
-    "en": "English",
-    "es": "Spanish",
-    "fr": "French",
-    "hi": "Hindi",
-    "de": "Germany"
+  "Explorer": {
+    "addCountry": "Add a country",
+    "noMatch": "No country found",
+    "maxReached": "Up to {max} countries",
+    "removeCountry": "Remove {country}",
+    "emptyTitle": "No countries selected",
+    "emptyHint": "Search above to add one.",
+    "noData": "No data",
+    "noDataRange": "No data for these countries in these years. Try a wider range.",
+    "trend": "Trend",
+    "ranking": "Ranking",
+    "viewLabel": "Chart view",
+    "rangeLabel": "Time range",
+    "lastYears": "{count}Y",
+    "allYears": "All",
+    "from": "From year",
+    "to": "To year",
+    "share": "Copy link",
+    "copied": "Copied",
+    "saveImage": "Save image",
+    "loadError": "Some data couldn't be loaded.",
+    "retry": "Try again",
+    "changeSince": "{change} since {year}",
+    "tableTitle": "Data table",
+    "year": "Year",
+    "rankingNote": "Latest figure for each country in the selected years.",
+    "sparseNote": "Reported irregularly. Dots mark real figures; lines join them.",
+    "insightLeader": "{country} is highest at {value} in {year}.",
+    "insightSingle": "{country}: {value} in {year}.",
+    "sourceLink": "View the source data",
+    "points": "{value} pts"
   },
-  "ChartName": {
-    "bar": "Bar Chart",
-    "line": "Line Chart",
-    "area": "Area Chart",
-    "radar": "Radar Chart"
+  "Layout": {
+    "language": "Language",
+    "theme": "Switch theme",
+    "source": "Data:"
+  },
+  "Seo": {
+    "title": "{metric} by Country: Compare Charts and Data",
+    "keyword": "{metric} by country",
+    "homeTitle": "Compare Countries in Charts: GDP, Population and More",
+    "homeDescription": "Compare GDP, population, inflation, life expectancy, CO2 and more for any country, with free charts and data from the World Bank."
   },
   "NotFound": {
-    "message": "Oops! This page is not found"
+    "title": "Page not found",
+    "message": "This page doesn't exist.",
+    "back": "Back to the charts"
   }
 }

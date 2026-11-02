@@ -1,0 +1,46 @@
+# Supply-chain cooldown: never install a version published in the last 15 days.
+# 15 days = 15 * 24 * 60 = 21600 minutes. pnpm resolves to the newest version
+# that is at least this old, so freshly-published (potentially compromised)
+# releases are ignored until they've had time to be vetted / yanked.
+minimumReleaseAge: 21600
+
+# Prefer the lockfile: pnpm install uses exactly what's in pnpm-lock.yaml and
+# only re-resolves when the lockfile is out of sync with package.json.
+# (This is pnpm's default; pinned here to make the intent explicit.)
+preferFrozenLockfile: true
+
+# Security overrides: force patched versions of vulnerable transitive deps
+# without pulling in breaking major bumps.
+overrides:
+  '@babel/runtime@<7.26.10': ^7.29.10
+  '@humanfs/node@<0.16.8': ^0.16.8
+  ajv@<6.14.0: ^6.15.0
+  brace-expansion@<1.1.21: ^1.1.21
+  brace-expansion@>=2.0.0 <2.1.7: ^2.1.7
+  diff@<4.0.4: ^4.0.4
+  flatted@<3.4.2: ^3.4.2
+  js-yaml@<4.3.2: ^4.3.2
+  lodash@<4.18.1: ^4.18.1
+  minimatch@>=3.0.0 <3.1.5: ^3.1.5
+  minimatch@>=9.0.0 <9.0.9: ^9.0.9
+  nanoid@<3.3.18: ^3.3.18
+  picomatch@>=2.0.0 <2.3.2: ^2.3.2
+  postcss@<8.5.23: ^8.5.23
+  sharp@<0.35.5: ^0.35.5
+  source-map-js@<1.2.2: ^1.2.2
+
+# Install scripts are the main supply-chain execution vector: none run here.
+# Neither is needed: both ship prebuilt binaries as optional dependencies.
+allowBuilds:
+  '@parcel/watcher': false
+  '@swc/core': false
+
+# Audit exceptions: only when no patched release can be used yet.
+# Re-check on every audit and delete the entry as soon as a fix can be taken.
+auditConfig:
+  ignoreGhsas:
+    # 2026-11-02: minimatch DoS through globparts (moderate). Fixed only in 11.x,
+    # published 2026-10-27, so inside the cooldown, and a major jump from the
+    # 3.x and 9.x that ESLint needs. Reached only at dev time through ESLint,
+    # with our own lint globs as input; never bundled or deployed.
+    - GHSA-g3hv-75wg-m249

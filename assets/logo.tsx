@@ -26,7 +26,7 @@ export const MainLogo = () => {
         <rect
           width="24.379240803737947"
           height="105.48502733074858"
-          fill="hsl(var(--foreground))"
+          fill="currentColor"
           stroke="transparent"
           data-fill-palette-color="accent"
           x="0"
@@ -35,7 +35,7 @@ export const MainLogo = () => {
         <rect
           width="24.379240803737947"
           height="105.48502733074858"
-          fill="hsl(var(--foreground))"
+          fill="currentColor"
           stroke="transparent"
           data-fill-palette-color="accent"
           x="40.82834244358286"
@@ -44,7 +44,7 @@ export const MainLogo = () => {
         <rect
           width="24.379240803737947"
           height="105.48502733074858"
-          fill="hsl(var(--foreground))"
+          fill="currentColor"
           stroke="transparent"
           data-fill-palette-color="accent"
           x="81.65668488716572"

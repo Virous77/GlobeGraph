@@ -18,12 +18,18 @@ It's recommended to use give node version in `.nvmrc` file.
 nvm use
 ```
 
-Install the dependencies using `pnpm` or `yarn`.
+Install the dependencies using `pnpm`. It enforces the supply-chain rules in `pnpm-workspace.yaml`: a 15 day release cooldown, patched overrides and no install scripts.
 
 ```bash
 pnpm install
-# or
-yarn install
+```
+
+## Security check
+
+Scans the repo for malware and audits the dependencies. CI runs both.
+
+```bash
+pnpm security
 ```
 
 ## Start the development server
@@ -36,18 +42,4 @@ pnpm dev
 
 ```bash
 pnpm build
-```
-
-I have added `Dockerfile` for both development and production environment.
-
-## Start the app in development environment
-
-```bash
-docker build -t globe-graph-dev -f Dockerfile.dev .
-```
-
-## Start the app in production environment
-
-```bash
-docker build -t globe-graph -f Dockerfile.prod .
 ```

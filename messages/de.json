@@ -1,64 +1,180 @@
 {
-  "HomePage": {
-    "title": "Daten erkunden",
-    "gdp": "Bruttoinlandsprodukt des Landes",
-    "perCapitaIncome": "Pro-Kopf-Einkommen des Landes",
-    "lifeExpectancy": "Lebenserwartung des Landes",
-    "population": "Bevölkerung des Landes",
-    "unemploymentLaborForce": "Arbeitslosenquote des Landes",
-    "fdi": "Ausländische Direktinvestitionen im Verhältnis zum BIP des Landes",
-    "debt": "Staatsschulden des Landes im Verhältnis zum BIP",
-    "fdiInflows": "Zufluss ausländischer Direktinvestitionen des Landes",
-    "inflation": "Verbraucherpreis-Inflation des Landes",
-    "foreignReserve": "Währungsreserven des Landes",
-    "povertyLevel": "Bevölkerung unterhalb der Armutsgrenze",
-    "incomeInequality": "Einkommensungleichheit",
-    "internetUsers": "Internetnutzer des Landes",
-    "visit": "Besuchen"
+  "Metric": {
+    "gdp": {
+      "name": "BIP",
+      "about": "Bruttoinlandsprodukt: der Gesamtwert dessen, was ein Land in einem Jahr produziert, in aktuellen US-Dollar."
+    },
+    "perCapitaIncome": {
+      "name": "BIP pro Kopf",
+      "about": "Das BIP geteilt durch die Bevölkerung, in aktuellen US-Dollar: ein gängiges Maß der Wirtschaftsleistung pro Person."
+    },
+    "inflation": {
+      "name": "Inflation",
+      "about": "Wie schnell die Verbraucherpreise jedes Jahr steigen, gemessen am Verbraucherpreisindex."
+    },
+    "unemploymentLaborForce": {
+      "name": "Arbeitslosigkeit",
+      "about": "Der Anteil der Erwerbspersonen ohne Arbeit, die verfügbar sind und Arbeit suchen."
+    },
+    "debt": {
+      "name": "Staatsschulden",
+      "about": "Die Schulden der Zentralregierung als Anteil am BIP. Viele Länder melden sie nur für einzelne Jahre."
+    },
+    "foreignReserve": {
+      "name": "Devisenreserven",
+      "about": "Die Gesamtreserven einschließlich Gold der Zentralbank eines Landes, in aktuellen US-Dollar."
+    },
+    "fdiInflows": {
+      "name": "ADI-Zuflüsse",
+      "about": "Die netto in ein Land fließenden ausländischen Direktinvestitionen pro Jahr, in aktuellen US-Dollar."
+    },
+    "fdi": {
+      "name": "ADI zum BIP",
+      "about": "Die Nettozuflüsse ausländischer Direktinvestitionen als Anteil am BIP, die ihr Gewicht in der Wirtschaft zeigen."
+    },
+    "population": {
+      "name": "Bevölkerung",
+      "about": "Die Gesamtzahl der Menschen in einem Land, nach Schätzungen zur Jahresmitte."
+    },
+    "lifeExpectancy": {
+      "name": "Lebenserwartung",
+      "about": "Die Jahre, die ein Neugeborenes bei den aktuellen Sterberaten voraussichtlich lebt."
+    },
+    "internetUsers": {
+      "name": "Internetnutzer",
+      "about": "Der Anteil der Bevölkerung eines Landes, der das Internet nutzt."
+    },
+    "povertyLevel": {
+      "name": "Extreme Armut",
+      "about": "Der Anteil der Menschen mit weniger als 3,00 $ pro Tag (KKP 2021), aus Haushaltsbefragungen."
+    },
+    "incomeInequality": {
+      "name": "Einkommensungleichheit",
+      "about": "Der Gini-Index: 0 bedeutet, alle haben dasselbe Einkommen, 100, eine Person hat alles."
+    },
+    "gdpGrowth": {
+      "name": "BIP-Wachstum",
+      "about": "Die jährliche Veränderung des BIP eines Landes ohne Inflation."
+    },
+    "manufacturing": {
+      "name": "Verarbeitendes Gewerbe",
+      "about": "Die Wertschöpfung des verarbeitenden Gewerbes als Anteil am BIP."
+    },
+    "exports": {
+      "name": "Exporte",
+      "about": "Ins Ausland verkaufte Waren und Dienstleistungen als Anteil am BIP."
+    },
+    "imports": {
+      "name": "Importe",
+      "about": "Aus dem Ausland gekaufte Waren und Dienstleistungen als Anteil am BIP."
+    },
+    "remittances": {
+      "name": "Rücküberweisungen",
+      "about": "Geld, das im Ausland Arbeitende nach Hause schicken, als Anteil am BIP."
+    },
+    "militarySpending": {
+      "name": "Militärausgaben",
+      "about": "Die staatlichen Ausgaben für das Militär als Anteil am BIP."
+    },
+    "populationGrowth": {
+      "name": "Bevölkerungswachstum",
+      "about": "Die jährliche Veränderung der Bevölkerung eines Landes in Prozent."
+    },
+    "urbanPopulation": {
+      "name": "Stadtbevölkerung",
+      "about": "Der Anteil der Menschen, die in Städten leben."
+    },
+    "fertilityRate": {
+      "name": "Geburtenrate",
+      "about": "Die durchschnittliche Kinderzahl pro Frau bei den aktuellen Geburtenraten."
+    },
+    "femaleLaborForce": {
+      "name": "Frauen im Erwerbsleben",
+      "about": "Der Anteil der Frauen ab 15 Jahren, die arbeiten oder Arbeit suchen."
+    },
+    "infantMortality": {
+      "name": "Säuglingssterblichkeit",
+      "about": "Todesfälle von Kindern unter einem Jahr je 1.000 Lebendgeburten."
+    },
+    "healthSpending": {
+      "name": "Gesundheitsausgaben",
+      "about": "Die gesamten laufenden Gesundheitsausgaben als Anteil am BIP."
+    },
+    "educationSpending": {
+      "name": "Bildungsausgaben",
+      "about": "Die staatlichen Bildungsausgaben als Anteil am BIP. Viele Länder melden sie nur für einzelne Jahre."
+    },
+    "co2Emissions": {
+      "name": "CO2-Emissionen",
+      "about": "Der jährliche Kohlendioxidausstoß pro Person in Tonnen."
+    },
+    "renewableEnergy": {
+      "name": "Erneuerbare Energie",
+      "about": "Der Anteil erneuerbarer Quellen am Endenergieverbrauch."
+    },
+    "electricityAccess": {
+      "name": "Zugang zu Strom",
+      "about": "Der Anteil der Menschen mit Zugang zu Elektrizität."
+    },
+    "forestArea": {
+      "name": "Waldfläche",
+      "about": "Der Anteil der Landesfläche, der von Wald bedeckt ist."
+    }
   },
-  "Chart": {
-    "search": "Länder auswählen",
-    "gdp": "BIP der Länder",
-    "gdpDesc": "BIP steht für Bruttoinlandsprodukt. Es ist der Gesamtwert aller Waren und Dienstleistungen, die in einem Land in einem Jahr produziert werden.",
-    "perCapitaIncome": "Pro-Kopf-Einkommen der Länder",
-    "perCapitaIncomeDesc": "Das Pro-Kopf-Einkommen ist das Durchschnittseinkommen der Bürger eines Landes. Es wird berechnet, indem das Gesamteinkommen des Landes durch die Bevölkerung geteilt wird.",
-    "lifeExpectancy": "Lebenserwartung der Länder",
-    "lifeExpectancyDesc": "Die Lebenserwartung ist die durchschnittliche Anzahl von Jahren, die eine Person ab dem Geburtsjahr voraussichtlich leben wird.",
-    "population": "Bevölkerung des Landes",
-    "populationDesc": "Die Bevölkerung bezeichnet die Gesamtzahl der Menschen, die in einem Land leben.",
-    "unemploymentLaborForce": "Arbeitslosenquote des Landes",
-    "unemploymentLaborForceDesc": "Die Arbeitslosenquote ist der Prozentsatz der Gesamtarbeitskraft, der arbeitslos ist, aber aktiv Arbeit sucht und bereit ist zu arbeiten.",
-    "fdi": "Ausländische Direktinvestitionen der Länder im Verhältnis zum BIP",
-    "fdiDesc": "Ausländische Direktinvestitionen sind Investitionen, die ein Unternehmen oder eine Einzelperson in einem Land in Geschäftsinteressen in einem anderen Land tätigt, sei es durch die Gründung von Geschäftsaktivitäten oder den Erwerb von Geschäftsvermögen im anderen Land.",
-    "debt": "Staatsschulden der Länder im Verhältnis zum BIP",
-    "debtDesc": "Dieser Indikator misst die Gesamtschulden des Staates als Prozentsatz des Bruttoinlandsprodukts (BIP) des Landes. Er zeigt, wie hoch die Schulden im Verhältnis zur Größe der Wirtschaft sind.",
-    "fdiInflows": "Zufluss ausländischer Direktinvestitionen der Länder",
-    "fdiInflowDesc": "Der Zufluss ausländischer Direktinvestitionen ist der Gesamtwert der ausländischen Direktinvestitionen, die in einem bestimmten Zeitraum in ein Land fließen.",
-    "inflation": "Verbraucherpreis-Inflation der Länder",
-    "inflationDesc": "Inflation ist die Rate, mit der das allgemeine Preisniveau für Waren und Dienstleistungen steigt und folglich die Kaufkraft der Währung sinkt.",
-    "foreignReserve": "Währungsreserven der Länder",
-    "foreignReserveDesc": "Währungsreserven sind von einer Zentralbank in Fremdwährungen gehaltene Vermögenswerte. Diese Reserven werden verwendet, um Verbindlichkeiten abzusichern und die Geldpolitik zu beeinflussen.",
-    "povertyLevel": "Bevölkerung unterhalb der Armutsgrenze",
-    "povertyLevelDesc": "Der Prozentsatz der Bevölkerung, der unterhalb der nationalen Armutsgrenze lebt.",
-    "incomeInequality": "Einkommensungleichheit der Länder",
-    "incomeInequalityDesc": "Einkommensungleichheit beschreibt das Ausmaß, in dem das Einkommen in einer Bevölkerung ungleich verteilt ist.",
-    "internetUsers": "Internetnutzeranteil der Bevölkerung",
-    "internetUsersDesc": "Der Prozentsatz der Bevölkerung, der das Internet nutzt."
+  "Nav": {
+    "label": "Kennzahlen",
+    "economy": "Wirtschaft",
+    "finance": "Finanzen und Handel",
+    "people": "Menschen",
+    "health": "Gesundheit und Bildung",
+    "environment": "Umwelt"
   },
-  "Language": {
-    "en": "Englisch",
-    "es": "Spanisch",
-    "fr": "Französisch",
-    "hi": "Hindi",
-    "de": "Deutsch"
+  "Explorer": {
+    "addCountry": "Land hinzufügen",
+    "noMatch": "Kein Land gefunden",
+    "maxReached": "Bis zu {max} Länder",
+    "removeCountry": "{country} entfernen",
+    "emptyTitle": "Keine Länder ausgewählt",
+    "emptyHint": "Oben suchen, um eines hinzuzufügen.",
+    "noData": "Keine Daten",
+    "noDataRange": "Keine Daten für diese Länder in diesen Jahren. Wähle einen größeren Zeitraum.",
+    "trend": "Verlauf",
+    "ranking": "Rangliste",
+    "viewLabel": "Diagrammansicht",
+    "rangeLabel": "Zeitraum",
+    "lastYears": "{count} J.",
+    "allYears": "Alle",
+    "from": "Startjahr",
+    "to": "Endjahr",
+    "share": "Link kopieren",
+    "copied": "Kopiert",
+    "saveImage": "Bild speichern",
+    "loadError": "Einige Daten konnten nicht geladen werden.",
+    "retry": "Erneut versuchen",
+    "changeSince": "{change} seit {year}",
+    "tableTitle": "Datentabelle",
+    "year": "Jahr",
+    "rankingNote": "Neuester Wert jedes Landes in den gewählten Jahren.",
+    "sparseNote": "Unregelmäßig gemeldet. Punkte sind echte Werte, Linien verbinden sie.",
+    "insightLeader": "{country} liegt mit {value} im Jahr {year} vorn.",
+    "insightSingle": "{country}: {value} im Jahr {year}.",
+    "sourceLink": "Quelldaten ansehen",
+    "points": "{value} Pkt."
   },
-  "ChartName": {
-    "bar": "Balkendiagramm",
-    "line": "Liniendiagramm",
-    "area": "Flächendiagramm",
-    "radar": "Radar-Diagramm"
+  "Layout": {
+    "language": "Sprache",
+    "theme": "Design wechseln",
+    "source": "Daten:"
+  },
+  "Seo": {
+    "title": "{metric} nach Land: Diagramme und Daten im Vergleich",
+    "keyword": "{metric} nach Land",
+    "homeTitle": "Länder in Diagrammen vergleichen: BIP, Bevölkerung und mehr",
+    "homeDescription": "Vergleiche BIP, Bevölkerung, Inflation, Lebenserwartung und mehr für jedes Land, mit kostenlosen Diagrammen und Daten der Weltbank."
   },
   "NotFound": {
-    "message": "Hoppla! Diese Seite wurde nicht gefunden"
+    "title": "Seite nicht gefunden",
+    "message": "Diese Seite existiert nicht.",
+    "back": "Zurück zu den Diagrammen"
   }
 }
